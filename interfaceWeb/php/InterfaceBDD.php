@@ -70,5 +70,17 @@ class InterfaceBDD {
         }
         return $result;
     }
-
+    
+     public function deleteUser($id) {
+         try {
+            $request = 'delete from Utilisateur where id_utilisateur=:id';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $_id, PDO::PARAM_INT);
+            $result = $statement->execute();
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
 }
