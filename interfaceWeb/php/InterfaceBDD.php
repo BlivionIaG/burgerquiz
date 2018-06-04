@@ -157,7 +157,7 @@ class InterfaceBDD {
         return $result;
     }
 
-    public function RequestAllParties($id) {
+    public function RequestAllParties() {
         try {
             $request = 'select * from Partie';
             $statement = $this->getBdd()->prepare($request);
