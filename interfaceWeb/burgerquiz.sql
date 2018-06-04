@@ -2,6 +2,24 @@
 #        Script MySQL.
 #------------------------------------------------------------
 
+#------------------------------------------------------------
+# Database: Burgerquiz
+#------------------------------------------------------------
+
+CREATE DATABASE Burgerquiz;
+USE Burgerquiz;
+
+#------------------------------------------------------------
+# Tables cleanup
+#------------------------------------------------------------
+
+DROP TABLE if exists Themes;
+DROP TABLE if exists Question;
+DROP TABLE if exists Reponse;
+DROP TABLE if exists Partie;
+DROP TABLE if exists Utilisateur;
+DROP TABLE if exists comprend;
+DROP TABLE if exists possede;
 
 #------------------------------------------------------------
 # Table: Themes
