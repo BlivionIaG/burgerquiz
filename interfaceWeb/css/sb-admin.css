@@ -473,11 +473,6 @@ footer.sticky-footer {
   }
 }
 
-@font-header{
-    font-family: gum;
-    src: url(../font/bubblegum-sans.regular.ttf);
-}
-
 #footer {
 font-family: Arial;
 font-size: .9em;
@@ -495,6 +490,56 @@ padding-top: 5px;
 .navbar-brand{
 	
 	color: #aedd94 !important;
-	font-family:gum;
+	font-family: 'Bubblegum Sans', cursive;
+	font-size:26;
 	 font-weight: bold;
 }
+button{
+	padding: 5px 40px 5px 40px;
+	margin: 10px 10px 10px 10px;
+	border-radius: 5px;
+	
+	background-color:#355723;
+	border: 2px solid #aedd94;
+	color : #aedd94;
+} 
+button:hover{
+		background-color:#aedd94;
+	
+	border: 2px solid #355723;
+	color : #355723;
+}
+
+.retour{
+	background-color:#aedd94;
+	
+	border: 0px solid #355723;
+	color : #355723;
+}
+.retour:hover{
+		background-color:#355723;
+	border: 0px solid #aedd94;
+	color : #aedd94;
+}
+
+.connect,input{
+		padding: 2px 20px 2px 20px;
+	border-radius: 5px;
+	
+	border: 2px solid #355723;
+
+}
+
+#log{
+		background-color:#355723;
+	border: 2px solid #aedd94;
+	color : #aedd94;
+	
+		padding: 2px 40px 2px 40px;
+}
+#log:hover{
+		background-color:#aedd94;
+	border: 2px solid #355723;
+	color : #355723;
+}
+
