@@ -17,7 +17,8 @@ define('ENVIRONMENT', 't');
     </head>
     <body>
         <?php require_once("includes/nav.template.php"); ?>
-        <div class="main-content">
+        <div class="container-fluid" style="margin-top:100px;">
+            <h1>hello world</h1>
             <?php
             require_once('php/InterfaceBDD.php');
 
@@ -32,25 +33,53 @@ define('ENVIRONMENT', 't');
                     $nom = filter_input(INPUT_GET, 'nom', FILTER_SANITIZE_STRING);
                     $pass1 = filter_input(INPUT_GET, 'pass1', FILTER_SANITIZE_STRING);
                     $pass2 = filter_input(INPUT_GET, 'pass2', FILTER_SANITIZE_STRING);
-                    
-                    if(isset($pass1) && isset($pass2)){
-                        if(!($pass1 === $pass2)){
+
+                    if (isset($pass1) && isset($pass2)) {
+                        if (!($pass1 === $pass2)) {
                             echo '<h2> Erreur : Mot de passes non identiques </h2>';
-                        }else{
+                        } else {
                             $mdp = $pass1;
                         }
-                    }else{
+                    } else {
                         echo '<h2> Erreur : Un ou plusier mot de passe manquant </h2>';
                     }
-                    
-                    if(!(isset($mail) && isset($prenom) && isset($nom))){
+
+                    if (!(isset($mail) && isset($prenom) && isset($nom))) {
                         echo '<h2> Erreur : Un des champs nécessaire à l\'inscription est manquant </h2>';
-                    }else{
+                    } else {
                         $user = new Utilisateur();
                         $user->create(0, $mail, $prenom, $nom, $mdp);
-                        
-                        $db->AddUser($user);
+
+                        if (!$db->AddUser($user)) {
+                            echo '<h2> Erreur : Impossible de rajouter un utilisateur </h2>';
+                        } else {
+                            session_start();
+                            $_SESSION['isConnected'] = true;
+                            $_SESSION['login'] = $mail;
+
+                            header('Location: /');
+                        }
                     }
+                } else if ($action === 'connect') {
+                    $mail = filter_input(INPUT_GET, 'mail', FILTER_SANITIZE_EMAIL);
+                    $pass = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING);
+
+                    if (!(isset($mail) && isset($pass))) {
+                        echo '<h2> Erreur : Identifiants incorects </h2>';
+                    } else if ($db->CheckUser($mail, $pass)) {
+                        session_start();
+                        $_SESSION['isConnected'] = true;
+                        $_SESSION['login'] = $mail;
+
+                        echo '<h2> Bienvenue ' . $mail;
+                        header('Location: /');
+                    } else {
+                        echo '<h2> Erreur : Identifiants incorrects </h2>';
+                    }
+                } else if ($action === 'disconnect') {
+                    $_SESSION['login'] = null;
+                    $_SESSION['isConnected'] = false;
+                    session_destroy();
                 }
             }
             ?>

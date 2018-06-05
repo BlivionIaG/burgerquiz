@@ -49,7 +49,7 @@ class InterfaceBDD {
     public function AddUser($user) {
         try {
             $request = 'insert into Utilisateur(mail, prenom, nom, mdp)
-            values(:mail, :prenom, :nom, :mdp)';
+            values(:mail, :prenom, :nom, sha(:mdp))';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':mail', $user->getMail(), PDO::PARAM_STR, 256);
             $statement->bindParam(':prenom', $user->getPrenom(), PDO::PARAM_STR, 128);
@@ -92,7 +92,7 @@ class InterfaceBDD {
 
     public function UpdateUser($user) {
         try {
-            $request = 'update Utilisateur mail=:mail, prenom=:prenom, nom=:nom, mdp=:mdp where set id_utilisateur=:id';
+            $request = 'update Utilisateur mail=:mail, prenom=:prenom, nom=:nom, mdp=sha2(:mdp) where set id_utilisateur=:id';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $user->getId_utilisateur(), PDO::PARAM_INT);
             $statement->bindParam(':mail', $user->getMail(), PDO::PARAM_STR, 256);
@@ -118,6 +118,25 @@ class InterfaceBDD {
             return false;
         }
         return $result;
+    }
+
+    function CheckUser($mail, $mdp) {
+        try {
+            $request = 'select * from Utilisateur where mail=:mail and mdp=sha(:mdp)';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':mail', $mail, PDO::PARAM_STR, 256);
+            $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR, 128);
+            $statement->execute();
+            $result = $statement->fetch();
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        if (!$result) {
+            return false;
+        }
+        
+        return true;
     }
 
     public function RequestTheme($id) {
@@ -328,4 +347,5 @@ class InterfaceBDD {
         }
         return $result;
     }
+
 }
