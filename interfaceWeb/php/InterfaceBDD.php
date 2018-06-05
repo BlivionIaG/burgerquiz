@@ -202,12 +202,41 @@ class InterfaceBDD {
         }
         return $result;
     }
-    
-    public function RequestPartieScores($id){
-         try {
+
+    public function RequestPartieScores($id) {
+        try {
             $request = 'select * from Possede where id_partie=:id';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Possede');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+
+    public function RequestUserScores($id) {
+        try {
+            $request = 'select * from Possede where id_utilisateur=:id';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Possede');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+
+    public function RequestUserPartieScores($id_utilisateur, $id_partie) {
+        try {
+            $request = 'select * from Possede where id_utilisateur=:id_utilisateur and id_partie=:id_partie';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
+            $statement->bindParam(':id_partie', $id_partie, PDO::PARAM_INT);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Possede');
         } catch (PDOException $exception) {
