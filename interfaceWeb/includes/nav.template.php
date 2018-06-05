@@ -14,7 +14,7 @@ if(!defined('ENVIRONMENT')) { exit(); } // On empêche l'accès direct en HTTP
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <a class="nav-link" data-toggle="modal" href="../action.php?action=disconnect" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Se déconnecter</a>
         </li>
       </ul>

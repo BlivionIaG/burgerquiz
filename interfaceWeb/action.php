@@ -57,7 +57,7 @@ define('ENVIRONMENT', 't');
                             $_SESSION['isConnected'] = true;
                             $_SESSION['login'] = $mail;
 
-                            header('Location: /');
+                            header('Location: menu.php');
                         }
                     }
                 } else if ($action === 'connect') {
@@ -70,9 +70,8 @@ define('ENVIRONMENT', 't');
                         session_start();
                         $_SESSION['isConnected'] = true;
                         $_SESSION['login'] = $mail;
-
-                        echo '<h2> Bienvenue ' . $mail;
-                        header('Location: /');
+                        
+                        header('Location: menu.php');
                     } else {
                         echo '<h2> Erreur : Identifiants incorrects </h2>';
                     }
@@ -80,6 +79,8 @@ define('ENVIRONMENT', 't');
                     $_SESSION['login'] = null;
                     $_SESSION['isConnected'] = false;
                     session_destroy();
+                    
+                    header('Location: index.php');
                 }
             }
             ?>
