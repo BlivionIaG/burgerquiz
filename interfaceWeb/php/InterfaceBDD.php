@@ -15,6 +15,9 @@ require_once('consts.php');
 require_once('Utilisateur.php');
 require_once('Theme.php');
 require_once('Partie.php');
+require_once('Possede.php');
+require_once('Question.php');
+require_once('Reponse.php');
 
 class InterfaceBDD {
 
@@ -176,6 +179,37 @@ class InterfaceBDD {
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $result = $statement->execute();
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+
+    public function AddPossede($possede) {
+        try {
+            $request = 'insert into Possede(id_partie, id_utilisateur, score, temps)
+            values(:id_partie, :id_utilisateur, :score, :temps)';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id_partie', $possede->getId_partie(), PDO::PARAM_INT);
+            $statement->bindParam(':id_utilisateur', $possede->getId_utilisateur, PDO::PARAM_INT);
+            $statement->bindParam(':score', $possede->getScore(), PDO::PARAM_INT);
+            $statement->bindParam(':temps', $possede->getTemps(), PDO::PARAM_INT);
+            $result = $statement->execute();
+        } catch (PDOException $exception) {
+            error_log('Connection error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+    
+    public function RequestPartieScores($id){
+         try {
+            $request = 'select * from Possede where id_partie=:id';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Possede');
         } catch (PDOException $exception) {
             error_log('Request error: ' . $exception->getMessage());
             return false;
