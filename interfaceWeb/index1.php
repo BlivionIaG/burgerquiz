@@ -42,27 +42,27 @@ define('ENVIRONMENT', 't');
                 </ul>
             </div>
         </nav>
-    </div>
-    <div class="container-fluid" style="margin-top:100px;">
-        <div class="row">
+        <div class="container-fluid" style="margin-top:100px;">
+            <div class="row">
 
-            <div class="col-sm-6 h-100">
+                <div class="col-sm-6 h-100">
 
-                <img src="img/burger.png" style="height:500px">
-            </div>
-            <div class="col-sm-6 h-100">
-                <form id="insciption">
-                    <input type="text" placeholder="prenom"  style="width:39.5%">
-                    <input type="text" placeholder="nom" style="width:39.5%">
-                    <input type="mail" placeholder="monemail@mail.com" style="width:80%">
-                    <input type="password" placeholder="password" style="width:80%">
-                    <input type="password" placeholder="password" style="width:80%">
-                    <input type="submit" style="width:80%">
-                </form>
+                    <img src="img/burger.png" style="height:500px">
+                </div>
+                <div class="col-sm-6 h-100">
+                    <form id="insciption" action="action.php" method="GET">                    
+                        <input type="hidden" name="action" value="register">
+                        <input name="prenom" type="text" placeholder="prenom" style="width:39.5%">
+                        <input name="nom" type="text" placeholder="nom" style="width:39.5%">
+                        <input name="mail" type="mail" placeholder="monemail@mail.com" style="width:80%">
+                        <input name="pass1" type="password" placeholder="password" style="width:80%">
+                        <input name="pass2" type="password" placeholder="password" style="width:80%">
+                        <input type="submit" style="width:80%">
+                    </form>
+                </div>
             </div>
         </div>
-        <div>
 
-            <?php require_once("includes/footer.template.php"); ?>
-            </body>
-            </html>
+        <?php require_once("includes/footer.template.php"); ?>
+    </body>
+</html>
