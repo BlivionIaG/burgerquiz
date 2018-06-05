@@ -18,6 +18,7 @@ require_once('Partie.php');
 require_once('Possede.php');
 require_once('Question.php');
 require_once('Reponse.php');
+require_once('comprend.php');
 
 class InterfaceBDD {
 
@@ -314,4 +315,17 @@ class InterfaceBDD {
         return $result;
     }
 
+    public function RequestQuestionsOfPartie($id_partie) {
+        try {
+            $request = 'select * from comprend where id_partie:id';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $id_partie, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'comprend');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
 }
