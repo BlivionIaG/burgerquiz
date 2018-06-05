@@ -543,3 +543,11 @@ button:hover{
 	color : #355723;
 }
 
+#insciption,input{
+	margin-bottom: 25px;
+}
+
+#insciption{
+	padding-top: 35px;
+}
+

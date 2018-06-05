@@ -42,15 +42,23 @@ define('ENVIRONMENT', 't');
     </div>
   </nav>
   </div>
-  <div class="container-fluid">
+  <div class="container-fluid" style="margin-top:100px;">
   <div class="row">
   
 		<div class="col-sm-6 h-100">
-		test
+		
+		<img src="img/burger.png" style="height:500px">
         </div>
 		<div class="col-sm-6 h-100">
-		etst	
-        </div>
+		<form id="insciption">
+		<input type="text" placeholder="prenom"  style="width:39.5%">
+		<input type="text" placeholder="nom" style="width:39.5%">
+		<input type="mail" placeholder="monemail@mail.com" style="width:80%">
+		<input type="password" placeholder="password" style="width:80%">
+		<input type="password" placeholder="password" style="width:80%">
+		<input type="submit" style="width:80%">
+		</form>
+		</div>
   </div>
   <div>
   
