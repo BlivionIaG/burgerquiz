@@ -1,90 +1,71 @@
 <?php
+
 define('ENVIRONMENT', 't');
-?>
 
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="author" content="Kévin Le Torc'h" />
-        <title>Burger Quiz</title>
+require_once('php/InterfaceBDD.php');
 
+$db = new InterfaceBDD();
 
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-        <link href="css/sb-admin.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans" rel="stylesheet">
-    </head>
-    <body>
-        <?php require_once("includes/nav.template.php"); ?>
-        <div class="container-fluid" style="margin-top:100px;">
-            <h1>hello world</h1>
-            <?php
-            require_once('php/InterfaceBDD.php');
+$action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
-            $db = new InterfaceBDD();
+if (isset($action)) {
+    if ($action === 'register') {
+        $mail = filter_input(INPUT_GET, 'mail', FILTER_SANITIZE_EMAIL);
+        $prenom = filter_input(INPUT_GET, 'prenom', FILTER_SANITIZE_STRING);
+        $nom = filter_input(INPUT_GET, 'nom', FILTER_SANITIZE_STRING);
+        $pass1 = filter_input(INPUT_GET, 'pass1', FILTER_SANITIZE_STRING);
+        $pass2 = filter_input(INPUT_GET, 'pass2', FILTER_SANITIZE_STRING);
 
-            $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
-
-            if (isset($action)) {
-                if ($action === 'register') {
-                    $mail = filter_input(INPUT_GET, 'mail', FILTER_SANITIZE_EMAIL);
-                    $prenom = filter_input(INPUT_GET, 'prenom', FILTER_SANITIZE_STRING);
-                    $nom = filter_input(INPUT_GET, 'nom', FILTER_SANITIZE_STRING);
-                    $pass1 = filter_input(INPUT_GET, 'pass1', FILTER_SANITIZE_STRING);
-                    $pass2 = filter_input(INPUT_GET, 'pass2', FILTER_SANITIZE_STRING);
-
-                    if (isset($pass1) && isset($pass2)) {
-                        if (!($pass1 === $pass2)) {
-                            echo '<h2> Erreur : Mot de passes non identiques </h2>';
-                        } else {
-                            $mdp = $pass1;
-                        }
-                    } else {
-                        echo '<h2> Erreur : Un ou plusier mot de passe manquant </h2>';
-                    }
-
-                    if (!(isset($mail) && isset($prenom) && isset($nom))) {
-                        echo '<h2> Erreur : Un des champs nécessaire à l\'inscription est manquant </h2>';
-                    } else {
-                        $user = new Utilisateur();
-                        $user->create(0, $mail, $prenom, $nom, $mdp);
-
-                        if (!$db->AddUser($user)) {
-                            echo '<h2> Erreur : Impossible de rajouter un utilisateur </h2>';
-                        } else {
-                            session_start();
-                            $_SESSION['isConnected'] = true;
-                            $_SESSION['login'] = $mail;
-
-                            header('Location: menu.php');
-                        }
-                    }
-                } else if ($action === 'connect') {
-                    $mail = filter_input(INPUT_GET, 'mail', FILTER_SANITIZE_EMAIL);
-                    $pass = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING);
-
-                    if (!(isset($mail) && isset($pass))) {
-                        echo '<h2> Erreur : Identifiants incorects </h2>';
-                    } else if ($db->CheckUser($mail, $pass)) {
-                        session_start();
-                        $_SESSION['isConnected'] = true;
-                        $_SESSION['login'] = $mail;
-                        
-                        header('Location: menu.php');
-                    } else {
-                        echo '<h2> Erreur : Identifiants incorrects </h2>';
-                    }
-                } else if ($action === 'disconnect') {
-                    $_SESSION['login'] = null;
-                    $_SESSION['isConnected'] = false;
-                    session_destroy();
-                    
-                    header('Location: index.php');
-                }
+        if (isset($pass1) && isset($pass2)) {
+            if (!($pass1 === $pass2)) {
+                error_log('Erreur : Mot de passes non identiques');
+            } else {
+                $mdp = $pass1;
             }
-            ?>
-        </div>
-        <?php require_once("includes/footer.template.php"); ?>
-    </body>
-</html>
+        } else {
+            error_log('Erreur : Un ou plusier mot de passe manquant');
+        }
+
+        if (!(isset($mail) && isset($prenom) && isset($nom))) {
+            error_log('Erreur : Un des champs nécessaire à l\'inscription est manquant');
+        } else {
+            $user = new Utilisateur();
+            $user->create(0, $mail, $prenom, $nom, $mdp);
+
+            if (!$db->AddUser($user)) {
+                error_log('Erreur : Impossible de rajouter un utilisateur');
+            } else {
+                session_start();
+                $_SESSION['isConnected'] = true;
+                $_SESSION['login'] = $mail;
+
+                header('Location: menu.php');
+            }
+        }
+    } else if ($action === 'connect') {
+        $mail = filter_input(INPUT_GET, 'mail', FILTER_SANITIZE_EMAIL);
+        $pass = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING);
+
+        if (!(isset($mail) && isset($pass))) {
+            error_log('Erreur : Identifiants incorects');
+        } else if ($db->CheckUser($mail, $pass)) {
+            session_start();
+            $_SESSION['isConnected'] = true;
+            $_SESSION['login'] = $mail;
+
+
+            error_log('action :' . session_id());
+
+            header('Location: menu.php');
+        } else {
+            error_log('Erreur : Identifiants incorrects');
+        }
+    } else if ($action === 'disconnect') {
+        session_start();
+        session_destroy();
+        //session_stop();
+
+        header('Location: index.php');
+    }
+}
+?>

@@ -1,6 +1,10 @@
 <?php
 define('ENVIRONMENT', 't');
+session_start();
+
 if ($_SESSION['isConnected'] == false) {
+    error_log('menu :' . session_id());
+
     header('Location: index.php');
 } else {
     echo '<script> alert("Bienvenue ' . $_SESSION['login'] . ' !");</script>';
