@@ -76,6 +76,19 @@ class InterfaceBDD {
         return $result;
     }
 
+    public function RequestAllUser() {
+        try {
+            $request = 'select * from Utilisateur';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+
     public function UpdateUser($user) {
         try {
             $request = 'update Utilisateur mail=:mail, prenom=:prenom, nom=:nom, mdp=:mdp where set id_utilisateur=:id';
@@ -203,6 +216,19 @@ class InterfaceBDD {
         return $result;
     }
 
+    public function RequestAllScores() {
+        try {
+            $request = 'select * from Possede';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Possede');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+
     public function RequestPartieScores($id) {
         try {
             $request = 'select * from Possede where id_partie=:id';
@@ -239,6 +265,48 @@ class InterfaceBDD {
             $statement->bindParam(':id_partie', $id_partie, PDO::PARAM_INT);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Possede');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+
+    public function RequestQuestion($id) {
+        try {
+            $request = 'select * from Question where id_question=:id';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Question');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+
+    public function RequestReponse($id) {
+        try {
+            $request = 'select * from Reponse where id_reponse:id';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Reponse');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+
+    public function RequestReponseOfQuestion($id) {
+        try {
+            $request = 'select * from Reponse where id_question:id';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Reponse');
         } catch (PDOException $exception) {
             error_log('Request error: ' . $exception->getMessage());
             return false;
