@@ -49,12 +49,12 @@ input {
     border-color: #355723;
     border-radius: 3px;
 
-    color: grey !important;
-    caret-color: grey !important;
+    color: grey;
+    caret-color: grey;
 }
 
-input:placeholder {
-    color: grey !important;
+input::placeholder {
+    color: grey;
 }
 
 #connect > .bq-button{
@@ -69,7 +69,7 @@ input:placeholder {
     padding: 2px 40px 2px 40px !important;
 }
 
-.bq-button:hover{
+.bq-button::hover{
     background-color:#aedd94 !important;
     border: 4px solid #355723 !important;
     color : #355723 !important;
@@ -109,4 +109,6 @@ footer.sticky-footer {
     width: 80%;
     border-bottom: 5px solid !important;
     border-bottom-color: #355723 !important;
+    color: #355723;
 }
+

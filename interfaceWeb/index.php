@@ -53,7 +53,7 @@ if ($_SESSION['isConnected'] == true) {
                         <input name="mail" type="mail" placeholder="monemail@mail.com" style="width:80%">
                         <input name="pass1" type="password" placeholder="password" style="width:80%">
                         <input name="pass2" type="password" placeholder="password" style="width:80%">
-                        <input type="submit" style="width:80%">
+                        <input class="bq-button" type="submit" style="width:80%">
                     </form>
                 </div>
             </div>

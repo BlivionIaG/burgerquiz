@@ -63,7 +63,6 @@ if (isset($action)) {
     } else if ($action === 'disconnect') {
         session_start();
         session_destroy();
-        //session_stop();
 
         header('Location: index.php');
     }
