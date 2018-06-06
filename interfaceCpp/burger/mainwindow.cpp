@@ -135,39 +135,42 @@ void MainWindow::on_pushButton_4_clicked()
     db->getData("select * from Utilisateur");
     ui->comboBox_2->clear();
     while (db->res->next()) {
-        QListWidgetItem * newitem = new QListWidgetItem();
-        newitem->setText(QString::fromStdString(db->res->getString("mail")));
+        QString * newitem = new QString(QString::fromStdString(db->res->getString("mail")));
+        //QListWidgetItem * newitem = new QListWidgetItem();
+        //newitem->setText(QString::fromStdString(db->res->getString("mail")));
         //newitem->setData(1,QString::fromStdString(db->res->getString("id_partie")));
-        ui->comboBox_2->addItem(newitem);
+        ui->comboBox_2->addItem(*newitem);
            }
     //ui->listWidget_3->setCurrentRow(0);
 
+    db->getData("SELECT * FROM Possede,Utilisateur,"
+                "(select ROUND(SUM(Possede.score)/COUNT(Possede.score)) as moyenne "
+                "from Possede where Possede.id_utilisateur = 1) as test ,"
+                "(select COUNT(Possede.score) as nbgame "
+                "from Possede where Possede.id_utilisateur = 1) as test2 "
+                "WHERE Utilisateur.id_utilisateur = '1' and "
+                "Possede.id_utilisateur = Utilisateur.id_utilisateur "
+                "order by Possede.score DESC");
+db->res->first();
+    ui->lineEdit_17->setText(QString::fromStdString(db->res->getString("mail")));
+    ui->lineEdit_16->setText(QString::fromStdString(db->res->getString("nom")));
+    ui->lineEdit_15->setText(QString::fromStdString(db->res->getString("prenom")));
+    ui->label_14->setText(QString::fromStdString(db->res->getString("nbgame")));
+    ui->label_15->setText(QString::fromStdString(db->res->getString("moyenne")+"/3000"));
 
+    //qDebug() << "test" ;
+    ui->listWidget_5->clear();
 
+            while (db->res->next()) {
+                //QString * newitem = new QString(QString::fromStdString(db->res->getString("score")));
+                QListWidgetItem * newitem = new QListWidgetItem();
+                newitem->setText(QString::fromStdString(db->res->getString("score")));
+                //newitem->setData(1,QString::fromStdString(db->res->getString("id_partie")));
+                ui->listWidget_5->addItem(newitem);
+                   }
 
 
     //je suis la (ici)
-
-
-
-
-    //  int i=1;
-    db->getData("select * from Utilisateur where "
-                "id_utilisateur='1'");
-    ui->listWidget_2->clear();
-    while (db->res->next()) {
-        QListWidgetItem * newitem = new QListWidgetItem();
-        newitem->setText(QString::number( i) +". " +QString::fromStdString(db->res->getString("prenom")) + ":" + QString::fromStdString(db->res->getString("score")));
-        //newitem->setData(1,QString::fromStdString(db->res->getString("id_partie")));
-        ui->listWidget_2->addItem(newitem);
-        i++;
-           }
-
-
-
-
-
-
 
 
 

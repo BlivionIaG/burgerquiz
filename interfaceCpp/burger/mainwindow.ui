@@ -360,6 +360,11 @@ QGroupBox::title {
        </item>
        <item>
         <property name="text">
+         <string>10. ...</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>2. tomy2e: 40999</string>
         </property>
         <property name="textAlignment">
@@ -408,11 +413,6 @@ QGroupBox::title {
        <item>
         <property name="text">
          <string>9. ...</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>10. ...</string>
         </property>
        </item>
       </widget>
