@@ -1,0 +1,112 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+body.sticky-footer {
+    margin-bottom: 40px;
+}
+
+body.sticky-footer .content-wrapper {
+    min-height: calc(100vh - 40px - 40px);
+}
+
+body.fixed-nav {
+    padding-top: 56px;
+}
+
+.content-wrapper {
+    min-height: calc(100vh - 56px);
+    padding-top: 1rem;
+}
+
+.game-menu{
+    display: flex;
+    justify-content: space-between; 
+    width: 100%;
+}
+
+#mainNav{
+    color: #aedd94 !important;
+    background-color: #355723 !important;
+    border-bottom: 4px solid #aedd94;
+}
+
+.navbar-brand{
+    color: #aedd94 !important;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+input {
+    background-color: #FFFFFF;
+    border: 2px solid;
+    border-color: #355723;
+    border-radius: 3px;
+
+    color: grey !important;
+    caret-color: grey !important;
+}
+
+input:placeholder {
+    color: grey !important;
+}
+
+#connect > .bq-button{
+    margin-left: 24px;
+}
+
+.bq-button{
+    background-color:#355723 !important;
+    border: 4px solid #aedd94 !important;
+    border-radius: 9px !important;
+    color : #aedd94 !important;
+    padding: 2px 40px 2px 40px !important;
+}
+
+.bq-button:hover{
+    background-color:#aedd94 !important;
+    border: 4px solid #355723 !important;
+    color : #355723 !important;
+}
+
+#footer {
+    font-family: Arial;
+    font-size: 14px;
+    color: #aedd94;
+}
+
+footer.sticky-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #355723;
+    line-height: 39px;
+}
+
+.base-main-content{
+    margin-top:100px;
+    margin-bottom: 100px;
+}
+
+
+#inscription > input{
+    margin-bottom: 25px;
+}
+
+#inscription{
+    padding-top: 35px;
+}
+
+#inscriptionTitle{
+    width: 80%;
+    border-bottom: 5px solid !important;
+    border-bottom-color: #355723 !important;
+}
