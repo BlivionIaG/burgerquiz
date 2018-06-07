@@ -42,18 +42,18 @@ if ($_SESSION['isConnected'] == true) {
         <div class="container-fluid base-main-content">
             <div class="row">
                 <div class="col-sm-6 h-100">
-                    <img src="img/burger.png" style="height:500px">
+                    <img id="main-logo" src="img/burger.png">
                 </div>
                 <div class="col-sm-6 h-100">
                     <h1 id="inscriptionTitle"> Inscription </h1>
                     <form id="inscription" action="action.php" method="GET">                    
                         <input type="hidden" name="action" value="register">
-                        <input name="prenom" type="text" placeholder="Prenom" style="width:39.5%">
-                        <input name="nom" type="text" placeholder="Nom" style="width:39.5%">
-                        <input name="mail" type="mail" placeholder="Email Address" style="width:80%">
-                        <input name="pass1" type="password" placeholder="Password" style="width:80%">
-                        <input name="pass2" type="password" placeholder="Password Again" style="width:80%">
-                        <input class="bq-button" type="submit" value="Inscription" style="width:80%">
+                        <input class="bq-input-medium" name="prenom" type="text" placeholder="Prenom">
+                        <input class="bq-input-medium" name="nom" type="text" placeholder="Nom">
+                        <input class="bq-input-large" name="mail" type="mail" placeholder="Email Address">
+                        <input class="bq-input-large" name="pass1" type="password" placeholder="Password">
+                        <input class="bq-input-large" name="pass2" type="password" placeholder="Password Again">
+                        <input class="bq-button" type="submit" value="Inscription">
                     </form>
                 </div>
             </div>

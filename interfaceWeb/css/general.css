@@ -38,7 +38,7 @@ body.fixed-nav {
 
 .navbar-brand{
     color: #aedd94 !important;
-    font-family: 'Bubblegum Sans', cursive;
+    font-family: 'Bubblegum Sans', Regular;
     font-size: 26px;
     font-weight: bold;
 }
@@ -53,6 +53,11 @@ input {
     caret-color: grey;
 }
 
+input:focus {
+    border: 4px solid;
+    border-color: #204010;
+}
+
 input::placeholder {
     color: grey;
 }
@@ -62,11 +67,17 @@ input::placeholder {
 }
 
 .bq-button{
+    font-family: 'Bubblegum Sans', Regular;
     background-color:#355723 !important;
     border: 4px solid #aedd94 !important;
     border-radius: 9px !important;
     color : #aedd94 !important;
     padding: 2px 40px 2px 40px !important;
+}
+
+#inscription > .bq-button {
+    font-size: 41px;
+    width: 50%;
 }
 
 .bq-button:hover{
@@ -76,7 +87,7 @@ input::placeholder {
 }
 
 #footer {
-    font-family: Arial;
+    font-family: Helvetica;
     font-size: 14px;
     color: #aedd94;
 }
@@ -96,6 +107,12 @@ footer.sticky-footer {
     margin-bottom: 100px;
 }
 
+.base-main-content > h1 {
+    margin-bottom: 1em;
+    margin-left: 1.5%;
+    color: #355723;
+    font-family: 'Bubblegum Sans', Regular;
+}
 
 #inscription > input{
     margin-bottom: 25px;
@@ -122,15 +139,36 @@ footer.sticky-footer {
 
 .game-menu > button {
     width: 30%;
-    min-height: 200px;
+    min-height: 300px;
     margin-left: 1.5%;
     margin-right: 1.5%;
+    background-color: #aedd94;
+    color: #355723;
+    font-family: 'Bubblegum Sans', Regular;
+    font-size: 36px;
+    border: none;
 }
 
-.game-menu:first-child{
+.game-menu > button:hover {
+    border: 2px solid #355723;
+}
+
+.game-menu:first-child {
     margin-left: 2%;
 }
 
 .game-menu:last-child{
     margin-right: 2%;
+}
+
+.bq-input-medium{
+    width: 39.5%;
+}
+
+.bq-input-large{
+    width: 80%;
+}
+
+#main-logo {
+    height:500px;
 }

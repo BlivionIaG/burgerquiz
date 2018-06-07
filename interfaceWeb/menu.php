@@ -30,15 +30,15 @@ if ($_SESSION['isConnected'] == false) {
     </head>
     <body>
         <?php require_once("includes/nav.template.php"); ?>
-        <div  class="container-fluid" style="margin-top:100px;">
+        <div  class="container-fluid base-main-content">
             <?php
             echo '<h1> Bienvenue ' . $_SESSION['login'] . ' !</h1>';
             ?>
 
             <div class="game-menu">
-                <button>Jouer</button>
-                <button>Palmares</button>
-                <button>Mon compte</button>
+                <button onclick="location.href='#';"> Jouer </button>
+                <button onclick="location.href='#';"> Palmares </button>
+                <button onclick="location.href='#';"> Mon compte </button>
             </div>
         </div>
         <?php require_once("includes/footer.template.php"); ?>
