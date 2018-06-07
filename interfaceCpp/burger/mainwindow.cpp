@@ -90,6 +90,19 @@ void MainWindow::on_pushButton_2_clicked()
 {
 
 
+    connectiondb *db = new connectiondb;
+    db->getData("select * from Partie");
+    ui->listWidget_3->clear();
+    while (db->res->next()) {
+        QListWidgetItem * newitem = new QListWidgetItem();
+        newitem->setText(QString::fromStdString(db->res->getString("nom_partie")));
+        newitem->setData(1,QString::fromStdString(db->res->getString("id_partie")));
+        ui->listWidget_3->addItem(newitem);
+           }
+    ui->listWidget_3->setCurrentRow(0);
+
+
+
     ui->stackedWidget->setCurrentIndex(3);
     ui->pushButton_15->setVisible(true);
 
@@ -109,19 +122,6 @@ void MainWindow::on_pushButton_3_clicked()
     ui->listWidget_3->setCurrentRow(0);
 
 
-    int i=1;
-    db->getData("select * from Possede,Utilisateur where "
-                "id_partie='1' and "
-                "Possede.id_utilisateur = Utilisateur.id_utilisateur "
-                "order by score desc limit 10");
-    ui->listWidget_2->clear();
-    while (db->res->next()) {
-        QListWidgetItem * newitem = new QListWidgetItem();
-        newitem->setText(QString::number( i) +". " +QString::fromStdString(db->res->getString("prenom")) + ":" + QString::fromStdString(db->res->getString("score")));
-        //newitem->setData(1,QString::fromStdString(db->res->getString("id_partie")));
-        ui->listWidget_2->addItem(newitem);
-        i++;
-           }
 
     ui->stackedWidget->setCurrentIndex(2);
     ui->pushButton_15->setVisible(true);
@@ -314,3 +314,35 @@ void MainWindow::on_pushButton_6_clicked()
 
         }
 */
+
+void MainWindow::on_listWidget_3_currentRowChanged(int currentRow)
+{
+   qDebug() << "test 0";
+    if(currentRow >= 0){
+    //qDebug() <<  ui->listWidget_3->item(currentRow)->data(1).toInt();
+
+    connectiondb *db = new connectiondb;
+
+
+    int i=1;
+    db->getData("select * from Possede,Utilisateur where "
+                "id_partie='"+ ui->listWidget_3->item(currentRow)->data(1).toString().toStdString()+"' and "
+                "Possede.id_utilisateur = Utilisateur.id_utilisateur "
+                "order by score desc limit 10");
+    //db->res->first();
+    //ui->lineEdit_2->setText(QString::fromStdString(db->res->getString("id_partie")));
+    //qDebug() << QString::fromStdString(db->res->getString("id_partie"));
+    ui->listWidget_2->clear();
+    while (db->res->next()) {
+        ui->lineEdit_2->setText(QString::fromStdString(db->res->getString("id_partie")));
+        QListWidgetItem * newitem = new QListWidgetItem();
+        newitem->setText(QString::number( i) +". " +QString::fromStdString(db->res->getString("prenom")) + ":" + QString::fromStdString(db->res->getString("score")));
+        //newitem->setData(1,QString::fromStdString(db->res->getString("id_partie")));
+        ui->listWidget_2->addItem(newitem);
+        i++;
+           }
+    //
+    ui->lineEdit_3->setText(QString::number(i-1));
+    }
+
+}

@@ -37,6 +37,8 @@ private slots:
 
     void on_pushButton_6_clicked();
 
+    void on_listWidget_3_currentRowChanged(int currentRow);
+
 private:
     Ui::MainWindow *ui;
 };
