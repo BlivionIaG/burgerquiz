@@ -38,6 +38,7 @@ if (isset($_SESSION)) {
         <?php require_once("includes/nav.template.php"); ?>
 
         <div class="container-fluid base-main-content">
+            <button id="bq-retour" onclick="location.href = 'menu.php';"> Retour </button>
         </div>
 
         <?php require_once("includes/footer.template.php"); ?>
