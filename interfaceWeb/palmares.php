@@ -1,10 +1,16 @@
 <?php
 define('ENVIRONMENT', 't');
+
+require_once('php/InterfaceBDD.php');
 session_start();
 
 if (isset($_SESSION)) {
     if ($_SESSION['isConnected'] == false) {
         header('Location: index.php');
+    }
+
+    if (isset($_SESSION['user'])) {
+        $user = $_SESSION['user'];
     }
 }
 ?>
@@ -15,7 +21,7 @@ if (isset($_SESSION)) {
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Menu utilisateur du site">
+        <meta name="description" content="Palmares Utilisateurs">
         <meta name="author" content="Kévin Le Torc'h et Antoine Orhant">
 
         <!-- Bootstrap core CSS-->
@@ -30,17 +36,10 @@ if (isset($_SESSION)) {
     </head>
     <body>
         <?php require_once("includes/nav.template.php"); ?>
-        <div  class="container-fluid base-main-content">
-            <?php
-            echo '<h1 id="bq-info-page" class="game-menu-label"> Bienvenue ' . $_SESSION['login'] . ' !</h1>';
-            ?>
 
-            <div class="game-menu">
-                <button onclick="location.href = '#';"> Jouer </button>
-                <button onclick="location.href = 'palmares.php';"> Palmares </button>
-                <button onclick="location.href = 'monCompte.php';"> Mon compte </button>
-            </div>
+        <div class="container-fluid base-main-content">
         </div>
+
         <?php require_once("includes/footer.template.php"); ?>
     </body>
 </html>
