@@ -48,12 +48,12 @@ if ($_SESSION['isConnected'] == true) {
                     <h1 id="inscriptionTitle"> Inscription </h1>
                     <form id="inscription" action="action.php" method="GET">                    
                         <input type="hidden" name="action" value="register">
-                        <input name="prenom" type="text" placeholder="prenom" style="width:39.5%">
-                        <input name="nom" type="text" placeholder="nom" style="width:39.5%">
-                        <input name="mail" type="mail" placeholder="monemail@mail.com" style="width:80%">
-                        <input name="pass1" type="password" placeholder="password" style="width:80%">
-                        <input name="pass2" type="password" placeholder="password" style="width:80%">
-                        <input class="bq-button" type="submit" style="width:80%">
+                        <input name="prenom" type="text" placeholder="Prenom" style="width:39.5%">
+                        <input name="nom" type="text" placeholder="Nom" style="width:39.5%">
+                        <input name="mail" type="mail" placeholder="Email Address" style="width:80%">
+                        <input name="pass1" type="password" placeholder="Password" style="width:80%">
+                        <input name="pass2" type="password" placeholder="Password Again" style="width:80%">
+                        <input class="bq-button" type="submit" value="Inscription" style="width:80%">
                     </form>
                 </div>
             </div>
