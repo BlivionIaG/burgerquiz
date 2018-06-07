@@ -27,7 +27,7 @@ if ($_SESSION['isConnected'] == true) {
     <body>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="mainNav">
             <a class="navbar-brand" href="index.php">BURGER QUIZ</a>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                 </ul>
                 <form id="connect" action="action.php" method="GET">

@@ -112,3 +112,25 @@ footer.sticky-footer {
     color: #355723;
 }
 
+#disconnectButton{
+    color: #aedd94;
+}
+
+#disconnectButton::hover{
+    color: whitesmoke;
+}
+
+.game-menu > button {
+    width: 30%;
+    min-height: 200px;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+.game-menu:first-child{
+    margin-left: 2%;
+}
+
+.game-menu:last-child{
+    margin-right: 2%;
+}

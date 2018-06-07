@@ -25,9 +25,7 @@ if ($_SESSION['isConnected'] == false) {
         <!-- Page level plugin CSS-->
         <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <!-- Custom styles for this template-->
-        <!--link href="css/sb-admin.css" rel="stylesheet"-->
         <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans" rel="stylesheet">
-
         <link href="css/general.css" rel="stylesheet" type="text/css">
     </head>
     <body>
