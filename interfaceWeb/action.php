@@ -47,11 +47,11 @@ if (isset($action)) {
             }
         }
     } else if ($action === 'connect') {
-        $mail = filter_input(INPUT_GET, 'mail', FILTER_SANITIZE_EMAIL);
+        $mail = filter_input(INPUT_GET, 'login', FILTER_SANITIZE_EMAIL);
         $pass = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING);
 
         if (!(isset($mail) && isset($pass))) {
-            error_log('Erreur : Identifiants incorrects');
+            error_log('Erreur : Identifiants invalides');
             header('Location: index.php');
         } else if (($id = $db->CheckUser($mail, $pass))) {
             session_start();
@@ -84,11 +84,13 @@ if (isset($action)) {
         if (isset($pass1) && isset($pass2)) {
             if (!($pass1 === $pass2)) {
                 error_log('Erreur : Mot de passes non identiques');
+                header('Location: monCompte.php');
             } else {
                 $mdp = $pass1;
             }
         } else {
             error_log('Erreur : Un ou plusieurs mot de passe manquants');
+            header('Location: monCompte.php');
         }
 
         $user = $_SESSION['user'];
@@ -104,10 +106,12 @@ if (isset($action)) {
         }
         if (isset($mdp)) {
             $user->setMdp($mdp);
+        }else{
+            error_log('Erreur : Pas de mot de Passe définit');
+            header('Location: monCompte.php');
         }
         
-        if(!($r=$db->UpdateUser($user))){
-            error_log(':'.$r);
+        if(!$db->UpdateUser($user)){
             error_log('Erreur : Impossible de mettre à jour l\'utilisateur');
         }
         

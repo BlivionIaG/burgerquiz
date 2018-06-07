@@ -49,10 +49,7 @@ if (isset($_SESSION)) {
                         <input class="bq-input-medium" name="nom" type="text" placeholder="Nom" value="<?php if (isset($user)) echo $user->getNom(); ?>">
 
                         <h2 class="bq-info-label"> Changer Email </h2>
-                        <input class="bq-input-large" name="mail" type="mail" placeholder="Email Address" value="<?php if (isset($user)) echo $user->getMail(); ?>">
-
-                        <br>
-                         <button id="bq-retour" onclick="location.href = 'menu.php';"> Retour </button>
+                        <input class="bq-input-large" name="mail" type="email" placeholder="Email Address" value="<?php if (isset($user)) echo $user->getMail(); ?>">
                     </div>
                     <div class="col-sm-6 h-100">
                         <h2 class="bq-info-label"> Informations </h2>
@@ -63,12 +60,14 @@ if (isset($_SESSION)) {
                         }
                         ?>
                         <h2 class="bq-info-label"> Changer Mot de Passe </h2>
-                        <input class="bq-input-large" name="pass1" type="password" placeholder="Password">
-                        <input class="bq-input-large" name="pass2" type="password" placeholder="Password Again">
+                        <input class="bq-input-large" name="pass1" type="password" placeholder="Password" required>
+                        <input class="bq-input-large" name="pass2" type="password" placeholder="Password Again" required>
                         <input class="bq-button" type="submit" value="Valider">
                     </div>
                 </div>
             </form>
+
+            <button id="bq-retour" onclick="location.href = 'menu.php';"> Retour </button>
         </div>
 
         <?php require_once("includes/footer.template.php"); ?>

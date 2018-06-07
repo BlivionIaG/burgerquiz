@@ -32,7 +32,7 @@ if (isset($_SESSION)) {
         <?php require_once("includes/nav.template.php"); ?>
         <div  class="container-fluid base-main-content">
             <?php
-            echo '<h1 id="bq-info-page"> Bienvenue ' . $_SESSION['login'] . ' !</h1>';
+            echo '<h1 id="bq-info-page" class="game-menu-label"> Bienvenue ' . $_SESSION['login'] . ' !</h1>';
             ?>
 
             <div class="game-menu">

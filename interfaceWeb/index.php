@@ -3,7 +3,7 @@ define('ENVIRONMENT', 't');
 
 session_start();
 
-if (isset($_SESSION)) {
+if (isset($_SESSION['isConnected'])) {
     if ($_SESSION['isConnected'] == true) {
         header('Location: menu.php');
     }
@@ -37,8 +37,8 @@ if (isset($_SESSION)) {
                 </ul>
                 <form id="connect" action="action.php" method="GET">
                     <input type="hidden" name="action" value="connect">
-                    <input name="mail" type="mail" placeholder="Email address">
-                    <input name="password" type="password" placeholder="Password">
+                    <input name="login" type="email" placeholder="Email address" required>
+                    <input name="password" type="password" placeholder="Password" required>
                     <input type="submit" class="bq-button" value="Connexion">
                 </form>
             </div>
@@ -53,11 +53,11 @@ if (isset($_SESSION)) {
                     <h1 id="inscriptionTitle"> Inscription </h1>
                     <form id="inscription" action="action.php" method="GET">                    
                         <input type="hidden" name="action" value="register">
-                        <input class="bq-input-medium" name="prenom" type="text" placeholder="Prenom">
-                        <input class="bq-input-medium" name="nom" type="text" placeholder="Nom">
-                        <input class="bq-input-large" name="mail" type="mail" placeholder="Email Address">
-                        <input class="bq-input-large" name="pass1" type="password" placeholder="Password">
-                        <input class="bq-input-large" name="pass2" type="password" placeholder="Password Again">
+                        <input class="bq-input-medium" name="prenom" type="text" placeholder="Prenom" required>
+                        <input class="bq-input-medium" name="nom" type="text" placeholder="Nom" required>
+                        <input class="bq-input-large" name="mail" type="email" placeholder="Email Address" required>
+                        <input class="bq-input-large" name="pass1" type="password" placeholder="Password" required>
+                        <input class="bq-input-large" name="pass2" type="password" placeholder="Password Again" required>
                         <input class="bq-button" type="submit" value="Inscription">
                     </form>
                 </div>

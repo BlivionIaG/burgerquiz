@@ -1,3 +1,9 @@
+:root{
+    --bq-nice-font: 'Bubblegum Sans', Regular;
+    --bq-basic-font: Helvetica;
+    --bq-footer-height: 40px;
+}
+
 html {
     position: relative;
     min-height: 100%;
@@ -8,11 +14,11 @@ body {
 }
 
 body.sticky-footer {
-    margin-bottom: 40px;
+    margin-bottom: var(--bq-footer-height);
 }
 
 body.sticky-footer .content-wrapper {
-    min-height: calc(100vh - 40px - 40px);
+    min-height: calc(100vh - 56px - var(--bq-footer-height));
 }
 
 body.fixed-nav {
@@ -67,7 +73,7 @@ input::placeholder {
 }
 
 .bq-button{
-    font-family: 'Bubblegum Sans', Regular;
+    font-family: var(--bq-nice-font);
     background-color:#355723 !important;
     border: 4px solid #aedd94 !important;
     border-radius: 9px !important;
@@ -87,7 +93,7 @@ input::placeholder {
 }
 
 #footer {
-    font-family: Helvetica;
+    font-family: var(--bq-basic-font);
     font-size: 14px;
     color: #aedd94;
 }
@@ -97,22 +103,21 @@ footer.sticky-footer {
     right: 0;
     bottom: 0;
     width: 100%;
-    height: 40px;
+    height: var(--bq-footer-height);
     background-color: #355723;
     line-height: 39px;
 }
 
 .base-main-content{
-    margin-top:100px;
-    margin-bottom: 100px;
+    margin-top: 80px;
+    margin-bottom: 80px;
 }
 
 #bq-info-page {
     font-size: 48px;
-    margin-bottom: 0.8em;
     margin-left: 1.5%;
     color: #355723;
-    font-family: 'Bubblegum Sans', Regular;
+    font-family: var(--bq-nice-font);
 }
 
 #inscription > input{
@@ -124,7 +129,8 @@ footer.sticky-footer {
 }
 
 #inscriptionTitle{
-    width: 80%;
+    width: 80%;    
+    margin-top: 30px;
     border-bottom: 5px solid !important;
     border-bottom-color: #355723 !important;
     color: #355723;
@@ -156,7 +162,7 @@ footer.sticky-footer {
     margin-right: 1.5%;
     background-color: #aedd94;
     color: #355723;
-    font-family: 'Bubblegum Sans', Regular;
+    font-family: var(--bq-nice-font);
     font-size: 36px;
     border: none;
 }
@@ -182,6 +188,7 @@ footer.sticky-footer {
 }
 
 #main-logo {
+    margin-top: 30px;
     height:500px;
 }
 
@@ -190,7 +197,7 @@ footer.sticky-footer {
     border: none;
     color: #355723;
     font-size: 24px;
-    font-family: 'Bubblegum Sans', Regular;
+    font-family: var(--bq-nice-font);
     width: 7%;
     min-height: 40px;
 }
@@ -204,11 +211,16 @@ footer.sticky-footer {
 }
 
 #updateInfo pre {
-    font-family: Helvetica;
+    font-family: var(--bq-basic-font);
     font-size: 24px;    
     color: #355723;
+    margin-bottom: 0px;
 }
 
 #updateInfo .bq-button{
     margin-left: 30%;
+}
+
+.game-menu-label {
+    margin-bottom: 0.8em;
 }
