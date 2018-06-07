@@ -39,6 +39,8 @@ private slots:
 
     void on_listWidget_3_currentRowChanged(int currentRow);
 
+    void on_comboBox_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
 };

@@ -9,6 +9,7 @@
 #include <QDebug>
 //#include <QString>
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -91,15 +92,18 @@ void MainWindow::on_pushButton_2_clicked()
 
 
     connectiondb *db = new connectiondb;
-    db->getData("select * from Partie");
-    ui->listWidget_3->clear();
+    db->getData("select * from Theme");
+    ui->comboBox->clear();
     while (db->res->next()) {
-        QListWidgetItem * newitem = new QListWidgetItem();
-        newitem->setText(QString::fromStdString(db->res->getString("nom_partie")));
-        newitem->setData(1,QString::fromStdString(db->res->getString("id_partie")));
-        ui->listWidget_3->addItem(newitem);
+        QString * newitem = new QString(QString::fromStdString(db->res->getString("id_theme")) +" :  "+QString::fromStdString(db->res->getString("nom_theme")));
+        //QListWidgetItem * newitem = new QListWidgetItem();
+        //newitem->setText(QString::fromStdString(db->res->getString("mail")));
+        //newitem->setData(1,QString::fromStdString(db->res->getString("id_theme")));
+        ui->comboBox->addItem(*newitem);
            }
-    ui->listWidget_3->setCurrentRow(0);
+
+
+    ui->comboBox->setCurrentIndex(0);
 
 
 
@@ -345,4 +349,10 @@ void MainWindow::on_listWidget_3_currentRowChanged(int currentRow)
     ui->lineEdit_3->setText(QString::number(i-1));
     }
 
+}
+
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+    int id = ui->comboBox->currentText().split(":")[0].toInt();
+    qDebug() << id ;
 }
