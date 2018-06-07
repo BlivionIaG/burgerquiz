@@ -75,7 +75,7 @@ input::placeholder {
     padding: 2px 40px 2px 40px !important;
 }
 
-#inscription > .bq-button {
+#inscription > .bq-button, #updateInfo .bq-button {
     font-size: 41px;
     width: 50%;
 }
@@ -109,7 +109,7 @@ footer.sticky-footer {
 
 #bq-info-page {
     font-size: 48px;
-    margin-bottom: 1em;
+    margin-bottom: 0.8em;
     margin-left: 1.5%;
     color: #355723;
     font-family: 'Bubblegum Sans', Regular;
@@ -134,7 +134,11 @@ footer.sticky-footer {
     width: 80%;
     border-bottom: 5px solid !important;
     border-bottom-color: #355723 !important;
+    padding-bottom: 1%;
     color: #355723;
+    font-weight: bold;
+    margin-bottom: 2.5%;
+    font-size: 34px;
 }
 
 #disconnectButton{
@@ -193,4 +197,18 @@ footer.sticky-footer {
 
 #bq-retour:hover {
     border: 2px solid #355723;
+}
+
+#updateInfo input {
+    margin-bottom: 2.5%;
+}
+
+#updateInfo pre {
+    font-family: Helvetica;
+    font-size: 24px;    
+    color: #355723;
+}
+
+#updateInfo .bq-button{
+    margin-left: 30%;
 }

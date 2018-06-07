@@ -1,7 +1,12 @@
 <?php
 define('ENVIRONMENT', 't');
-if ($_SESSION['isConnected'] == true) {
-    header('Location: menu.php');
+
+session_start();
+
+if (isset($_SESSION)) {
+    if ($_SESSION['isConnected'] == true) {
+        header('Location: menu.php');
+    }
 }
 ?>
 

@@ -2,8 +2,10 @@
 define('ENVIRONMENT', 't');
 session_start();
 
-if ($_SESSION['isConnected'] == false) {
-    header('Location: index.php');
+if (isset($_SESSION)) {
+    if ($_SESSION['isConnected'] == false) {
+        header('Location: index.php');
+    }
 }
 ?>
 
@@ -34,9 +36,9 @@ if ($_SESSION['isConnected'] == false) {
             ?>
 
             <div class="game-menu">
-                <button onclick="location.href='#';"> Jouer </button>
-                <button onclick="location.href='#';"> Palmares </button>
-                <button onclick="location.href='monCompte.php';"> Mon compte </button>
+                <button onclick="location.href = '#';"> Jouer </button>
+                <button onclick="location.href = '#';"> Palmares </button>
+                <button onclick="location.href = 'monCompte.php';"> Mon compte </button>
             </div>
         </div>
         <?php require_once("includes/footer.template.php"); ?>

@@ -19,21 +19,25 @@ if (isset($action)) {
         if (isset($pass1) && isset($pass2)) {
             if (!($pass1 === $pass2)) {
                 error_log('Erreur : Mot de passes non identiques');
+                header('Location: index.php');
             } else {
                 $mdp = $pass1;
             }
         } else {
-            error_log('Erreur : Un ou plusier mot de passe manquant');
+            error_log('Erreur : Un ou plusieurs mot de passe manquants');
+            header('Location: index.php');
         }
 
         if (!(isset($mail) && isset($prenom) && isset($nom))) {
             error_log('Erreur : Un des champs nécessaire à l\'inscription est manquant');
+            header('Location: index.php');
         } else {
             $user = new Utilisateur();
             $user->create(0, $mail, $prenom, $nom, $mdp);
 
             if (!$db->AddUser($user)) {
                 error_log('Erreur : Impossible de rajouter un utilisateur');
+                header('Location: index.php');
             } else {
                 session_start();
                 $_SESSION['isConnected'] = true;
@@ -48,6 +52,7 @@ if (isset($action)) {
 
         if (!(isset($mail) && isset($pass))) {
             error_log('Erreur : Identifiants incorrects');
+            header('Location: index.php');
         } else if (($id = $db->CheckUser($mail, $pass))) {
             session_start();
             $_SESSION['isConnected'] = true;
@@ -59,12 +64,54 @@ if (isset($action)) {
             header('Location: menu.php');
         } else {
             error_log('Erreur : Identifiants incorrects');
+            header('Location: index.php');
         }
     } else if ($action === 'disconnect') {
         session_start();
         session_destroy();
 
         header('Location: index.php');
+    } else if ($action === 'updateUser') {
+        session_start();
+        
+        $mail = filter_input(INPUT_GET, 'mail', FILTER_SANITIZE_EMAIL);
+        $prenom = filter_input(INPUT_GET, 'prenom', FILTER_SANITIZE_STRING);
+        $nom = filter_input(INPUT_GET, 'nom', FILTER_SANITIZE_STRING);
+        $pass1 = filter_input(INPUT_GET, 'pass1', FILTER_SANITIZE_STRING);
+        $pass2 = filter_input(INPUT_GET, 'pass2', FILTER_SANITIZE_STRING);
+
+
+        if (isset($pass1) && isset($pass2)) {
+            if (!($pass1 === $pass2)) {
+                error_log('Erreur : Mot de passes non identiques');
+            } else {
+                $mdp = $pass1;
+            }
+        } else {
+            error_log('Erreur : Un ou plusieurs mot de passe manquants');
+        }
+
+        $user = $_SESSION['user'];
+        
+        if (isset($mail)) {
+            $user->setMail($mail);
+        }
+        if (isset($prenom)) {
+            $user->setPrenom($prenom);
+        }
+        if (isset($nom)) {
+            $user->setNom($nom);
+        }
+        if (isset($mdp)) {
+            $user->setMdp($mdp);
+        }
+        
+        if(!($r=$db->UpdateUser($user))){
+            error_log(':'.$r);
+            error_log('Erreur : Impossible de mettre à jour l\'utilisateur');
+        }
+        
+        header('Location: monCompte.php');
     }
 }
 ?>

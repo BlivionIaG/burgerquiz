@@ -48,19 +48,48 @@ class InterfaceBDD {
 
     public function AddUser($user) {
         try {
+            $mail = $user->getMail();
+            $prenom = $user->getPrenom();
+            $nom = $user->getNom();
+            $mdp = $user->getMdp();
+            
+            $verif = $this->FindUser($mail);
+            if($verif) {
+                error_log('User already exist !');
+                return false;
+            }
+            
             $request = 'insert into Utilisateur(mail, prenom, nom, mdp)
             values(:mail, :prenom, :nom, sha(:mdp))';
             $statement = $this->getBdd()->prepare($request);
-            $statement->bindParam(':mail', $user->getMail(), PDO::PARAM_STR, 256);
-            $statement->bindParam(':prenom', $user->getPrenom(), PDO::PARAM_STR, 128);
-            $statement->bindParam(':nom', $user->getNom(), PDO::PARAM_STR, 128);
-            $statement->bindParam(':mdp', $user->getMdp(), PDO::PARAM_STR, 128);
+            $statement->bindParam(':mail', $mail, PDO::PARAM_STR, 256);
+            $statement->bindParam(':prenom', $prenom, PDO::PARAM_STR, 128);
+            $statement->bindParam(':nom', $nom, PDO::PARAM_STR, 128);
+            $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR, 128);
             $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
         return $result;
+    }
+    
+    public function FindUser($mail){
+        try {
+            $request = 'select * from Utilisateur where mail=:mail';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':mail', $mail, PDO::PARAM_STR, 256);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return 0;
+        }
+        if (!sizeof($result)) {
+            return 0;
+        }
+
+        return $result[0]->getId_utilisateur();
     }
 
     public function RequestUser($id) {
@@ -92,18 +121,25 @@ class InterfaceBDD {
 
     public function UpdateUser($user) {
         try {
-            $request = 'update Utilisateur mail=:mail, prenom=:prenom, nom=:nom, mdp=sha2(:mdp) where set id_utilisateur=:id';
+            $id = $user->getId_utilisateur();
+            $mail = $user->getMail();
+            $prenom = $user->getPrenom();
+            $nom = $user->getNom();
+            $mdp = $user->getMdp();
+
+            $request = 'update Utilisateur set mail=:mail, prenom=:prenom, nom=:nom, mdp=sha(:mdp) where id_utilisateur=:id';
             $statement = $this->getBdd()->prepare($request);
-            $statement->bindParam(':id', $user->getId_utilisateur(), PDO::PARAM_INT);
-            $statement->bindParam(':mail', $user->getMail(), PDO::PARAM_STR, 256);
-            $statement->bindParam(':prenom', $user->getPrenom(), PDO::PARAM_STR, 128);
-            $statement->bindParam(':nom', $user->getNom(), PDO::PARAM_STR, 128);
-            $statement->bindParam(':mdp', $user->getMdp(), PDO::PARAM_STR, 128);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->bindParam(':mail', $mail, PDO::PARAM_STR, 256);
+            $statement->bindParam(':prenom', $prenom, PDO::PARAM_STR, 128);
+            $statement->bindParam(':nom', $nom, PDO::PARAM_STR, 128);
+            $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR, 128);
             $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
+
         return $result;
     }
 
@@ -135,7 +171,7 @@ class InterfaceBDD {
         if (!sizeof($result)) {
             return 0;
         }
-        
+
         return $result[0]->getId_utilisateur();
     }
 
