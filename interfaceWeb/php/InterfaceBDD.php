@@ -19,6 +19,7 @@ require_once('Possede.php');
 require_once('Question.php');
 require_once('Reponse.php');
 require_once('comprend.php');
+require_once('Score.php');
 
 class InterfaceBDD {
 
@@ -52,13 +53,13 @@ class InterfaceBDD {
             $prenom = $user->getPrenom();
             $nom = $user->getNom();
             $mdp = $user->getMdp();
-            
+
             $verif = $this->FindUser($mail);
-            if($verif) {
+            if ($verif) {
                 error_log('User already exist !');
                 return false;
             }
-            
+
             $request = 'insert into Utilisateur(mail, prenom, nom, mdp)
             values(:mail, :prenom, :nom, sha(:mdp))';
             $statement = $this->getBdd()->prepare($request);
@@ -73,8 +74,8 @@ class InterfaceBDD {
         }
         return $result;
     }
-    
-    public function FindUser($mail){
+
+    public function FindUser($mail) {
         try {
             $request = 'select * from Utilisateur where mail=:mail';
             $statement = $this->getBdd()->prepare($request);
@@ -377,6 +378,24 @@ class InterfaceBDD {
             $statement->bindParam(':id', $id_partie, PDO::PARAM_INT);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_CLASS, 'comprend');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+
+    public function GetTopScores($nb) {
+        try {
+            $request = 'select Utilisateur.prenom, Utilisateur.nom, Partie.nom_partie, Possede.score, Possede.temps'
+                    . ' from Possede,Utilisateur,Partie'
+                    . ' where Possede.id_utilisateur=Utilisateur.id_utilisateur && Possede.id_partie=Partie.id_partie'
+                    . ' order by Possede.score desc'
+                    . ' limit :nb';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':nb', $nb, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Score');
         } catch (PDOException $exception) {
             error_log('Request error: ' . $exception->getMessage());
             return false;
