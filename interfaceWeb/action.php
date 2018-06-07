@@ -47,14 +47,14 @@ if (isset($action)) {
         $pass = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING);
 
         if (!(isset($mail) && isset($pass))) {
-            error_log('Erreur : Identifiants incorects');
-        } else if ($db->CheckUser($mail, $pass)) {
+            error_log('Erreur : Identifiants incorrects');
+        } else if (($id = $db->CheckUser($mail, $pass))) {
             session_start();
             $_SESSION['isConnected'] = true;
             $_SESSION['login'] = $mail;
 
-
-            error_log('action :' . session_id());
+            $user = $db->RequestUser($id);
+            $_SESSION['user'] = $user[0];
 
             header('Location: menu.php');
         } else {

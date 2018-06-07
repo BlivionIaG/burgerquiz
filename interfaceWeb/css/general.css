@@ -107,7 +107,8 @@ footer.sticky-footer {
     margin-bottom: 100px;
 }
 
-.base-main-content > h1 {
+#bq-info-page {
+    font-size: 48px;
     margin-bottom: 1em;
     margin-left: 1.5%;
     color: #355723;
@@ -123,6 +124,13 @@ footer.sticky-footer {
 }
 
 #inscriptionTitle{
+    width: 80%;
+    border-bottom: 5px solid !important;
+    border-bottom-color: #355723 !important;
+    color: #355723;
+}
+
+.bq-info-label{
     width: 80%;
     border-bottom: 5px solid !important;
     border-bottom-color: #355723 !important;
@@ -171,4 +179,18 @@ footer.sticky-footer {
 
 #main-logo {
     height:500px;
+}
+
+#bq-retour {
+    background-color: #aedd94;
+    border: none;
+    color: #355723;
+    font-size: 24px;
+    font-family: 'Bubblegum Sans', Regular;
+    width: 7%;
+    min-height: 40px;
+}
+
+#bq-retour:hover {
+    border: 2px solid #355723;
 }

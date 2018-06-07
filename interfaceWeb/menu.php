@@ -3,8 +3,6 @@ define('ENVIRONMENT', 't');
 session_start();
 
 if ($_SESSION['isConnected'] == false) {
-    error_log('menu :' . session_id());
-
     header('Location: index.php');
 }
 ?>
@@ -32,13 +30,13 @@ if ($_SESSION['isConnected'] == false) {
         <?php require_once("includes/nav.template.php"); ?>
         <div  class="container-fluid base-main-content">
             <?php
-            echo '<h1> Bienvenue ' . $_SESSION['login'] . ' !</h1>';
+            echo '<h1 id="bq-info-page"> Bienvenue ' . $_SESSION['login'] . ' !</h1>';
             ?>
 
             <div class="game-menu">
                 <button onclick="location.href='#';"> Jouer </button>
                 <button onclick="location.href='#';"> Palmares </button>
-                <button onclick="location.href='#';"> Mon compte </button>
+                <button onclick="location.href='monCompte.php';"> Mon compte </button>
             </div>
         </div>
         <?php require_once("includes/footer.template.php"); ?>
