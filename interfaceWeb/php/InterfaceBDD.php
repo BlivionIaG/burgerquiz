@@ -127,16 +127,16 @@ class InterfaceBDD {
             $statement->bindParam(':mail', $mail, PDO::PARAM_STR, 256);
             $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR, 128);
             $statement->execute();
-            $result = $statement->fetch();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
         } catch (PDOException $exception) {
             error_log('Request error: ' . $exception->getMessage());
-            return false;
+            return 0;
         }
-        if (!$result) {
-            return false;
+        if (!sizeof($result)) {
+            return 0;
         }
         
-        return true;
+        return $result[0]->getId_utilisateur();
     }
 
     public function RequestTheme($id) {
