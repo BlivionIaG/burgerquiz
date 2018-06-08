@@ -273,6 +273,20 @@ class InterfaceBDD {
         return $result;
     }
 
+    public function RequestBestScore($id) {
+        try {
+            $request = 'select * from Possede where id_utilisateur=:id order by score desc limit 1';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Possede');
+        } catch (PDOException $exception) {
+            error_log('Connection error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result[0];
+    }
+
     public function RequestAllScores() {
         try {
             $request = 'select * from Possede';

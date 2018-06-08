@@ -13,6 +13,8 @@ if (isset($_SESSION)) {
     if (isset($_SESSION['user'])) {
         $user = $_SESSION['user'];
     }
+
+    $db = new InterfaceBDD();
 }
 ?>
 
@@ -44,8 +46,6 @@ if (isset($_SESSION)) {
                 <div class="col-sm-6 h-100">
                     <h2 class="bq-sub-info"> TOP 5 Scores : </h2>
                     <?php
-                    $db = new InterfaceBDD();
-
                     $scores = $db->GetTopScores(TOP_SCORE_NB);
 
                     $maxscore = $scores[0]->getScore();
@@ -57,17 +57,53 @@ if (isset($_SESSION)) {
 
                     foreach ($scores as $score) {
                         $tmp = $score->getScore() / $maxscore * 50;
-                        echo '<div class="bq-scoreboard" style="grid-template-columns: 40% ' . $tmp . '% ' . (50 - $tmp) . '% auto">' .
-                        '<div>' . $score->getPrenom() . ' ' . $score->getNom() . '-</div>' .
-                        '<div>' . $score->getScore() . '</div>' .
-                        '<div></div>' .
-                        '<div>' . $score->getTemps() . 's</div>' .
+                        echo '<div class="bq-scoreboard" style="grid-template-columns: 35% ' . $tmp . '% ' . (50 - $tmp) . '% auto">' .
+                        '           <div>' . $score->getPrenom() . ' ' . $score->getNom() . '-</div>' .
+                        '           <div>' . $score->getScore() . '</div>' .
+                        '           <div></div>' .
+                        '           <div>';
+
+                        $timestamp = $score->getTemps();
+                        $hours = floor($timestamp / 3600);
+                        $minutes = floor(($timestamp / 60) % 60);
+                        $seconds = $timestamp % 60;
+                        if ($hour > 0) {
+                            echo $hour . 'h ';
+                        }
+                        if ($minutes > 0) {
+                            echo $minutes . 'm ';
+                        }
+                        echo $seconds . 's';
+
+                        echo '</div>' .
                         '</div>';
                     }
                     ?>
                 </div>
                 <div class="col-sm-6 h-100">                    
                     <h2 class="bq-sub-info"> Mon meilleur Score : </h2>
+                    <div id="bq-mybestscore">
+                        <?php
+                        if (isset($user)) {
+                            $bestscore = $db->RequestBestScore($user->getId_utilisateur());
+                            $timestamp = $bestscore->getTemps();
+                            $hours = floor($timestamp / 3600);
+                            $minutes = floor(($timestamp / 60) % 60);
+                            $seconds = $timestamp % 60;
+
+                            echo '<div class="bq-circle"><span>' . $bestscore->getScore() . '</span></div><span> en ';
+                            if ($hour > 0) {
+                                echo $hour . 'h ';
+                            }
+                            if ($minutes > 0) {
+                                echo $minutes . 'm ';
+                            }
+                            echo $seconds . 's';
+                            echo '</span>';
+                        }
+                        ?>
+                    </div>
+                    <a href="mesScores.php" id="bq-mesScoresLink"> Mes Scores </a>
                 </div>
             </div>
 
