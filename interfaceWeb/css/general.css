@@ -312,5 +312,5 @@ footer.sticky-footer {
 }
 
 #bq-mesScoresLink:hover {
-     color: #aedd94;
+     border: 2px solid #aedd94;
 }

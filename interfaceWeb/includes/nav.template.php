@@ -15,3 +15,5 @@ if (!defined('ENVIRONMENT')) {
         </a>
     </div>
 </nav>
+
+<div id="errors"></div>
