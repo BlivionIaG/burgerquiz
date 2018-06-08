@@ -6,6 +6,7 @@
 # Database: Burgerquiz
 #------------------------------------------------------------
 
+DROP DATABASE if exists Burgerquiz;
 CREATE DATABASE Burgerquiz;
 USE Burgerquiz;
 
