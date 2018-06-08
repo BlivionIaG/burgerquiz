@@ -149,7 +149,7 @@ INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(2, 1, 'Se prononce correctement', 2);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(3, 0, 'Manière de cuisiner les pates', 3);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(4, 2, 'Fait le café', 4);
-INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(5, 0, "Rends l'argent !", 1, 5);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(5, 0, "Rends l'argent !", 5);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(6, 2, 'Les meilleurs', 6);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(7, 2, 'A le plus gros bouton', 7);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(8, 1, "N'a jamais fait partie de l'UE", 8);
