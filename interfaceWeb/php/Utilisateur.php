@@ -17,13 +17,15 @@ class Utilisateur {
     private $prenom;
     private $nom;
     private $mdp;
+    private $token;
     
-    public function create($_id_utilisateur, $_mail, $_prenom, $_nom, $_mdp){
+    public function create($_id_utilisateur, $_mail, $_prenom, $_nom, $_mdp, $_token = null){
         $this->setId_utilisateur($_id_utilisateur);
         $this->setMail($_mail);
         $this->setPrenom($_prenom);
         $this->setNom($_nom);
         $this->setMdp($_mdp);
+        $this->setToken($_token);
     }
     
     public function getId_utilisateur(){
@@ -46,6 +48,10 @@ class Utilisateur {
         return $this->mdp;
     }
     
+    public function getToken(){
+        return $this->token;
+    }
+    
     public function setId_utilisateur($_id_utilisateur){
         $this->id_utilisateur = $_id_utilisateur;
     }
@@ -64,5 +70,9 @@ class Utilisateur {
     
     public function setMdp($_mdp){
         $this->mdp = $_mdp;
+    }
+    
+    public function setToken($_token){
+        $this->token = $_token;
     }
 }

@@ -53,6 +53,7 @@ class InterfaceBDD {
             $prenom = $user->getPrenom();
             $nom = $user->getNom();
             $mdp = $user->getMdp();
+            $token = $user->getToken();
 
             $verif = $this->FindUser($mail);
             if ($verif) {
@@ -60,13 +61,14 @@ class InterfaceBDD {
                 return false;
             }
 
-            $request = 'insert into Utilisateur(mail, prenom, nom, mdp)
-            values(:mail, :prenom, :nom, sha(:mdp))';
+            $request = 'insert into Utilisateur(mail, prenom, nom, mdp, token)
+            values(:mail, :prenom, :nom, sha(:mdp), :token)';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':mail', $mail, PDO::PARAM_STR, 256);
             $statement->bindParam(':prenom', $prenom, PDO::PARAM_STR, 128);
             $statement->bindParam(':nom', $nom, PDO::PARAM_STR, 128);
             $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR, 128);
+            $statement->bindParam(':token', $token, PDO::PARAM_STR, 256);
             $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
@@ -127,14 +129,16 @@ class InterfaceBDD {
             $prenom = $user->getPrenom();
             $nom = $user->getNom();
             $mdp = $user->getMdp();
+            $token = $user->getToken();
 
-            $request = 'update Utilisateur set mail=:mail, prenom=:prenom, nom=:nom, mdp=sha(:mdp) where id_utilisateur=:id';
+            $request = 'update Utilisateur set mail=:mail, prenom=:prenom, nom=:nom, mdp=sha(:mdp), token=:token where id_utilisateur=:id';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->bindParam(':mail', $mail, PDO::PARAM_STR, 256);
             $statement->bindParam(':prenom', $prenom, PDO::PARAM_STR, 128);
             $statement->bindParam(':nom', $nom, PDO::PARAM_STR, 128);
             $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR, 128);
+            $statement->bindParam(':token', $token, PDO::PARAM_STR, 256);
             $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
