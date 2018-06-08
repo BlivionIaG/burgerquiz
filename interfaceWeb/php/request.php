@@ -17,13 +17,19 @@ if (!$db->getBdd()) {
     exit;
 }
 
-$requestMethod = $_SERVER['REQUEST_METHOD'];
-$request = substr($_SERVER['PATH_INFO'], 1);
-$request = explode('/', $request);
+$requestMethod = filter_var(getenv('REQUEST_METHOD'));
+$tmp = substr(filter_var(getenv('PATH_INFO')), 1);
+$request = explode('/', $tmp);
 $requestRessource = array_shift($request);
 
-if ($requestRessource == 'search'){
+if ($requestRessource == 'search') {
     
-}
+} else {
+    header('HTTP/1.1 400 Bad Request');
     exit;
+}
+
+$login = $db->verifyToken();
+
+exit;
 ?>

@@ -75,6 +75,21 @@ class InterfaceBDD {
         return $result;
     }
 
+    public function AddToken($login, $token) {
+        try {
+            $request = 'update Utilisateur set token=:token where mail=:login';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':token', $token, PDO::PARAM_STR, 256);
+            $statement->bindParam(':login', $login, PDO::PARAM_STR, 256);
+            $result = $statement->execute();
+        } catch (PDOException $exception) {
+            error_log('Connection error: ' . $exception->getMessage());
+            return false;
+        }
+
+        return $result;
+    }
+
     public function FindUser($mail) {
         try {
             $request = 'select * from Utilisateur where mail=:mail';
@@ -127,16 +142,14 @@ class InterfaceBDD {
             $prenom = $user->getPrenom();
             $nom = $user->getNom();
             $mdp = $user->getMdp();
-            $token = $user->getToken();
 
-            $request = 'update Utilisateur set mail=:mail, prenom=:prenom, nom=:nom, mdp=sha(:mdp), token=:token where id_utilisateur=:id';
+            $request = 'update Utilisateur set mail=:mail, prenom=:prenom, nom=:nom, mdp=sha(:mdp) where id_utilisateur=:id';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->bindParam(':mail', $mail, PDO::PARAM_STR, 256);
             $statement->bindParam(':prenom', $prenom, PDO::PARAM_STR, 128);
             $statement->bindParam(':nom', $nom, PDO::PARAM_STR, 128);
             $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR, 128);
-            $statement->bindParam(':token', $token, PDO::PARAM_STR, 256);
             $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
@@ -176,6 +189,24 @@ class InterfaceBDD {
         }
 
         return $result[0]->getId_utilisateur();
+    }
+
+    function CheckToken($token) {
+        try {
+            $request = 'select * from Utilisateur where token=:token';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':token', $token, PDO::PARAM_STR, 256);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        if (!sizeof($result)) {
+            return false;
+        }
+
+        return $result[0]->getMail();
     }
 
     public function RequestTheme($id) {
@@ -417,6 +448,51 @@ class InterfaceBDD {
             return false;
         }
         return $result;
+    }
+
+    function authenticate() {
+        $login = filter_var(getenv('PHP_AUTH_USER'));
+        $pass = filter_var(getenv('PHP_AUTH_PW'));
+
+        // $login = $_SERVER['PHP_AUTH_USER'];
+        // $pass = $_SERVER['PHP_AUTH_PW'];
+        
+        /* Vérifie l'utilisateur */
+        if (!$this->CheckUser($login, $pass)) {
+            header('HTTP/1.1 401 Unauthorized');
+            exit;
+        }
+        /* Génération du token */
+        $token = base64_encode(openssl_random_pseudo_bytes(256));
+        /* Ajout du token */
+        $this->AddToken($login, $token);
+        header('Content-Type: text/plain; charset=utf-8');
+        header('Cache-control: no-store, no-cache, must-revalidate');
+        header('Pragma: no-cache');
+        echo $token;
+
+        exit;
+    }
+
+    /* Vérification du token */
+
+    function verifyToken() {
+        /* Récupère les headers HTTP */
+        $headers = getallheaders();
+        /* Récupère le token */
+        $token = $headers['Authorization'];
+
+        /* Vérifie le token et récupère le login */
+        $tab = [];
+        if (preg_match('/Bearer (.*)/', $token, $tab)) {
+            $token = $tab[1];
+        }
+        if (!($login = $this->CheckToken($token))) {
+            header('HTTP/1.1 401 Unauthorized');
+            exit;
+        }
+        /* Renvoie le login */
+        return $login;
     }
 
 }

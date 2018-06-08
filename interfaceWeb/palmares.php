@@ -64,13 +64,13 @@ if (isset($_SESSION)) {
                         '           <div>';
 
                         $timestamp = $score->getTemps();
-                        $hours = floor($timestamp / 3600);
+                        $hours = 0 + floor($timestamp / 3600);
                         $minutes = floor(($timestamp / 60) % 60);
                         $seconds = $timestamp % 60;
-                        if ($hour > 0) {
+                        if (isset($hour) && $hour > 0) {
                             echo $hour . 'h ';
                         }
-                        if ($minutes > 0) {
+                        if (isset($minutes) && $minutes > 0) {
                             echo $minutes . 'm ';
                         }
                         echo $seconds . 's';
@@ -92,10 +92,10 @@ if (isset($_SESSION)) {
                             $seconds = $timestamp % 60;
 
                             echo '<div class="bq-circle"><span>' . $bestscore->getScore() . '</span></div><span> en ';
-                            if ($hour > 0) {
+                            if (isset($hour) && $hour > 0) {
                                 echo $hour . 'h ';
                             }
-                            if ($minutes > 0) {
+                            if (isset($minutes) && $minutes > 0) {
                                 echo $minutes . 'm ';
                             }
                             echo $seconds . 's';
