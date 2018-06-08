@@ -1,13 +1,15 @@
-#include "theme.h"
+#include "question.h"
 #include "connectiondb.h"
 #include <QDebug>
 #include<QMessageBox>
 
-Theme::Theme(){
+
+Question::Question()
+{
 
 }
 
-sql::ResultSet* Theme::getThemes(){
+sql::ResultSet* Question::getQuestions(int id){
 
     try {
 
@@ -18,7 +20,8 @@ sql::ResultSet* Theme::getThemes(){
         //qDebug() << con->
         //if(con->isValid() && con != NULL){
          //qDebug() << "test4";
-            stmt = con->prepareStatement("SELECT * from Theme");
+            stmt = con->prepareStatement("SELECT * from Question where id_theme = ?");
+            stmt->setInt(1,id);
             //qDebug() << "test5";
             return stmt->executeQuery();
             //return stmt->getResultSet();//}else{return NULL;}
@@ -40,17 +43,3 @@ sql::ResultSet* Theme::getThemes(){
                }
 
 }
-
-//sql::ResultSet *res;
-//sql::PreparedStatement *pstmt;
-//sql::Statement *stmt;
-//sql::Connection *con = connectiondb::GetConnection();
-
-//pstmt = con->prepareStatement("SELECT id FROM test ORDER BY id ASC"); // ?
-  //pstmt->setInt(1, i);
-  //return pstmt->executeQuery();
-  //pstmt->executeUpdate();
-
-/* Select in ascending order */
-//pstmt = con->prepareStatement("SELECT id FROM test ORDER BY id ASC");
-//res = pstmt->executeQuery();

@@ -484,16 +484,15 @@ db->res->first();
 
 void MainWindow::on_listWidget_4_currentRowChanged(int currentRow)
 {
-    qDebug() << "tets";
-
-    Question * data = ui->listWidget_4->currentItem()->data(1).value<Question>();
+    /*qDebug() << "tets";
+    Question data = ui->listWidget_4->currentItem()->data(1).value<Question>();
             //comboBox->currentData(Qt::UserRole).value<Theme>();
 
 
 
-    ui->lineEdit_5->setText(QString::number(data->getIdQuestion()));
-    ui->lineEdit_6->setText(QString::fromStdString(data->getC1()));
-    ui->lineEdit_7->setText(QString::fromStdString(data->getC2()));
+    ui->lineEdit_5->setText(QString::number(data.getIdQuestion()));
+    ui->lineEdit_6->setText(QString::fromStdString(data.getC1()));
+    ui->lineEdit_7->setText(QString::fromStdString(data.getC2()));*/
 
     //5
     //67

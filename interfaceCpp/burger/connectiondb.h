@@ -17,12 +17,17 @@ public:
     bool connect(string namedb,string addressdb, string user, string password);
     void disconnect();
     void getData(string select);
+    static sql::Connection *GetConnection();
 
-        sql::ResultSet *res;
+    //sql::ResultSet *res;
+    //sql::PreparedStatement *pstmt;
+
 private:
+
     sql::Driver *driver;
     static sql::Connection *con;
-    sql::Statement *stmt;
+    //sql::Statement *stmt;
+
 
 };
 

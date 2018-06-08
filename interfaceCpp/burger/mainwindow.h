@@ -2,6 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "question.h"
+#include "theme.h"
+
+Q_DECLARE_METATYPE(Question)
+Q_DECLARE_METATYPE(Theme)
+
 
 namespace Ui {
 class MainWindow;
@@ -40,6 +46,10 @@ private slots:
     void on_listWidget_3_currentRowChanged(int currentRow);
 
     void on_comboBox_currentIndexChanged(int index);
+
+    void on_comboBox_2_currentIndexChanged(int index);
+
+    void on_listWidget_4_currentRowChanged(int currentRow);
 
 private:
     Ui::MainWindow *ui;

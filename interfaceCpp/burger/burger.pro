@@ -15,13 +15,16 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     connectiondb.cpp \
-    theme.cpp
+    theme.cpp \
+    question.cpp \
+    proposition.cpp
 
 HEADERS  += mainwindow.h \
     ../Bureau/c++/II/tp 6/ElementBDD.h \
     connectiondb.h \
     theme.h \
-    question.h
+    question.h \
+    proposition.h
 
 FORMS    += mainwindow.ui
 
@@ -31,3 +34,5 @@ RESOURCES += \
 DISTFILES +=
 
 LIBS += -lmysqlcppconn
+
+CONFIG += c++11
