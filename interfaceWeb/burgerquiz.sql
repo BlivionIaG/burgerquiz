@@ -53,7 +53,7 @@ CREATE TABLE Partie(
 CREATE TABLE Theme(
         id_theme  Int  Auto_increment  NOT NULL ,
         nom_theme Varchar (256) NOT NULL,
-        active Boolean NOT NULL,
+        active Boolean NOT NULL
 	,CONSTRAINT Theme_PK PRIMARY KEY (id_theme)
 )ENGINE=InnoDB;
 
