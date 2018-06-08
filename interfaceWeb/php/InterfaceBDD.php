@@ -53,7 +53,6 @@ class InterfaceBDD {
             $prenom = $user->getPrenom();
             $nom = $user->getNom();
             $mdp = $user->getMdp();
-            $token = $user->getToken();
 
             $verif = $this->FindUser($mail);
             if ($verif) {
@@ -62,13 +61,12 @@ class InterfaceBDD {
             }
 
             $request = 'insert into Utilisateur(mail, prenom, nom, mdp, token)
-            values(:mail, :prenom, :nom, sha(:mdp), :token)';
+            values(:mail, :prenom, :nom, sha(:mdp), NULL)';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':mail', $mail, PDO::PARAM_STR, 256);
             $statement->bindParam(':prenom', $prenom, PDO::PARAM_STR, 128);
             $statement->bindParam(':nom', $nom, PDO::PARAM_STR, 128);
             $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR, 128);
-            $statement->bindParam(':token', $token, PDO::PARAM_STR, 256);
             $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());

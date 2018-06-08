@@ -107,7 +107,7 @@ if (isset($action)) {
         if (isset($mdp)) {
             $user->setMdp($mdp);
         }else{
-            error_log('Erreur : Pas de mot de Passe définit');
+            error_log('Erreur : Pas de mot de Passe défini');
             header('Location: monCompte.php');
         }
         
