@@ -32,7 +32,7 @@ CREATE TABLE Utilisateur(
         nom            Varchar (128) NOT NULL ,
         prenom         Varchar (128) NOT NULL ,
         mdp            Varchar (128) NOT NULL ,
-        token          Varchar (256),
+        token          Varchar (256)
 	,CONSTRAINT Utilisateur_PK PRIMARY KEY (id_utilisateur)
 )ENGINE=InnoDB;
 
