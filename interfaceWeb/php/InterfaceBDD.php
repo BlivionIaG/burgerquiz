@@ -432,6 +432,7 @@ class InterfaceBDD {
         return $result;
     }
 
+    
     public function GetTopScores($nb) {
         try {
             $request = 'select Utilisateur.prenom, Utilisateur.nom, Partie.nom_partie, Possede.score, Possede.temps'
