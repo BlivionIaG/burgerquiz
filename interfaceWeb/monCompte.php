@@ -4,12 +4,14 @@ define('ENVIRONMENT', 't');
 require_once('php/InterfaceBDD.php');
 session_start();
 
-if ($_SESSION['isConnected'] == false) {
-    header('Location: index.php');
-}
+if (isset($_SESSION)) {
+    if ($_SESSION['isConnected'] == false) {
+        header('Location: index.php');
+    }
 
-if (isset($_SESSION['user'])) {
-    $user = $_SESSION['user'];
+    if (isset($_SESSION['user'])) {
+        $user = $_SESSION['user'];
+    }
 }
 ?>
 
@@ -36,30 +38,30 @@ if (isset($_SESSION['user'])) {
         <?php require_once("includes/nav.template.php"); ?>
 
         <div class="container-fluid base-main-content">
-            <form id="inscription" action="action.php" method="GET">                    
+            <form id="updateInfo" action="action.php" method="GET">                    
                 <input type="hidden" name="action" value="updateUser">
                 <h1 id="bq-info-page"> Mon Compte </h1>
 
                 <div class="row">
                     <div class="col-sm-6 h-100">
                         <h2 class="bq-info-label"> Changer Nom / Prenom </h2>
-                        <input class="bq-input-medium" name="prenom" type="text" placeholder="Prenom" value="<?php if(isset($user))echo $user->getPrenom();?>">
-                        <input class="bq-input-medium" name="nom" type="text" placeholder="Nom" value="<?php if(isset($user))echo $user->getNom();?>">
+                        <input class="bq-input-medium" name="prenom" type="text" placeholder="Prenom" value="<?php if (isset($user)) echo $user->getPrenom(); ?>">
+                        <input class="bq-input-medium" name="nom" type="text" placeholder="Nom" value="<?php if (isset($user)) echo $user->getNom(); ?>">
 
                         <h2 class="bq-info-label"> Changer Email </h2>
-                        <input class="bq-input-large" name="mail" type="mail" placeholder="Email Address">
+                        <input class="bq-input-large" name="mail" type="email" placeholder="Email Address" value="<?php if (isset($user)) echo $user->getMail(); ?>">
                     </div>
                     <div class="col-sm-6 h-100">
                         <h2 class="bq-info-label"> Informations </h2>
                         <?php
                         if (isset($user)) {
-                            echo '<p> ' . $user->getPrenom() . ' ' . $user->getNom() . ' </p>';
-                            echo '<p> ' . $user->getMail() . ' </p>';
+                            echo '<pre> ' . $user->getPrenom() . ' ' . $user->getNom() . ' </pre>';
+                            echo '<pre> ' . $user->getMail() . ' </pre>';
                         }
                         ?>
                         <h2 class="bq-info-label"> Changer Mot de Passe </h2>
-                        <input class="bq-input-large" name="pass1" type="password" placeholder="Password">
-                        <input class="bq-input-large" name="pass2" type="password" placeholder="Password Again">
+                        <input class="bq-input-large" name="pass1" type="password" placeholder="Password" required>
+                        <input class="bq-input-large" name="pass2" type="password" placeholder="Password Again" required>
                         <input class="bq-button" type="submit" value="Valider">
                     </div>
                 </div>

@@ -6,6 +6,7 @@
 # Database: Burgerquiz
 #------------------------------------------------------------
 
+DROP DATABASE if exists Burgerquiz;
 CREATE DATABASE Burgerquiz;
 USE Burgerquiz;
 
@@ -30,7 +31,8 @@ CREATE TABLE Utilisateur(
         mail           Varchar (256) NOT NULL ,
         nom            Varchar (128) NOT NULL ,
         prenom         Varchar (128) NOT NULL ,
-        mdp            Varchar (128) NOT NULL
+        mdp            Varchar (128) NOT NULL ,
+        token          Varchar (256)
 	,CONSTRAINT Utilisateur_PK PRIMARY KEY (id_utilisateur)
 )ENGINE=InnoDB;
 
@@ -52,7 +54,8 @@ CREATE TABLE Partie(
 
 CREATE TABLE Theme(
         id_theme  Int  Auto_increment  NOT NULL ,
-        nom_theme Varchar (256) NOT NULL
+        nom_theme Varchar (256) NOT NULL,
+        active Boolean NOT NULL
 	,CONSTRAINT Theme_PK PRIMARY KEY (id_theme)
 )ENGINE=InnoDB;
 
@@ -125,10 +128,10 @@ INSERT INTO Utilisateur(id_utilisateur, mail, prenom, nom, mdp) VALUES(2, 'antoi
 INSERT INTO Utilisateur(id_utilisateur, mail, prenom, nom, mdp) VALUES(3, 'zuckerberg@burger.quiz', 'I am watching', 'You', SHA('123456'));
 INSERT INTO Utilisateur(id_utilisateur, mail, prenom, nom, mdp) VALUES(4, 'bill.gates@microsoft.com', 'Bill', 'Gates', SHA('microsoft'));
 # THEMES
-INSERT INTO Theme(id_theme, nom_theme) VALUES(1, 'Cuisine');
-INSERT INTO Theme(id_theme, nom_theme) VALUES(2, 'Informatique');
-INSERT INTO Theme(id_theme, nom_theme) VALUES(3, 'Politique');
-INSERT INTO Theme(id_theme, nom_theme) VALUES(4, 'Humour');
+INSERT INTO Theme(id_theme, nom_theme, active) VALUES(1, 'Cuisine', true);
+INSERT INTO Theme(id_theme, nom_theme, active) VALUES(2, 'Informatique', true);
+INSERT INTO Theme(id_theme, nom_theme, active) VALUES(3, 'Politique', true);
+INSERT INTO Theme(id_theme, nom_theme, active) VALUES(4, 'Humour', true);
 # QUESTIONS
 INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(1, 'Sel', 'Poivre', 1);
 INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(2, 'Pain au Chocolat', 'Chocolatine', 1);
@@ -148,7 +151,7 @@ INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(2, 1, 'Se prononce correctement', 2);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(3, 0, 'Manière de cuisiner les pates', 3);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(4, 2, 'Fait le café', 4);
-INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(5, 0, "Rends l'argent !", 1, 5);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(5, 0, "Rends l'argent !", 5);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(6, 2, 'Les meilleurs', 6);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(7, 2, 'A le plus gros bouton', 7);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(8, 1, "N'a jamais fait partie de l'UE", 8);

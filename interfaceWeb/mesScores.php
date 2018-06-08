@@ -1,10 +1,16 @@
 <?php
 define('ENVIRONMENT', 't');
+
+require_once('php/InterfaceBDD.php');
 session_start();
 
 if (isset($_SESSION)) {
     if ($_SESSION['isConnected'] == false) {
         header('Location: index.php');
+    }
+
+    if (isset($_SESSION['user'])) {
+        $user = $_SESSION['user'];
     }
 }
 ?>
@@ -15,7 +21,7 @@ if (isset($_SESSION)) {
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Menu utilisateur du site">
+        <meta name="description" content="Mes Scores">
         <meta name="author" content="Kévin Le Torc'h et Antoine Orhant">
 
         <!-- Bootstrap core CSS-->
@@ -30,17 +36,16 @@ if (isset($_SESSION)) {
     </head>
     <body>
         <?php require_once("includes/nav.template.php"); ?>
-        <div  class="container-fluid base-main-content">
-            <?php
-            echo '<h1 id="bq-info-page" class="game-menu-label"> Bienvenue ' . $_SESSION['login'] . ' !</h1>';
-            ?>
 
-            <div class="game-menu">
-                <button onclick="location.href = '#';"> Jouer </button>
-                <button onclick="location.href = 'palmares.php';"> Palmares </button>
-                <button onclick="location.href = 'monCompte.php';"> Mon compte </button>
-            </div>
+        <div class="container-fluid base-main-content">
+            <h1 align="center" id="bq-info-page"> Mes Scores </h1>
+            <form class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <button id="bq-retour" onclick="location.href = 'palmares.php';"> Retour </button>
         </div>
+
         <?php require_once("includes/footer.template.php"); ?>
     </body>
 </html>
