@@ -1,5 +1,6 @@
 <?php
 define('ENVIRONMENT', 't');
+define('TOP_SCORE_NB', 5);
 
 require_once('php/InterfaceBDD.php');
 session_start();
@@ -38,6 +39,38 @@ if (isset($_SESSION)) {
         <?php require_once("includes/nav.template.php"); ?>
 
         <div class="container-fluid base-main-content">
+            <h1 align="center" id="bq-info-page"> Palmares </h1>
+            <div class="row">
+                <div class="col-sm-6 h-100">
+                    <h2 class="bq-sub-info"> TOP 5 Scores : </h2>
+                    <?php
+                    $db = new InterfaceBDD();
+
+                    $scores = $db->GetTopScores(TOP_SCORE_NB);
+
+                    $maxscore = $scores[0]->getScore();
+                    foreach ($scores as $score) {
+                        if ($maxscore < $score->getScore()) {
+                            $maxscore = $score->getScore();
+                        }
+                    }
+
+                    foreach ($scores as $score) {
+                        $tmp = $score->getScore() / $maxscore * 50;
+                        echo '<div class="bq-scoreboard" style="grid-template-columns: 40% ' . $tmp . '% ' . (50 - $tmp) . '% auto">' .
+                        '<div>' . $score->getPrenom() . ' ' . $score->getNom() . '-</div>' .
+                        '<div>' . $score->getScore() . '</div>' .
+                        '<div></div>' .
+                        '<div>' . $score->getTemps() . 's</div>' .
+                        '</div>';
+                    }
+                    ?>
+                </div>
+                <div class="col-sm-6 h-100">                    
+                    <h2 class="bq-sub-info"> Mon meilleur Score : </h2>
+                </div>
+            </div>
+
             <button id="bq-retour" onclick="location.href = 'menu.php';"> Retour </button>
         </div>
 

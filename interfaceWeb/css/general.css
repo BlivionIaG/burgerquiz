@@ -120,6 +120,13 @@ footer.sticky-footer {
     font-family: var(--bq-nice-font);
 }
 
+.bq-sub-info{
+    font-size: 36px;
+    color: #355723;
+    font-family: var(--bq-nice-font);
+    margin-left: 3%;
+}
+
 #inscription > input{
     margin-bottom: 25px;
 }
@@ -223,4 +230,31 @@ footer.sticky-footer {
 
 .game-menu-label {
     margin-bottom: 0.8em;
+}
+
+.bq-scoreboard{
+    color: #355723;
+    display: grid;
+    font-family: var(--bq-nice-font);
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.bq-scoreboard div{
+    text-decoration: none;
+    color: #355723;
+}
+
+.bq-scoreboard div:nth-child(1){
+    text-align: right;
+}
+
+.bq-scoreboard div:nth-child(2){
+    background-color: #00441b;
+    color: #dfedd6;
+    text-indent: 10px;
+}
+
+.bq-scoreboard div:nth-child(4){
+    margin-left: 10px;
 }
