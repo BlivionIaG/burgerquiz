@@ -25,6 +25,10 @@ body.fixed-nav {
     padding-top: 56px;
 }
 
+table{
+    text-align: center;
+}
+
 .content-wrapper {
     min-height: calc(100vh - 56px);
     padding-top: 1rem;
@@ -313,4 +317,27 @@ footer.sticky-footer {
 
 #bq-mesScoresLink:hover {
      border: 2px solid #aedd94;
+}
+
+.bq-table{
+    width: 100%;
+    font-size: 24px;
+    font-family: var(--bq-nice-font);
+}
+
+.bq-table th{
+    background-color: #355723;
+    color: #d3f8bd;
+}
+
+.bq-table tr{
+    color: #2a3e1e;
+}
+
+.bq-table tr:nth-child(even) td{
+    background-color: #c0c0c0;
+}
+
+.bq-table tr:nth-child(odd) td{
+    background-color: #d6d6d6;
 }

@@ -432,7 +432,6 @@ class InterfaceBDD {
         return $result;
     }
 
-    
     public function GetTopScores($nb) {
         try {
             $request = 'select Utilisateur.prenom, Utilisateur.nom, Partie.nom_partie, Possede.score, Possede.temps'
@@ -451,13 +450,47 @@ class InterfaceBDD {
         return $result;
     }
 
+    public function GetScores($id_utilisateur) {
+        try {
+            $request = 'select Possede.id_partie, Partie.nom_partie, Possede.score, Possede.temps from Possede, Partie where Possede.id_utilisateur=:id_utilisateur && Possede.id_partie=Partie.id_partie';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll();
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+
+        return $result;
+    }
+
+    public function GetTheme($id_partie) {
+        try {
+            $request = 'select Theme.id_theme, Theme.nom_theme, Theme.active from comprend,Question,Theme' .
+                    ' where comprend.id_partie=:id_partie' .
+                    ' && comprend.id_question=Question.id_question' .
+                    ' && Question.id_theme=Theme.id_theme' .
+                    ' group by nom_theme';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id_partie', $id_partie, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll();
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+
+        return $result[0];
+    }
+
     function authenticate() {
         $login = filter_var(getenv('PHP_AUTH_USER'));
         $pass = filter_var(getenv('PHP_AUTH_PW'));
 
         // $login = $_SERVER['PHP_AUTH_USER'];
         // $pass = $_SERVER['PHP_AUTH_PW'];
-        
+
         /* Vérifie l'utilisateur */
         if (!$this->CheckUser($login, $pass)) {
             header('HTTP/1.1 401 Unauthorized');

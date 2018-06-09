@@ -42,6 +42,32 @@ if (isset($_SESSION)) {
             <form class="form-inline mt-2 mt-md-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <table class="bq-table">
+                    <tr>
+                        <th> Partie </th>
+                        <th> Thème </th>
+                        <th> Score </th>
+                        <th> Temps </th>
+                    </tr>
+                    <?php
+                    $db = new InterfaceBDD();
+
+                    if (isset($user)) {
+                        $messcores = $db->GetScores($user->getId_utilisateur());
+
+                        foreach ($messcores as $monscore) {
+                            $montheme = $db->GetTheme($monscore['id_partie']);
+                            
+                            echo '<tr>';
+                            echo '<td>' . $monscore['nom_partie'] . '</td>';
+                            echo '<td>' . $montheme['nom_theme'] . '</td>';
+                            echo '<td>' . $monscore['score'] . '</td>';
+                            echo '<td>' . $monscore['temps'] . '</td>';
+                            echo '</tr>';
+                        }
+                    }
+                    ?>
+                </table>
             </form>
             <button id="bq-retour" onclick="location.href = 'palmares.php';"> Retour </button>
         </div>
