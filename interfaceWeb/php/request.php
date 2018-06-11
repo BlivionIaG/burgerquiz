@@ -26,10 +26,7 @@ if ($requestRessource == 'search') {
     
 } else {
     header('HTTP/1.1 400 Bad Request');
-    exit;
 }
-
-$login = $db->verifyToken();
 
 exit;
 ?>

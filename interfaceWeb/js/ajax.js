@@ -60,6 +60,6 @@ function httpErrors(errorNumber) {
             break;
     }
     text += '</div>';
-    
+
     $('#errors').html(text);
 }
