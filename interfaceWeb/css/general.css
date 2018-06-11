@@ -334,7 +334,7 @@ footer.sticky-footer {
 }
 
 #bq-mesScoresLink:hover {
-     border: 2px solid #aedd94;
+    border: 2px solid #aedd94;
 }
 
 .bq-table{
@@ -381,4 +381,23 @@ footer.sticky-footer {
     margin-bottom: 5%;
     margin-left: 5%;
     width: 90%;
+}
+
+.partie-menu > button{
+    width: 90%;
+    min-height: 16vh;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+
+    background-color:#aedd94 !important;
+    color : #355723 !important;
+    border: none;
+    font-family: var(--bq-nice-font);
+    font-size: 36px;
+}
+
+.partie-menu > button:hover {
+     border: 2px solid #355723;
 }
