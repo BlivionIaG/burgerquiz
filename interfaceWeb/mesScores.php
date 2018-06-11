@@ -39,39 +39,41 @@ if (isset($_SESSION)) {
 
         <div class="container-fluid base-main-content">
             <h1 align="center" id="bq-info-page"> Mes Scores </h1>
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                <table class="bq-table">
-                    <tr>
-                        <th> Partie </th>
-                        <th> Thème </th>
-                        <th> Score </th>
-                        <th> Temps </th>
-                    </tr>
-                    <?php
-                    $db = new InterfaceBDD();
+            <input class="form-control mr-sm-2" id="bq-searchbar" type="text" placeholder="Search..." aria-label="Search">
+            <table id="bq-searchtab" class="bq-table">
+                <tr>
+                    <th> Partie </th>
+                    <th> Thème </th>
+                    <th> Score </th>
+                    <th> Temps </th>
+                </tr>
+                <?php
+                $db = new InterfaceBDD();
 
-                    if (isset($user)) {
-                        $messcores = $db->GetScores($user->getId_utilisateur());
+                if (isset($user)) {
+                    $messcores = $db->GetScores($user->getId_utilisateur());
 
-                        foreach ($messcores as $monscore) {
-                            $montheme = $db->GetTheme($monscore['id_partie']);
-                            
-                            echo '<tr>';
-                            echo '<td>' . $monscore['nom_partie'] . '</td>';
-                            echo '<td>' . $montheme['nom_theme'] . '</td>';
-                            echo '<td>' . $monscore['score'] . '</td>';
-                            echo '<td>' . $monscore['temps'] . '</td>';
-                            echo '</tr>';
-                        }
+                    foreach ($messcores as $monscore) {
+                        $montheme = $db->GetTheme($monscore['id_partie']);
+
+                        echo '<tr>';
+                        echo '<td>' . $monscore['nom_partie'] . '</td>';
+                        echo '<td>' . $montheme['nom_theme'] . '</td>';
+                        echo '<td>' . $monscore['score'] . '</td>';
+                        echo '<td>' . $monscore['temps'] . '</td>';
+                        echo '</tr>';
                     }
-                    ?>
-                </table>
-            </form>
-            <button id="bq-retour" onclick="location.href = 'palmares.php';"> Retour </button>
+                }
+                ?>
+            </table>
+            <button id="bq-fixed-retour" onclick="location.href = 'palmares.php';"> Retour </button>
         </div>
 
         <?php require_once("includes/footer.template.php"); ?>
+
+        <!-- Appel des Scripts -->
+        <script src="js/jquery-3.3.1.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/searchbar.js"></script>
     </body>
 </html>

@@ -219,6 +219,24 @@ footer.sticky-footer {
     border: 2px solid #355723;
 }
 
+#bq-fixed-retour {
+    z-index: 999;
+    position: fixed;
+    background-color: #aedd94;
+    border: none;
+    color: #355723;
+    font-size: 24px;
+    font-family: var(--bq-nice-font);
+    width: 7vw;
+    left: 2vw;
+    bottom: 10vh;
+    min-height: 40px;
+}
+
+#bq-fixed-retour:hover {
+    border: 2px solid #355723;
+}
+
 #updateInfo input {
     margin-bottom: 2.5%;
 }
@@ -340,4 +358,27 @@ footer.sticky-footer {
 
 .bq-table tr:nth-child(odd) td{
     background-color: #d6d6d6;
+}
+
+#bq-searchbar{
+    width: 33%;
+    border: 2px solid;
+    border-color: #355723;
+    border-radius: 13px;
+    margin-top: 4%;
+    margin-bottom: 3%;
+    margin-left: 5%;
+}
+
+#bq-searchbar::placeholder{
+    color: #355723;
+    font-size: 24px;
+    text-align: center;
+}
+
+#bq-searchtab {
+    align-self: center;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    width: 90%;
 }
