@@ -416,6 +416,8 @@ footer.sticky-footer {
     color: #355723;
     text-align: center;
     background-color: #cbe8ba;
+    margin-top: 5vh;
+    min-height: 54px;
 }
 
 #bq-create-partie select {
@@ -425,12 +427,21 @@ footer.sticky-footer {
     border: 2px solid;
     border-color: #355723;
     border-radius: 3px;
+    text-align: center;
+    
+    margin-top: 7vh;
+    min-height: 54px;
+}
 
-    color: grey;
-    caret-color: grey;
+#bq-create-partie .bq-button {
+   margin-left: 15vw;
+    width: 50vw;
+    margin-top: 16.5vh;
+    margin-bottom: 10vh;
 }
 
 #bq-create-partie input::placeholder{
     font-size: 24px;
     color: #355723;
 }
+

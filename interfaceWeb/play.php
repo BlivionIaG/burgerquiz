@@ -7,6 +7,11 @@ if (isset($_SESSION)) {
         header('Location: index.php');
     }
 }
+
+$id_partie = filter_input(INPUT_GET, 'partie');
+if (!isset($id_partie)) {
+    header('Location: parties.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,23 +36,9 @@ if (isset($_SESSION)) {
     <body>
         <?php require_once("includes/nav.template.php"); ?>
         <div  class="container-fluid base-main-content">
-            <h1 align="center" id="bq-info-page"> Rejoindre Partie </h1>   
-            <input class="form-control mr-sm-2" id="bq-searchbar" type="text" placeholder="Search..." aria-label="Search">
-            <table id="bq-searchtab" class="bq-table">
-                <tr>
-                    <th> Partie </th>
-                    <th> Thème </th>
-                    <th> Jouer <th>
-                </tr>
-            </table>
-            <button id="bq-fixed-retour" onclick="location.href = 'parties.php';"> Retour </button>
         </div>
         <?php require_once("includes/footer.template.php"); ?>
-
-        <!-- Appel des Scripts -->
-        <script src="vendor/jquery/jquery.slim.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>   
-        <script src="js/searchbar.js"></script>
-
+        
+        
     </body>
 </html>

@@ -204,6 +204,11 @@ class InterfaceBDD {
     }
 
     public function AddPartie($partie) {
+        if ($this->CheckPartie($partie)) {
+            error_log('Partie name already taken !');
+            return false;
+        }
+        
         try {
             $request = 'insert into Partie(nom_partie) values(:nom_partie)';
             $statement = $this->getBdd()->prepare($request);
@@ -213,7 +218,38 @@ class InterfaceBDD {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
+        
         return $result;
+    }
+
+    public function CheckPartie($partie) {
+        try {
+            $request = 'select * from Partie where id_partie=:id';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $partie->getId_partie(), PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Partie');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+
+        return sizeof($result);
+    }
+    
+    public function FindPartieId($partie){
+        try {
+            $request = 'select * from Partie where nom_partie=:nom';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':nom', $partie->getNom_partie(), PDO::PARAM_STR);
+            $statement->execute();
+            $result = $statement->fetchAll();
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+
+        return $result[0]['id_partie'];
     }
 
     public function RequestPartie($id) {
@@ -343,11 +379,45 @@ class InterfaceBDD {
         return $result;
     }
 
+    public function LinkQuestionToPartie($comprend){
+         try {
+            $request = 'insert into comprend(id_question, id_partie) values(:id_question, :id_partie)';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id_question', $comprend->getId_question(), PDO::PARAM_INT);
+            $statement->bindParam(':id_partie', $comprend->getId_partie(), PDO::PARAM_INT);
+            $result = $statement->execute();
+        } catch (PDOException $exception) {
+            error_log('Connection error: ' . $exception->getMessage());
+            return false;
+        }
+        
+        return $result;
+    }
+    
     public function RequestQuestion($id) {
         try {
             $request = 'select * from Question where id_question=:id';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Question');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+
+    public function RequestNRandomQuestionsByTheme($id_theme, $n_questions) {
+        try {
+            $request = 'SELECT * FROM Question WHERE id_question IN (' .
+                    'SELECT id_question FROM (' .
+                    'SELECT id_question FROM Question where id_theme=:id_theme ' .
+                    'ORDER BY -LOG(1-RAND()) LIMIT :n_questions)' .
+                    ' t)';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id_theme', $id_theme, PDO::PARAM_INT);
+            $statement->bindParam(':n_questions', $n_questions, PDO::PARAM_INT);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Question');
         } catch (PDOException $exception) {
@@ -450,4 +520,5 @@ class InterfaceBDD {
 
         return $result[0];
     }
+
 }

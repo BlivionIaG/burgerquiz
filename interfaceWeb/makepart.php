@@ -33,6 +33,7 @@ if (isset($_SESSION)) {
         <div  class="container-fluid base-main-content">
             <h1 align="center" id="bq-info-page"> Créer Partie </h1>
             <form id="bq-create-partie" action="action.php" method="GET">
+                <input type="hidden" name="action" value="createPartie">
                 <input type="text" name="nom_partie" placeholder="Nom Partie" required>
 
                 <select name="id_theme" class="dropdown" required>
@@ -53,6 +54,7 @@ if (isset($_SESSION)) {
                     }
                     ?>
                 </select>
+                <input class="bq-button" type="submit" value="Jouer">
             </form>
             <button id="bq-retour" onclick="location.href = 'parties.php';"> Retour </button>
         </div>

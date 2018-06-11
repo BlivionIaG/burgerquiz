@@ -116,6 +116,51 @@ if (isset($action)) {
         }
         
         header('Location: monCompte.php');
+    }else if($action === 'createPartie'){
+        session_start();
+        
+        $id_theme = filter_input(INPUT_GET, 'id_theme', FILTER_SANITIZE_NUMBER_INT);
+        $nom_partie = filter_input(INPUT_GET, 'nom_partie', FILTER_SANITIZE_STRING);
+        
+        if(!(isset($id_theme)&&isset($nom_partie))){
+            error_log('Erreur : Paramètres de création de partie invalides');
+            header('Location: makepart.php');
+        }
+        
+        $partie = new Partie();
+        $partie->setNom_partie($nom_partie);
+        
+        //choix questions
+        $questions = $db->RequestNRandomQuestionsByTheme($id_theme, 3);
+        if(sizeof($questions) < 3){
+            error_log('Erreur : Pas assez de question pour ce thème');
+            header('Location: makepart.php');
+        }
+        
+        //Création Partie
+        if(!$db->AddPartie($partie)){
+            error_log('Erreur : Nom partie déjà pris !');
+            header('Location: makepart.php');
+        }
+        
+        $id_partie = $db->FindPartieId($partie);
+        if(!isset($id_partie)){
+            error_log('Erreur : ID partie non retrouvé !');
+            header('Location: makepart.php');
+        }
+        
+        //Lien questions / partie
+        foreach ($questions as $question){
+            $tmp = new comprend();
+            $tmp->create($question->getId_question(), $id_partie);
+            
+            if(!$db->LinkQuestionToPartie($tmp)){
+                error_log('Erreur : Lien de la question vers la partie échoué');
+                header('Location: makepart.php');
+            }
+        }
+        
+        header('Location: play.php?partie='.$id_partie);
     }
 }
 ?>
