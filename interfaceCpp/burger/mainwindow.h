@@ -4,9 +4,13 @@
 #include <QMainWindow>
 #include "question.h"
 #include "theme.h"
+#include "partie.h"
+#include "score.h"
 
 Q_DECLARE_METATYPE(Question)
 Q_DECLARE_METATYPE(Theme)
+Q_DECLARE_METATYPE(Partie)
+Q_DECLARE_METATYPE(Score)
 
 
 namespace Ui {

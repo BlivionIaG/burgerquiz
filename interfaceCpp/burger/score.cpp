@@ -1,40 +1,39 @@
-#include "question.h"
+#include "score.h"
 #include "connectiondb.h"
 #include <QDebug>
 #include<QMessageBox>
-#include<QVector>
 
 
-Question::Question()
+Score::Score()
 {
 
 }
 
-QVector<Question*> Question::getQuestions(int id){
+QVector<Score*> Score::getAllscores(int partie){
 
     try {
 
         sql::ResultSet *res;
         sql::PreparedStatement *stmt;
-        QVector<Question*> questions;
+        QVector<Score*>scores;
 
         sql::Connection *con = connectiondb::GetConnection();
         //qDebug() << con->
         //if(con->isValid() && con != NULL){
          //qDebug() << "test4";
-            stmt = con->prepareStatement("SELECT * from Question where id_theme = ?");
-            stmt->setInt(1,id);
+            stmt = con->prepareStatement("SELECT * from Possede where id=? and Possede.id_utilisateur= Utilisateur.id_utilisateur order by desc limit 10");
             //qDebug() << "test5";
-            res = stmt->executeQuery();
+            stmt->setInt(1, partie);
 
-            while (res->next()) {
-                questions.push_back(new Question(res->getInt("id_question"),
-                                              res->getInt("id_theme"),
-                                              res->getString("choix_un"),
-                                              res->getString("choix_deux")));
-                   }
-            return questions;
+            res = stmt->executeQuery();
             //return stmt->getResultSet();//}else{return NULL;}
+            while (res->next()) {
+                scores.push_back(new Score(res->getInt("id_partie"),
+                                           res->getInt("id_utilisateur"),
+                                           res->getInt("score"),
+                                           res->getInt("temps")));
+                   }
+            return scores;
 
 
         } catch (sql::SQLException &e) {
@@ -43,14 +42,14 @@ QVector<Question*> Question::getQuestions(int id){
          qDebug() << "# ERR: " << e.what();
          qDebug() << " (MySQL error code: " << e.getErrorCode();
          qDebug() << ", SQLState: " << QString::fromStdString(e.getSQLState()) << " )" << endl;
-         QVector<Question*> empty;
+         QVector<Score *> empty;
          return empty;
         }catch(string e){
                     //qDebug() << QString::fromStdString(e) << endl;
         QMessageBox *error = new QMessageBox;
         error->setText(QString::fromStdString(e));
         error->exec();
-        QVector<Question*> empty;
+        QVector<Score *> empty;
         return empty;
                }
 

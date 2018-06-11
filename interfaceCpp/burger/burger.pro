@@ -17,14 +17,20 @@ SOURCES += main.cpp\
     connectiondb.cpp \
     theme.cpp \
     question.cpp \
-    proposition.cpp
+    proposition.cpp \
+    score.cpp \
+    partie.cpp \
+    user.cpp
 
 HEADERS  += mainwindow.h \
     ../Bureau/c++/II/tp 6/ElementBDD.h \
     connectiondb.h \
     theme.h \
     question.h \
-    proposition.h
+    proposition.h \
+    score.h \
+    partie.h \
+    user.h
 
 FORMS    += mainwindow.ui
 

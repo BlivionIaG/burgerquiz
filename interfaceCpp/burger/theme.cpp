@@ -7,12 +7,13 @@ Theme::Theme(){
 
 }
 
-sql::ResultSet* Theme::getThemes(){
+QVector<Theme *> Theme::getThemes(){
 
     try {
 
         sql::ResultSet *res;
         sql::PreparedStatement *stmt;
+        QVector<Theme*>themes;
 
         sql::Connection *con = connectiondb::GetConnection();
         //qDebug() << con->
@@ -20,8 +21,13 @@ sql::ResultSet* Theme::getThemes(){
          //qDebug() << "test4";
             stmt = con->prepareStatement("SELECT * from Theme");
             //qDebug() << "test5";
-            return stmt->executeQuery();
+            res = stmt->executeQuery();
             //return stmt->getResultSet();//}else{return NULL;}
+            while (res->next()) {
+                themes.push_back(new Theme(res->getString("nom_theme"),
+                                              res->getInt("id_theme")));
+                   }
+            return themes;
 
 
         } catch (sql::SQLException &e) {
@@ -30,13 +36,15 @@ sql::ResultSet* Theme::getThemes(){
          qDebug() << "# ERR: " << e.what();
          qDebug() << " (MySQL error code: " << e.getErrorCode();
          qDebug() << ", SQLState: " << QString::fromStdString(e.getSQLState()) << " )" << endl;
-         return NULL;
+         QVector<Theme *> empty;
+         return empty;
         }catch(string e){
                     //qDebug() << QString::fromStdString(e) << endl;
         QMessageBox *error = new QMessageBox;
         error->setText(QString::fromStdString(e));
         error->exec();
-                    return NULL;
+        QVector<Theme *> empty;
+        return empty;
                }
 
 }

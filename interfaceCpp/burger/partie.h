@@ -1,5 +1,6 @@
-#ifndef THEME_H
-#define THEME_H
+#ifndef PARTIE_H
+#define PARTIE_H
+
 #include <string>
 #include <QVector>
 #include <iostream>
@@ -10,21 +11,19 @@
 #include <cppconn/statement.h>
 #include <cppconn/prepared_statement.h>
 
-class Theme
+
+class Partie
 {
 public:
-    Theme();
-    Theme(std::string name,int id_theme):nom_theme(name),id(id_theme){}
-    static QVector<Theme*> getThemes();
+    Partie();
+    Partie(std::string name,int id_theme):nom_Partie(name),id(id_theme){}
+    static QVector<Partie*> getParties();
     int getId(){return id;}
-    std::string getName(){return nom_theme;}
+    std::string getName(){return nom_Partie;}
 
 private:
-    std::string nom_theme;
+    std::string nom_Partie;
     int id;
-
 };
 
-
-
-#endif // THEME_H
+#endif // PARTIE_H
