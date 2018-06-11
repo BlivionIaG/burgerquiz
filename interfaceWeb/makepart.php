@@ -25,18 +25,41 @@ if (isset($_SESSION)) {
         <!-- Page level plugin CSS-->
         <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <!-- Custom styles for this template-->
-        <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans" rel="stylesheet">
+        <link href="vendor/fonts.googleapis/bubblegum-sans.css" rel="stylesheet">
         <link href="css/general.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <?php require_once("includes/nav.template.php"); ?>
         <div  class="container-fluid base-main-content">
             <h1 align="center" id="bq-info-page"> Créer Partie </h1>
-            <form action="action.php" method="GET">
+            <form id="bq-create-partie" action="action.php" method="GET">
                 <input type="text" name="nom_partie" placeholder="Nom Partie" required>
+
+                <select name="id_theme" class="dropdown" required>
+                    <option value="" disabled selected hidden> Thèmes </option>
+                    <?php
+                    require_once('php/InterfaceBDD.php');
+                    $db = new InterfaceBDD();
+
+                    $themes = $db->RequestAllThemes();
+                    foreach ($themes as $theme) {
+                        echo '<option value="' . $theme->getId_theme() . '"';
+                        if (!$theme->getActive()) {
+                            echo 'disabled';
+                        }
+                        echo '>';
+                        echo $theme->getNom_theme();
+                        echo '</option>';
+                    }
+                    ?>
+                </select>
             </form>
             <button id="bq-retour" onclick="location.href = 'parties.php';"> Retour </button>
         </div>
         <?php require_once("includes/footer.template.php"); ?>
+
+        <script src="vendor/jquery/jquery.slim.min.js"></script>
+        <script src="vendor/popper/popper.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>    
     </body>
 </html>

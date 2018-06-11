@@ -132,6 +132,7 @@ INSERT INTO Theme(id_theme, nom_theme, active) VALUES(1, 'Cuisine', true);
 INSERT INTO Theme(id_theme, nom_theme, active) VALUES(2, 'Informatique', true);
 INSERT INTO Theme(id_theme, nom_theme, active) VALUES(3, 'Politique', true);
 INSERT INTO Theme(id_theme, nom_theme, active) VALUES(4, 'Humour', true);
+INSERT INTO Theme(id_theme, nom_theme, active) VALUES(5, 'Inutile', false);
 # QUESTIONS
 INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(1, 'Sel', 'Poivre', 1);
 INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(2, 'Pain au Chocolat', 'Chocolatine', 1);

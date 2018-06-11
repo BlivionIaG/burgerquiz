@@ -27,7 +27,7 @@ if (isset($_SESSION['isConnected'])) {
         <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <!-- Custom styles for this template-->
         <link href="css/general.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans" rel="stylesheet">
+        <link href="vendor/fonts.googleapis/bubblegum-sans.css" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="mainNav">

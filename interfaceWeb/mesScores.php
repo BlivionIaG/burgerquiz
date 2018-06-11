@@ -31,7 +31,7 @@ if (isset($_SESSION)) {
         <!-- Page level plugin CSS-->
         <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <!-- Custom styles for this template-->
-        <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans" rel="stylesheet">
+        <link href="vendor/fonts.googleapis/bubblegum-sans.css" rel="stylesheet">
         <link href="css/general.css" rel="stylesheet" type="text/css">
     </head>
     <body>
@@ -48,9 +48,8 @@ if (isset($_SESSION)) {
                     <th> Temps </th>
                 </tr>
                 <?php
-                $db = new InterfaceBDD();
-
                 if (isset($user)) {
+                    $db = new InterfaceBDD();
                     $messcores = $db->GetScores($user->getId_utilisateur());
 
                     foreach ($messcores as $monscore) {
@@ -72,8 +71,8 @@ if (isset($_SESSION)) {
         <?php require_once("includes/footer.template.php"); ?>
 
         <!-- Appel des Scripts -->
-        <script src="js/jquery-3.3.1.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="vendor/jquery/jquery.slim.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>   
         <script src="js/searchbar.js"></script>
     </body>
 </html>

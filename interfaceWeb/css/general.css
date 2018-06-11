@@ -401,3 +401,36 @@ footer.sticky-footer {
 .partie-menu > button:hover {
      border: 2px solid #355723;
 }
+
+#bq-create-partie {
+    display: grid;
+    justify-content: center;
+}
+
+#bq-create-partie > *{
+    width: 80vw;
+}
+
+#bq-create-partie input{
+    font-size: 24px;
+    color: #355723;
+    text-align: center;
+    background-color: #cbe8ba;
+}
+
+#bq-create-partie select {
+    font-size: 24px;
+    color: #355723;
+    background-color: #cbe8ba;
+    border: 2px solid;
+    border-color: #355723;
+    border-radius: 3px;
+
+    color: grey;
+    caret-color: grey;
+}
+
+#bq-create-partie input::placeholder{
+    font-size: 24px;
+    color: #355723;
+}
