@@ -9,7 +9,7 @@ Score::Score()
 
 }
 
-QVector<Score*> Score::getAllscores(int partie){
+QVector<Score*> Score::getAllScoreByIdGame(int partie){
 
     try {
 
@@ -21,7 +21,7 @@ QVector<Score*> Score::getAllscores(int partie){
         //qDebug() << con->
         //if(con->isValid() && con != NULL){
          //qDebug() << "test4";
-            stmt = con->prepareStatement("SELECT * from Possede where id=? and Possede.id_utilisateur= Utilisateur.id_utilisateur order by desc limit 10");
+            stmt = con->prepareStatement("SELECT * from Possede,Utilisateur where Possede.id_partie = ? and Possede.id_utilisateur= Utilisateur.id_utilisateur order by score DESC limit 10");
             //qDebug() << "test5";
             stmt->setInt(1, partie);
 
@@ -31,7 +31,8 @@ QVector<Score*> Score::getAllscores(int partie){
                 scores.push_back(new Score(res->getInt("id_partie"),
                                            res->getInt("id_utilisateur"),
                                            res->getInt("score"),
-                                           res->getInt("temps")));
+                                           res->getInt("temps"),
+                                           User(res->getString("nom"),res->getString("prenom"))));
                    }
             return scores;
 

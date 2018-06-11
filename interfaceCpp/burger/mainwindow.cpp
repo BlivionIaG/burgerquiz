@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->return2,SIGNAL(triggered()),this,SLOT(go_menu()));
 
 
+
 }
 
 MainWindow::~MainWindow()
@@ -241,6 +242,17 @@ void MainWindow::on_pushButton_4_clicked()
         ui->comboBox_2->addItem(*newitem);
            }*/
     //ui->listWidget_3->setCurrentRow(0);   ---> important
+    QVector<User*> users = User::getusers();
+    int i;
+    ui->comboBox_2->clear();
+
+    for(i=0;i<users.size();i++){
+        qDebug() << users[i]->getid();
+        //QString * newitem = new QString(QString::fromStdString(users[i]->getmail()));
+        QVariant data;
+        data.setValue(User(users[i]->getNom(),users[i]->getPrenom(),users[i]->getid(),users[i]->getmail()));
+        ui->comboBox_2->addItem(QString::fromStdString(users[i]->getmail()),data);
+    }
 
     ui->comboBox_2->setCurrentIndex(0);
     ui->stackedWidget->setCurrentIndex(4);
@@ -271,17 +283,7 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_8_clicked()
 {
-    QMessageBox msgBox;
-    msgBox.setText(tr("Confirm?"));
-    msgBox.setText(tr("Confirm?"));
-    QAbstractButton* pButtonYes = msgBox.addButton(tr("Yeah!"), QMessageBox::YesRole);
-    msgBox.addButton(tr("Nope"), QMessageBox::NoRole);
-
-    msgBox.exec();
-
-    if (msgBox.clickedButton()==pButtonYes) {
-        //Execute command
-    }
+ ui->stackedWidget->setCurrentIndex(6);
 }
 
 
@@ -393,18 +395,19 @@ void MainWindow::on_listWidget_3_currentRowChanged(int currentRow)
 {
    //qDebug() << "test 0";
     if(currentRow >= 0){
-
-        QVector<Score*> listscores = Score::getAllscores(1);
+//>currentData(Qt::UserRole).value<Theme>().getId()
+        QVector<Score*> listscores = Score::getAllScoreByIdGame(ui->listWidget_3->currentItem()->data(1).value<Partie>().getId());
         int i;
+        ui->listWidget_2->clear();
 
         for(i=0;i<listscores.size();i++){
 
             QListWidgetItem * newitem = new QListWidgetItem();
-            newitem->setText(QString::fromStdString(listscores[i]->getAllscores()));
-            QVariant data;
+            newitem->setText(QString::number(i+1)+". "+QString::fromStdString(listscores[i]->getUser().getPrenom()) +" "+QString::fromStdString(listscores[i]->getUser().getNom()));
+            //QVariant data;
 
-            data.setValue(Score(listscores[i]->getPartie(),listscores[i]->getTheme(),listscores[i]->getScore(),listscores[i]->getTemps()));
-            newitem->setData(1,data);
+            //data.setValue(Score(listscores[i]->getPartie(),listscores[i]->getTheme(),listscores[i]->getScore(),listscores[i]->getTemps()));
+            //newitem->setData(1,data);
             //Question(   idq idt c1 c2)
 
             //ui->comboBox->addItem(QString::fromStdString(res->getString("nom_theme")),data);
@@ -513,6 +516,14 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
 
 void MainWindow::on_comboBox_2_currentIndexChanged(int index)
 {
+    User users;
+    //qDebug() << "test" << ui->comboBox_2->currentData(Qt::UserRole).value<User>().getid();
+    users.getUser(ui->comboBox_2->currentData(Qt::UserRole).value<User>().getid());
+
+    ui->lineEdit_17->setText(QString::fromStdString(users.getmail()));
+    ui->lineEdit_16->setText(QString::fromStdString(users.getNom()));
+    ui->lineEdit_15->setText(QString::fromStdString(users.getPrenom()));
+
     /*connectiondb *db = new connectiondb;
 
     db->getData("SELECT * FROM Possede,Utilisateur,"
@@ -558,4 +569,47 @@ void MainWindow::on_listWidget_4_currentRowChanged(int currentRow)
     //5
     //67
 
+}
+
+void MainWindow::on_pushButton_19_clicked()
+{
+
+
+
+
+}
+
+void MainWindow::on_pushButton_11_clicked()
+{
+    QDialog dialog(this);
+        // Use a layout allowing to have a label next to each field
+        QFormLayout form(&dialog);
+
+        // Add some text above the fields
+        form.addRow(new QLabel("The question ?"));
+
+        // Add the lineEdits with their respective labels
+        QList<QLineEdit *> fields;
+        for(int i = 0; i < 2; ++i) {
+            QLineEdit *lineEdit = new QLineEdit(&dialog);
+            QString label = QString("Choix %1").arg(i + 1);
+            form.addRow(label, lineEdit);
+
+            fields << lineEdit;
+        }
+
+        // Add some standard buttons (Cancel/Ok) at the bottom of the dialog
+        QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
+                                   Qt::Horizontal, &dialog);
+        form.addRow(&buttonBox);
+        QObject::connect(&buttonBox, SIGNAL(accepted()), &dialog, SLOT(accept()));
+        QObject::connect(&buttonBox, SIGNAL(rejected()), &dialog, SLOT(reject()));
+
+        // Show the dialog as modal
+        if (dialog.exec() == QDialog::Accepted) {
+            // If the user didn't dismiss the dialog, do something with the fields
+            foreach(QLineEdit * lineEdit, fields) {
+                //qDebug() << lineEdit->text();
+            }
+        }
 }
