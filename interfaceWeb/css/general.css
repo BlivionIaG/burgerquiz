@@ -453,3 +453,21 @@ footer.sticky-footer {
 .bq-game{
     background-color: #fefac0;
 }
+
+#bq-reponses button{
+    border-radius: 100%;
+    min-width: 15vw;
+    min-height: 15vw;
+}
+
+#bq-choix_un {
+    background-color: #e9403b;
+}
+
+#bq-choix_deux {
+    background-color: #0844a4;
+}
+
+#bq-les_deux {
+    background-color: #ff6624;
+}

@@ -14,7 +14,12 @@ function startGame(ajaxResponse) {
 }
 
 function continueGame(ajaxResponse) {
-    showQuestion(JSON.parse(ajaxResponse));
+    $response = JSON.parse(ajaxResponse);
+    if ($response['proposition'] !== null && $response['choix_un'] !== null && $response['choix_deux'] !== null && $response['progress'] !== null) {
+        showQuestion($response);
+    } else if ($response['score'] !== null && $response['time'] !== null) {
+
+    }
 }
 
 function showQuestion(question) {
@@ -70,7 +75,42 @@ function checkAnswer(value) {
     ajaxRequest('POST', 'php/request.php/checkAnswer/', answerResult, 'value=' + value);
 }
 
-function answerResult(ajaxResponse){
-    var result = JSON.parse(ajaxResponse);
-    console.log(result);
+function nextAnswer() {
+    ajaxRequest('POST', 'php/request.php/nextAnswer/', continueGame);
 }
+
+function answerResult(ajaxResponse) {
+    var result = JSON.parse(ajaxResponse);
+
+    var reponse = document.createElement('button');
+    reponse.class = 'bq-reponse';
+
+    switch (result['value']) {
+        case '0':
+            $('#bq-choix_un').remove();
+            $('#bq-choix_deux').remove();
+            reponse.id = 'bq-les_deux';
+            break;
+        case '1':
+            $('#bq-les_deux').remove();
+            $('#bq-choix_deux').remove();
+            reponse.id = 'bq-choix_un';
+            break;
+        case '2':
+            $('#bq-choix_un').remove();
+            $('#bq-les_deux').remove();
+            reponse.id = 'bq-choix_deux';
+            break;
+    }
+
+    if (result['result'] === true) {
+        reponse.innerHTML = 'Gagné !';
+    } else {
+        reponse.innerHTML = 'Perdu !';
+    }
+
+    $('#bq-reponses').append(reponse);
+
+    $('#' + reponse.id).off('click').click(nextAnswer);
+}
+

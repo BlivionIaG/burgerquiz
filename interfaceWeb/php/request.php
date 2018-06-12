@@ -63,10 +63,16 @@ if ($requestRessource === 'startGame' && $requestMethod === 'POST') {
         $_SESSION['gameScore'][$_SESSION['cursor']][2] = time();
         if ($value === $_SESSION['quiz'][$_SESSION['cursor']]['valeur_reponse']) {
             $_SESSION['gameScore'][$_SESSION['cursor']][3] = 1;
-            $output = array('result' => true);
+            $output = array(
+                'value' => $value,
+                'result' => true
+            );
         } else {
             $_SESSION['gameScore'][$_SESSION['cursor']][3] = 0;
-            $output = array('result' => false);
+            $output = array(
+                'value' => $value,
+                'result' => false
+            );
         }
 
         sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
