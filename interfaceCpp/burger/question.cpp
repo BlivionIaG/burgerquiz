@@ -22,16 +22,16 @@ QVector<Question*> Question::getQuestions(int id){
         //qDebug() << con->
         //if(con->isValid() && con != NULL){
          //qDebug() << "test4";
-            stmt = con->prepareStatement("SELECT * from Question where id_theme = ?");
+            stmt = con->prepareStatement("SELECT * from Question,Theme where Question.id_theme = ? and Question.id_theme = Theme.id_theme");
             stmt->setInt(1,id);
             //qDebug() << "test5";
             res = stmt->executeQuery();
 
             while (res->next()) {
                 questions.push_back(new Question(res->getInt("id_question"),
-                                              res->getInt("id_theme"),
                                               res->getString("choix_un"),
-                                              res->getString("choix_deux")));
+                                              res->getString("choix_deux"),
+                                                 Theme(res->getString("nom_theme"),res->getInt("id_theme"))));
                    }
             return questions;
             //return stmt->getResultSet();//}else{return NULL;}

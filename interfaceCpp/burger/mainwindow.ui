@@ -54,7 +54,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="menu">
      <widget class="QPushButton" name="pushButton_4">
@@ -883,6 +883,11 @@ QGroupBox::title {
       </item>
       <item>
        <property name="text">
+        <string>listwidget</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
         <string>Nouvel élément</string>
        </property>
       </item>
@@ -988,7 +993,7 @@ font-size: 50%;
 background-color: white;</string>
       </property>
       <property name="text">
-       <string>bernard tapie, tapis ou les deux ?</string>
+       <string>bernard tapie, tapis ou les deux ? label 5</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_11">
@@ -1033,7 +1038,7 @@ font-size: 50%;
 background-color: white;</string>
       </property>
       <property name="text">
-       <string>THEME : ISEN</string>
+       <string>THEME : ISEN label 7</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_18">
@@ -1055,7 +1060,7 @@ background-color: white;</string>
         <x>430</x>
         <y>140</y>
         <width>131</width>
-        <height>131</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="maximumSize">
@@ -1084,7 +1089,7 @@ font-size: 50%;
 background-color: white;</string>
       </property>
       <property name="text">
-       <string>reponse</string>
+       <string>reponse label 8</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_3">
@@ -1101,6 +1106,25 @@ background-color: white;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_20">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>230</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100000</width>
+        <height>100000</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Retour</string>
       </property>
      </widget>
     </widget>

@@ -110,9 +110,6 @@ void MainWindow::on_pushButton_clicked()
 
             data.setValue(Theme(themes[i]->getName(),themes[i]->getId()));
             newitem->setData(1,data);
-            //Question(   idq idt c1 c2)
-
-            //ui->comboBox->addItem(QString::fromStdString(res->getString("nom_theme")),data);
             ui->listtheme->addItem(newitem);
             //***********************************
         }
@@ -155,7 +152,6 @@ void MainWindow::on_pushButton_2_clicked()
 
             data.setValue(Theme(themes[i]->getName(),themes[i]->getId()));
             //newitem->setData(1,data);
-            //Question(   idq idt c1 c2)
 
             //ui->comboBox->addItem(QString::fromStdString(res->getString("nom_theme")),data);
                         ui->comboBox->addItem(QString::fromStdString(themes[i]->getName()),data);
@@ -247,7 +243,7 @@ void MainWindow::on_pushButton_4_clicked()
     ui->comboBox_2->clear();
 
     for(i=0;i<users.size();i++){
-        qDebug() << users[i]->getid();
+        //qDebug() << users[i]->getid();
         //QString * newitem = new QString(QString::fromStdString(users[i]->getmail()));
         QVariant data;
         data.setValue(User(users[i]->getNom(),users[i]->getPrenom(),users[i]->getid(),users[i]->getmail()));
@@ -283,17 +279,57 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_8_clicked()
 {
+    if(ui->listWidget_4->count() !=0){
+    Question question = ui->listWidget_4->currentItem()->data(1).value<Question>();
+ QVector<Reponse*> reponses = Reponse::getReponses(question.getIdQuestion());
+ //Reponse::getReponses(5);
+ int i;
+ //if tab non null
+ ui->label_5->setText(QString::fromStdString(question.getC1() +","+ question.getC2() +" ou les deux ?"));
+ ui->label_7->setText(QString::fromStdString("Theme: " +question.getTheme().getName()));
+    ui->listWidget->clear();
+ for(i=0;i<reponses.size();i++){
+
+     QListWidgetItem * newitem = new QListWidgetItem();
+     newitem->setText(QString::fromStdString(reponses[i]->getProposition()));
+     QVariant data;
+     //qDebug() << "test" << reponses[i]->getValeur();
+     data.setValue(*reponses[i]);
+     newitem->setData(1,data);
+     ui->listWidget->addItem(newitem);
+
+
+ }
+ui->listWidget->setCurrentRow(0);
+
+
+
+
+
+
+
+
  ui->stackedWidget->setCurrentIndex(6);
+ ui->pushButton_15->hide();}
 }
 
 
 
 void MainWindow::on_pushButton_14_clicked()
 {
-    QMessageBox msgBox;
-    msgBox.setText(tr("info quizz:\t\t\t\t\n autre info quizz :\t\t\t\n autre info quizz :\t\t\t"));
 
-    msgBox.exec();
+    //list widget 5
+    if(ui->listWidget_5->currentRow() >= 0){
+    Score score = ui->listWidget_5->currentItem()->data(1).value<Score>();
+    qDebug() << "test 45";
+    QMessageBox msgBox;
+
+    msgBox.setText("score joueur: "
+                      +QString::number(score.getScore())
+                      +"\ntemps joueur: "
+                      +QString::number(score.getTemps()));
+
+    msgBox.exec();}
 }
 
 void MainWindow::on_pushButton_15_clicked()
@@ -344,7 +380,7 @@ void MainWindow::on_pushButton_6_clicked()
     QFormLayout form(&dialog);
 
     // Add some text above the fields
-    form.addRow(new QLabel("The question ?"));
+    form.addRow(new QLabel("The questn ?"));
 
     // Add the lineEdits with their respective labels
     QList<QLineEdit *> fields;
@@ -408,7 +444,7 @@ void MainWindow::on_listWidget_3_currentRowChanged(int currentRow)
 
             //data.setValue(Score(listscores[i]->getPartie(),listscores[i]->getTheme(),listscores[i]->getScore(),listscores[i]->getTemps()));
             //newitem->setData(1,data);
-            //Question(   idq idt c1 c2)
+            //Queston(   idq idt c1 c2)
 
             //ui->comboBox->addItem(QString::fromStdString(res->getString("nom_theme")),data);
             ui->listWidget_2->addItem(newitem);
@@ -450,8 +486,8 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
     QVector<Question*>questions = Question::getQuestions(ui->comboBox->currentData(Qt::UserRole).value<Theme>().getId());
     int i;
 
-    //sql::ResultSet *res = Question::getQuestions(ui->comboBox->currentData(Qt::UserRole).value<Theme>().getId());
-    if(!questions.isEmpty()){
+
+
         ui->listWidget_4->clear();
 
         for(i=0;i<questions.size();i++){
@@ -460,10 +496,7 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
             newitem->setText(QString::fromStdString(questions[i]->getC1()) + ", " + QString::fromStdString(questions[i]->getC2()) + " ou les deux");
             QVariant data;
 
-            data.setValue(Question(questions[i]->getIdQuestion(),
-                                   questions[i]->getIdTheme(),
-                                   questions[i]->getC1(),
-                                   questions[i]->getC2()));
+            data.setValue(*questions[i]);
             newitem->setData(1,data);
             //Question(   idq idt c1 c2)
 
@@ -491,14 +524,11 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
                }*/
 
         //ui->comboBox->setCurrentIndex(0);
-        ui->listWidget_4->setCurrentRow(1);
+        ui->listWidget_4->setCurrentRow(0);
         //ui->stackedWidget->setCurrentIndex(3);
         //ui->pushButton_15->setVisible(true);
 
-    }else{
-        ui->stackedWidget->setCurrentIndex(5);
-        ui->pushButton_15->setVisible(false);
-    }
+
 
 
 
@@ -524,6 +554,21 @@ void MainWindow::on_comboBox_2_currentIndexChanged(int index)
     ui->lineEdit_16->setText(QString::fromStdString(users.getNom()));
     ui->lineEdit_15->setText(QString::fromStdString(users.getPrenom()));
 
+    QVector<Score*> scores = Score::getAllScoreByIdUser(ui->comboBox_2->currentData(Qt::UserRole).value<User>().getid());
+    int i;
+    ui->listWidget_5->clear();
+
+    for(i =0;i<scores.size();i++){
+
+        //QString * newitem = new QString(QString::fromStdString(db->res->getString("score")));
+        QListWidgetItem * newitem = new QListWidgetItem();
+        QVariant data;
+        data.setValue(*scores[i]);
+        newitem->setText(QString::fromStdString(scores[i]->getPartie().getName()));
+        newitem->setData(1,data);
+        ui->listWidget_5->addItem(newitem);
+
+    }
     /*connectiondb *db = new connectiondb;
 
     db->getData("SELECT * FROM Possede,Utilisateur,"
@@ -612,4 +657,36 @@ void MainWindow::on_pushButton_11_clicked()
                 //qDebug() << lineEdit->text();
             }
         }
+}
+
+void MainWindow::on_pushButton_20_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+    ui->label_8->clear();
+    ui->pushButton_15->show();
+}
+
+void MainWindow::on_listWidget_currentRowChanged(int currentRow)
+{
+    if(currentRow>=0){
+        Reponse value = ui->listWidget->currentItem()->data(1).value<Reponse>();
+    //qDebug() << value.getValeur();
+
+    switch(value.getValeur()){
+    case 0:
+        ui->label_8->setText(QString::fromStdString("Les deux"));
+        break;
+    case 1:
+        ui->label_8->setText(QString::fromStdString(value.getQuestion().getC1()));
+        break;
+    case 2:
+        ui->label_8->setText(QString::fromStdString(value.getQuestion().getC2()));
+        break;
+    default:
+        ui->label_8->setText(QString::fromStdString(" "));
+        break;
+    }
+    }
+
+    //ui->label_8->setText(QString::fromStdString(ui->listWidget->currentItem()->data(1).value<Reponse>().getQuestion());
 }

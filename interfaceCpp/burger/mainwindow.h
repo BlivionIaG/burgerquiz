@@ -7,12 +7,14 @@
 #include "partie.h"
 #include "score.h"
 #include "user.h"
+#include "reponse.h"
 
 Q_DECLARE_METATYPE(Question)
 Q_DECLARE_METATYPE(Theme)
 Q_DECLARE_METATYPE(Partie)
 Q_DECLARE_METATYPE(Score)
 Q_DECLARE_METATYPE(User)
+Q_DECLARE_METATYPE(Reponse)
 
 
 namespace Ui {
@@ -60,6 +62,10 @@ private slots:
     void on_pushButton_19_clicked();
 
     void on_pushButton_11_clicked();
+
+    void on_pushButton_20_clicked();
+
+    void on_listWidget_currentRowChanged(int currentRow);
 
 private:
     Ui::MainWindow *ui;

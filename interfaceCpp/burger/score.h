@@ -12,6 +12,7 @@
 #include <cppconn/prepared_statement.h>
 
 #include"user.h"
+#include"partie.h"
 
 
 
@@ -19,19 +20,23 @@ class Score
 {
 public:
     Score();
-    Score(int partie,int theme,int sc,int time,User user):id_partie(partie),id_theme(theme),score(sc),temps(time),user(user){}
+    Score(int partie,int theme,int sc,int time,User user1):id_partie(partie),id_user(theme),score(sc),temps(time),user(user1){}
+    Score(int partie,int theme,int sc,int time,Partie partie1):id_partie(partie),id_user(theme),score(sc),temps(time),partie(partie1){}
     static QVector<Score*> getAllScoreByIdGame(int partie);
-    int getPartie(){return id_partie;}
-    int getTheme(){return id_theme;}
+    static QVector<Score*> getAllScoreByIdUser(int partie);
+    int getIdPartie(){return id_partie;}
+    Partie getPartie(){return partie;}
+    int getIdUser(){return id_user;}
     int getScore(){return score;}
     int getTemps(){return temps;}
     User getUser(){return user;}
 private:
     int id_partie;
-    int id_theme;
+    int id_user;
     int score;
     int temps;
     User user;
+    Partie partie;
 
 
 };

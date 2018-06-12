@@ -7,24 +7,25 @@
 #include <cppconn/statement.h>
 #include <cppconn/prepared_statement.h>
 #include <QVector>
+#include"theme.h"
 
 
 class Question
 {
 public:
     Question();
-    Question(int idQ,int idT,std::string C1,std::string C2):id_question(idQ),id_theme(idT),choix_1(C1),choix_2(C2){};
+    Question(int idQ,std::string C1,std::string C2,Theme thema):id_question(idQ),choix_1(C1),choix_2(C2),theme(thema){};
     static QVector<Question*> getQuestions(int id);
     int getIdQuestion(){return id_question;}
-    int getIdTheme(){return id_theme;}
+    Theme getTheme(){return theme;}
     std::string getC1(){return choix_1;}
     std::string getC2(){return choix_2;}
     //QVector<Question> questions;
 private:
     int id_question;
-    int id_theme;
     std::string choix_1;
     std::string choix_2;
+    Theme theme;
 };
 
 #endif // QUESTION_H
