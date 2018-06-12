@@ -161,6 +161,15 @@ if (isset($action)) {
         }
         
         header('Location: play.php?partie='.$id_partie);
+    }else if($action === 'join'){
+        $id_partie = filter_input(INPUT_GET, 'id_partie', FILTER_SANITIZE_NUMBER_INT);
+        
+        if(!isset($id_partie)){
+            error_log('Erreur : Pas d\'id de partie');
+            header('Location: joinpart.php');
+        }
+        
+        header('Location: play.php?partie='.$id_partie);
     }
 }
 ?>

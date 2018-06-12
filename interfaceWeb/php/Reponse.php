@@ -25,6 +25,17 @@ class Reponse {
         $this->setId_question($_id_question);
     }
 
+    public function toArray() {
+        $out = [];
+
+        $out['id_reponse'] = $this->getId_reponse();
+        $out['valeur_reponse'] = $this->getValeur_reponse();
+        $out['proposition'] = $this->getProposition();
+        $out['id_question'] = $this->getId_question();
+
+        return $out;
+    }
+
     public function getId_reponse() {
         return $this->id_reponse;
     }

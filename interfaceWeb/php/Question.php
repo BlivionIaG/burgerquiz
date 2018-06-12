@@ -25,6 +25,17 @@ class Question {
         $this->setId_theme($_id_theme);
     }
 
+    public function toArray() {
+        $out = [];
+
+        $out['id_question'] = $this->getId_question();
+        $out['choix_un'] = $this->getChoix_un();
+        $out['choix_deux'] = $this->getChoix_deux();
+        $out['id_theme'] = $this->getId_theme();
+        
+        return $out;
+    }
+
     public function getId_question() {
         return $this->id_question;
     }

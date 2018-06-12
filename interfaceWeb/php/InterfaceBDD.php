@@ -429,7 +429,7 @@ class InterfaceBDD {
 
     public function RequestReponse($id) {
         try {
-            $request = 'select * from Reponse where id_reponse:id';
+            $request = 'select * from Reponse where id_reponse=:id';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();
@@ -443,7 +443,7 @@ class InterfaceBDD {
 
     public function RequestReponseOfQuestion($id) {
         try {
-            $request = 'select * from Reponse where id_question:id';
+            $request = 'select * from Reponse where id_question=:id';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();
@@ -457,7 +457,7 @@ class InterfaceBDD {
 
     public function RequestQuestionsOfPartie($id_partie) {
         try {
-            $request = 'select * from comprend where id_partie:id';
+            $request = 'select * from comprend where id_partie=:id';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $id_partie, PDO::PARAM_INT);
             $statement->execute();
@@ -536,6 +536,24 @@ class InterfaceBDD {
             error_log('Request error: ' . $exception->getMessage());
             return false;
         }
+        return $result;
+    }
+
+    public function RequestGameReadyQuestions($id_partie) {
+        try {
+            $request = 'select Reponse.proposition, C.choix_un, C.choix_deux, Reponse.valeur_reponse from (' .
+                    'select Question.* from comprend, Question ' .
+                    'where comprend.id_partie=:id_partie && comprend.id_question=Question.id_question)' .
+                    ' as C, Reponse where C.id_question=Reponse.id_question';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id_partie', $id_partie, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll();
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        
         return $result;
     }
 

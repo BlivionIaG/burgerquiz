@@ -1,12 +1,13 @@
 'use strict';
 
-function ajax_request(method, request, callback, data = null) {
+function ajaxRequest(method, request, callback, data = null) {
     var xhr = new XMLHttpRequest();
     if (data !== null && (method === 'GET' || method === 'POST' || method === 'DELETE' || method === 'PUT')) {
         request += '?' + data;
     }
 
     xhr.open(method, request, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function () {
         console.log(xhr.status);

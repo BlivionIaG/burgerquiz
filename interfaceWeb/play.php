@@ -8,8 +8,8 @@ if (isset($_SESSION)) {
     }
 }
 
-$id_partie = filter_input(INPUT_GET, 'partie');
-if (!isset($id_partie)) {
+$id_partie = filter_input(INPUT_GET, 'partie', FILTER_SANITIZE_NUMBER_INT);
+if (!isset($id_partie) && $id_partie < 0) {
     header('Location: parties.php');
 }
 ?>
@@ -35,10 +35,24 @@ if (!isset($id_partie)) {
     </head>
     <body>
         <?php require_once("includes/nav.template.php"); ?>
-        <div  class="container-fluid base-main-content">
+        <input type="hidden" id="id_partie" value=<?php echo '"'.$id_partie.'"'?>>
+        
+        <div class="container-fluid base-main-content bq-game">
+            <button id="startGame">Commencer</button>
+            <div id="bq-proposition">
+
+            </div>
+            <div id="bq-reponses">
+
+            </div>
+            <div id="bq-progress-bar">
+
+            </div>
         </div>
-        <?php require_once("includes/footer.template.php"); ?>
-        
-        
+        <?php require_once("includes/footer.template.php"); ?>       
+
+        <script src="vendor/jquery/jquery.slim.min.js"></script>
+        <script src="js/ajax.js"></script>
+        <script src="js/game.js"></script>
     </body>
 </html>

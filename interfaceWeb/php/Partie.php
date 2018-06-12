@@ -21,6 +21,13 @@ class Partie {
         $this->setNom_partie($_nom_partie);
     }
 
+    public function toArray() {
+        return array(
+            'id_partie' => $this->getId_partie(),
+            'nom_partie' => $this->getNom_partie()
+        );
+    }
+
     public function getId_partie() {
         return $this->id_partie;
     }
