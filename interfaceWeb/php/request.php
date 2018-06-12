@@ -57,11 +57,18 @@ if ($requestRessource === 'startGame' && $requestMethod === 'POST') {
     }
 } else if ($requestRessource === 'checkAnswer' && $requestMethod === 'POST') {
     $value = filter_input(INPUT_POST, 'value', FILTER_SANITIZE_NUMBER_INT);
-    
-    if(isset($value)){
+
+    if (isset($value)) {
         session_start();
         $_SESSION['gameScore'][$_SESSION['cursor']][2] = time();
-        
+        if ($value === $_SESSION['quiz'][$_SESSION['cursor']]['valeur_reponse']) {
+            $_SESSION['gameScore'][$_SESSION['cursor']][3] = 1;
+            $output = array('result' => true);
+        } else {
+            $_SESSION['gameScore'][$_SESSION['cursor']][3] = 0;
+            $output = array('result' => false);
+        }
+
         sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
     }
 } else {
