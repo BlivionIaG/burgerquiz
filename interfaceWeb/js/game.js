@@ -67,5 +67,10 @@ function answerChoix_deux(event) {
 }
 
 function checkAnswer(value) {
-    ajaxRequest('POST', 'php/request.php/checkAnswer/', continueGame, 'value=' + value);
+    ajaxRequest('POST', 'php/request.php/checkAnswer/', answerResult, 'value=' + value);
+}
+
+function answerResult(ajaxResponse){
+    var result = JSON.parse(ajaxResponse);
+    console.log(result);
 }
