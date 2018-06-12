@@ -43,7 +43,7 @@ if ($requestRessource === 'startGame' && $requestMethod === 'POST') {
         $_SESSION['cursor'] = 0;
         $_SESSION['gameScore'] = [];
 
-        array_push($_SESSION['gameScore'], array(0, time(), -1, -1));
+        array_push($_SESSION['gameScore'], array($_SESSION['cursor'], time(), -1, -1));
 
         $tmpout = $_SESSION['quiz'][$_SESSION['cursor']];
         $output = array(
@@ -75,6 +75,39 @@ if ($requestRessource === 'startGame' && $requestMethod === 'POST') {
             );
         }
 
+        sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
+    }
+} else if ($requestRessource === 'nextAnswer' && $requestMethod === 'POST') {
+    session_start();
+
+    $_SESSION['cursor'] = $_SESSION['cursor'] + 1;
+
+    if ($_SESSION['cursor'] < sizeof($_SESSION['quiz'])) {
+        array_push($_SESSION['gameScore'], array($_SESSION['cursor'], time(), -1, -1));
+
+        $tmpout = $_SESSION['quiz'][$_SESSION['cursor']];
+        $output = array(
+            'progress' => 100 * $_SESSION['cursor'] / sizeof($_SESSION['quiz']),
+            'proposition' => $tmpout['proposition'],
+            'choix_un' => $tmpout['choix_un'],
+            'choix_deux' => $tmpout['choix_deux']
+        );
+
+        sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
+    } else {
+        $totalTime = 0;
+        $totalScore = 0;
+        foreach ($_SESSION['gameScore'] as $score) {
+            $dt = ($score[2] - $score[1]);
+            $totalScore += $score[3] * (60 / $dt);
+            $totalTime += $dt;
+        }
+        
+        $output = array(
+            'score' => $totalScore,
+            'time' => $totalTime
+        );
+        
         sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
     }
 } else {

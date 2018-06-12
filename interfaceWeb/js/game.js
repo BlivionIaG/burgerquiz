@@ -14,11 +14,11 @@ function startGame(ajaxResponse) {
 }
 
 function continueGame(ajaxResponse) {
-    $response = JSON.parse(ajaxResponse);
-    if ($response['proposition'] !== null && $response['choix_un'] !== null && $response['choix_deux'] !== null && $response['progress'] !== null) {
-        showQuestion($response);
-    } else if ($response['score'] !== null && $response['time'] !== null) {
-
+    var response = JSON.parse(ajaxResponse);
+    if (response['proposition'] !== null && response['choix_un'] !== null && response['choix_deux'] !== null && response['progress'] !== null) {
+        showQuestion(response);
+    } else if (response['score'] !== null && response['time'] !== null) {
+        endGame(response);
     }
 }
 
@@ -114,3 +114,33 @@ function answerResult(ajaxResponse) {
     $('#' + reponse.id).off('click').click(nextAnswer);
 }
 
+function endGame($results) {
+    $('.bq-game').empty();
+
+    var titre = document.createElement('h1');
+    titre.id = 'bq-info-page';
+    titre.align = 'center';
+    titre.innerHTML = 'Bien Joué !';
+    $('.bq-game').append(titre);
+
+    var subtitre = document.createElement('h2');
+    subtitre.class = 'bq-sub-info';
+    subtitre.innerHTML = 'Ton score :';
+    $('.bq-game').append(subtitre);
+
+    var score = document.createElement('div');
+    score.id = 'bq-mybestscore';
+    $('.bq-game').append(score);
+
+    var circle = document.createElement('div');
+    circle.class = 'bq-circle';
+    $('#bq-mybestscore').append(circle);
+
+    var scorevalue = document.createElement('span');
+    scorevalue.innerHTML = $results['score'];
+    $('#bq-mybestscore .bq-circle').append(scorevalue);
+
+    var timevalue = document.createElement('span');
+    timevalue.innerHTML = 'En ' + $results['time'] + 's';
+    $('#bq-mybestscore').append(timevalue);
+}
