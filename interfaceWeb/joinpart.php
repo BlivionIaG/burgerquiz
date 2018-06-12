@@ -30,16 +30,34 @@ if (isset($_SESSION)) {
     </head>
     <body>
         <?php require_once("includes/nav.template.php"); ?>
-        <div  class="container-fluid base-main-content">
+        <div class="container-fluid base-main-content">
             <h1 align="center" id="bq-info-page"> Rejoindre Partie </h1>   
             <input class="form-control mr-sm-2" id="bq-searchbar" type="text" placeholder="Search..." aria-label="Search">
-            <table id="bq-searchtab" class="bq-table">
-                <tr>
-                    <th> Partie </th>
-                    <th> Thème </th>
-                    <th> Jouer <th>
-                </tr>
-            </table>
+            <form action="action.php" method="GET" id="bq-join" >
+                <input type="hidden" name="action" value="join"> 
+                <table id="bq-searchtab" class="bq-table">
+                    <tr>
+                        <th> Partie </th>
+                        <th> Thème </th>
+                        <th> Jouer <th>
+                    </tr>
+                    <?php
+                    require_once('php/InterfaceBDD.php');
+                    $db = new InterfaceBDD();
+
+                    $parties = $db->RequestAllPartiesWithTheme();
+
+                    foreach ($parties as $partie) {
+                        echo '<tr>';
+                        echo '<td>' . $partie['nom_partie'] . '</td>';
+                        echo '<td>' . $partie['nom_theme'] . '</td>';
+                        echo '<td><input name="id_partie" value="' . $partie['id_partie'] . '" type="radio"></td>';
+                        echo '</tr>';
+                    }
+                    ?>
+                </table>
+                <input class="bq-button" type="submit" value="Jouer">
+            </form>
             <button id="bq-fixed-retour" onclick="location.href = 'parties.php';"> Retour </button>
         </div>
         <?php require_once("includes/footer.template.php"); ?>

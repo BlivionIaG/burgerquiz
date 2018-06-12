@@ -208,7 +208,7 @@ class InterfaceBDD {
             error_log('Partie name already taken !');
             return false;
         }
-        
+
         try {
             $request = 'insert into Partie(nom_partie) values(:nom_partie)';
             $statement = $this->getBdd()->prepare($request);
@@ -218,7 +218,7 @@ class InterfaceBDD {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
-        
+
         return $result;
     }
 
@@ -236,8 +236,8 @@ class InterfaceBDD {
 
         return sizeof($result);
     }
-    
-    public function FindPartieId($partie){
+
+    public function FindPartieId($partie) {
         try {
             $request = 'select * from Partie where nom_partie=:nom';
             $statement = $this->getBdd()->prepare($request);
@@ -379,8 +379,8 @@ class InterfaceBDD {
         return $result;
     }
 
-    public function LinkQuestionToPartie($comprend){
-         try {
+    public function LinkQuestionToPartie($comprend) {
+        try {
             $request = 'insert into comprend(id_question, id_partie) values(:id_question, :id_partie)';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id_question', $comprend->getId_question(), PDO::PARAM_INT);
@@ -390,10 +390,10 @@ class InterfaceBDD {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
-        
+
         return $result;
     }
-    
+
     public function RequestQuestion($id) {
         try {
             $request = 'select * from Question where id_question=:id';
@@ -519,6 +519,24 @@ class InterfaceBDD {
         }
 
         return $result[0];
+    }
+
+    public function RequestAllPartiesWithTheme() {
+        try {
+            $request = 'select T.id_partie, T.nom_partie, Theme.nom_theme from (' .
+                    'select Partie.id_partie, Partie.nom_partie, Question.id_theme from' .
+                    ' comprend, Partie, Question ' .
+                    'where comprend.id_partie=Partie.id_partie &&' .
+                    ' comprend.id_question=Question.id_question group by id_theme) ' .
+                    'as T,Theme where T.id_theme=Theme.id_theme';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->execute();
+            $result = $statement->fetchAll();
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
     }
 
 }

@@ -229,7 +229,7 @@ footer.sticky-footer {
     font-family: var(--bq-nice-font);
     width: 7vw;
     left: 2vw;
-    bottom: 10vh;
+    bottom: 4vh;
     min-height: 40px;
 }
 
@@ -445,3 +445,7 @@ footer.sticky-footer {
     color: #355723;
 }
 
+#bq-join .bq-button{
+    font-size: 36px;
+    margin-left: 80vw;
+}
