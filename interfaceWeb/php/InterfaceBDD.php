@@ -300,13 +300,18 @@ class InterfaceBDD {
 
     public function AddPossede($possede) {
         try {
+            $id_partie = $possede->getId_partie();
+            $id_utilisateur = $possede->getId_utilisateur();
+            $score = $possede->getScore();
+            $temps =  $possede->getTemps();
+            
             $request = 'insert into Possede(id_partie, id_utilisateur, score, temps)
             values(:id_partie, :id_utilisateur, :score, :temps)';
             $statement = $this->getBdd()->prepare($request);
-            $statement->bindParam(':id_partie', $possede->getId_partie(), PDO::PARAM_INT);
-            $statement->bindParam(':id_utilisateur', $possede->getId_utilisateur, PDO::PARAM_INT);
-            $statement->bindParam(':score', $possede->getScore(), PDO::PARAM_INT);
-            $statement->bindParam(':temps', $possede->getTemps(), PDO::PARAM_INT);
+            $statement->bindParam(':id_partie',$id_partie, PDO::PARAM_INT);
+            $statement->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
+            $statement->bindParam(':score', $score, PDO::PARAM_INT);
+            $statement->bindParam(':temps', $temps, PDO::PARAM_INT);
             $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
@@ -495,7 +500,7 @@ class InterfaceBDD {
         }
         return $result;
     }
-
+    
     public function GetScores($id_utilisateur) {
         try {
             $request = 'select Possede.id_partie, Partie.nom_partie, Possede.score, Possede.temps from Possede, Partie where Possede.id_utilisateur=:id_utilisateur && Possede.id_partie=Partie.id_partie';
@@ -536,7 +541,7 @@ class InterfaceBDD {
                     'select Partie.id_partie, Partie.nom_partie, Question.id_theme from' .
                     ' comprend, Partie, Question ' .
                     'where comprend.id_partie=Partie.id_partie &&' .
-                    ' comprend.id_question=Question.id_question group by id_theme) ' .
+                    ' comprend.id_question=Question.id_question) ' .
                     'as T,Theme where T.id_theme=Theme.id_theme';
             $statement = $this->getBdd()->prepare($request);
             $statement->execute();

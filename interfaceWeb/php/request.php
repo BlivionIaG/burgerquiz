@@ -47,6 +47,7 @@ if ($requestRessource === 'startGame' && $requestMethod === 'POST') {
             );
         }
 
+        $_SESSION['id_partie'] = $id;
         $_SESSION['quiz'] = $quiz;
         $_SESSION['cursor'] = 0;
         $_SESSION['gameScore'] = [];
@@ -122,6 +123,13 @@ if ($requestRessource === 'startGame' && $requestMethod === 'POST') {
             'score' => $totalScore,
             'time' => $totalTime
         );
+        
+        $possede = new Possede();
+        $possede->create($_SESSION['id_partie'], $_SESSION['id_utilisateur'], $totalScore, $totalTime);
+        
+        if(!$db->AddPossede($possede)){
+            error_log('Erreur : Impossible d\'ajouter le score !');
+        }
 
         sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
     }

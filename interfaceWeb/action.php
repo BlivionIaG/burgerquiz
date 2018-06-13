@@ -42,6 +42,7 @@ if (isset($action)) {
                 session_start();
                 $_SESSION['isConnected'] = true;
                 $_SESSION['login'] = $mail;
+                $_SESSION['id_utilisateur'] = $db->FindUser($mail);
 
                 header('Location: menu.php');
             }
@@ -57,6 +58,7 @@ if (isset($action)) {
             session_start();
             $_SESSION['isConnected'] = true;
             $_SESSION['login'] = $mail;
+            $_SESSION['id_utilisateur'] = $db->FindUser($mail);
 
             $user = $db->RequestUser($id);
             $_SESSION['user'] = $user[0];
