@@ -54,7 +54,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="menu">
      <widget class="QPushButton" name="pushButton_4">
@@ -263,71 +263,6 @@ QGroupBox::title {
        <property name="sortingEnabled">
         <bool>true</bool>
        </property>
-       <item>
-        <property name="text">
-         <string>1. keskydi : 44100</string>
-        </property>
-        <property name="textAlignment">
-         <set>AlignLeading|AlignVCenter</set>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>10. ...</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2. tomy2e: 40999</string>
-        </property>
-        <property name="textAlignment">
-         <set>AlignLeading|AlignVCenter</set>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>3. BlivionIaG : 29800</string>
-        </property>
-        <property name="textAlignment">
-         <set>AlignLeading|AlignVCenter</set>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>4. HerrCrazi : 29160</string>
-        </property>
-        <property name="textAlignment">
-         <set>AlignLeading|AlignVCenter</set>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>5. Yesso44 :  265</string>
-        </property>
-        <property name="textAlignment">
-         <set>AlignLeading|AlignVCenter</set>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>6. ...</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>7. ...</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>8. ...</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>9. ...</string>
-        </property>
-       </item>
       </widget>
      </widget>
      <widget class="QPushButton" name="pushButton_17">
@@ -355,68 +290,8 @@ QGroupBox::title {
        </rect>
       </property>
       <property name="currentRow">
-       <number>0</number>
+       <number>-1</number>
       </property>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
      </widget>
      <widget class="QPushButton" name="pushButton_8">
       <property name="geometry">
@@ -440,31 +315,6 @@ QGroupBox::title {
         <height>27</height>
        </rect>
       </property>
-      <item>
-       <property name="text">
-        <string>default</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
      </widget>
      <widget class="QPushButton" name="pushButton_16">
       <property name="geometry">
@@ -632,46 +482,6 @@ QGroupBox::title {
       <property name="editable">
        <bool>false</bool>
       </property>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
      </widget>
      <widget class="QPushButton" name="pushButton_12">
       <property name="geometry">
@@ -733,41 +543,6 @@ QGroupBox::title {
          <height>111</height>
         </rect>
        </property>
-       <item>
-        <property name="text">
-         <string>Nouvel élément</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Nouvel élément</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Nouvel élément</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Nouvel élément</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Nouvel élément</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Nouvel élément</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Nouvel élément</string>
-        </property>
-       </item>
       </widget>
      </widget>
     </widget>
@@ -876,106 +651,6 @@ QGroupBox::title {
         <height>191</height>
        </rect>
       </property>
-      <item>
-       <property name="text">
-        <string>peut-il voler ?                      reponse</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>listwidget</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nouvel élément</string>
-       </property>
-      </item>
      </widget>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
@@ -993,7 +668,7 @@ font-size: 50%;
 background-color: white;</string>
       </property>
       <property name="text">
-       <string>bernard tapie, tapis ou les deux ? label 5</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_11">
@@ -1038,7 +713,7 @@ font-size: 50%;
 background-color: white;</string>
       </property>
       <property name="text">
-       <string>THEME : ISEN label 7</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_18">
@@ -1089,7 +764,7 @@ font-size: 50%;
 background-color: white;</string>
       </property>
       <property name="text">
-       <string>reponse label 8</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="label_3">
@@ -1125,6 +800,25 @@ background-color: white;</string>
       </property>
       <property name="text">
        <string>Retour</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_21">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>185</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100000</width>
+        <height>100000</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Ajouter élément</string>
       </property>
      </widget>
     </widget>

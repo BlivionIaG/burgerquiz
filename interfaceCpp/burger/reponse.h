@@ -21,6 +21,8 @@ public:
     Reponse();
     Reponse(int id,int value,std::string propos,Question question):id(id),valeur(value),proposition(propos),question(question){}
     static QVector<Reponse*> getReponses(int id);
+    bool addReponse(int rep,std::string proposition,int idq);
+    Reponse getlastinput();
     int getId(){return id;}
     int getValeur(){return valeur;}
     std::string getProposition(){return proposition;}

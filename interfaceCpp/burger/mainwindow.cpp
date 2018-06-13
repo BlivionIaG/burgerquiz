@@ -321,7 +321,7 @@ void MainWindow::on_pushButton_14_clicked()
     //list widget 5
     if(ui->listWidget_5->currentRow() >= 0){
     Score score = ui->listWidget_5->currentItem()->data(1).value<Score>();
-    qDebug() << "test 45";
+    //qDebug() << "test 45";
     QMessageBox msgBox;
 
     msgBox.setText("score joueur: "
@@ -342,6 +342,9 @@ void MainWindow::on_pushButton_15_clicked()
 
 void MainWindow::on_pushButton_6_clicked()
 {
+    if(ui->listtheme->currentRow() >= 0){
+
+
     QDialog dialog(this);
         // Use a layout allowing to have a label next to each field
         QFormLayout form(&dialog);
@@ -358,8 +361,8 @@ void MainWindow::on_pushButton_6_clicked()
 
          //   fields << lineEdit;
 
-        QRadioButton *radio = new QRadioButton(&dialog);
-        form.addRow("activation",radio);
+        //QRadioButton *radio = new QRadioButton(&dialog);
+        //form.addRow("activation",radio);
         // Add some standard buttons (Cancel/Ok) at the bottom of the dialog
         QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
                                    Qt::Horizontal, &dialog);
@@ -369,11 +372,59 @@ void MainWindow::on_pushButton_6_clicked()
 
         // Show the dialog as modal
         if (dialog.exec() == QDialog::Accepted) {
+
+            Theme newtheme;
+            if(!lineEdit->text().isEmpty()){
+
+                if(newtheme.updateThemes(ui->listtheme->currentItem()->data(1).value<Theme>().getId(),lineEdit->text().toStdString())){
+
+                    QMessageBox msgBox;
+
+                    msgBox.setText("Nom modifier");
+                    ui->lineEdit->clear();
+
+                    msgBox.exec();
+
+                    QVector<Theme*>themes = Theme::getThemes();
+                    int i;
+
+                    if(!themes.isEmpty()){
+                        ui->listtheme->clear();
+
+                        //ui->list->insertItem(list->size(),newitem);
+                        for(i=0;i<themes.size();i++){
+
+                            QListWidgetItem * newitem = new QListWidgetItem();
+                            newitem->setText(QString::fromStdString(themes[i]->getName()));
+                            QVariant data;
+
+                            data.setValue(Theme(themes[i]->getName(),themes[i]->getId()));
+                            newitem->setData(1,data);
+                            ui->listtheme->addItem(newitem);
+                            //***********************************
+                        }
+                        //ui->listtheme->setCurrentRow(0);
+                    }}
+
+                    else{
+
+
+                    QMessageBox msgBox;
+
+                    msgBox.setText("Une erreur est surevenu");
+
+                    msgBox.exec();
+
+                }
+
+                }
+
             // If the user didn't dismiss the dialog, do something with the fields
             //foreach(QLineEdit * lineEdit, fields) {
                 //qDebug() << lineEdit->text();
             //}
         }
+    }
 }
 /*QDialog dialog(this);
     // Use a layout allowing to have a label next to each field
@@ -689,4 +740,181 @@ void MainWindow::on_listWidget_currentRowChanged(int currentRow)
     }
 
     //ui->label_8->setText(QString::fromStdString(ui->listWidget->currentItem()->data(1).value<Reponse>().getQuestion());
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+//modifier ca si ya le temps!!!!!!!!!!!!!!!!
+    Theme newtheme;
+    if(!ui->lineEdit->text().isEmpty()){
+
+        if(newtheme.insertThemes(ui->lineEdit->text().toStdString())){
+
+            QMessageBox msgBox;
+
+            msgBox.setText("Theme ajouté");
+            ui->lineEdit->clear();
+
+            msgBox.exec();
+
+            QVector<Theme*>themes = Theme::getThemes();
+            int i;
+
+            if(!themes.isEmpty()){
+                ui->listtheme->clear();
+
+                //ui->list->insertItem(list->size(),newitem);
+                for(i=0;i<themes.size();i++){
+
+                    QListWidgetItem * newitem = new QListWidgetItem();
+                    newitem->setText(QString::fromStdString(themes[i]->getName()));
+                    QVariant data;
+
+                    data.setValue(Theme(themes[i]->getName(),themes[i]->getId()));
+                    newitem->setData(1,data);
+                    ui->listtheme->addItem(newitem);
+                    //***********************************
+                }
+                //ui->listtheme->setCurrentRow(0);
+            }}
+
+            else{
+
+
+            QMessageBox msgBox;
+
+            msgBox.setText("Une erreur est surevenu");
+
+            msgBox.exec();
+
+        }
+
+        }
+
+    //list widget 5
+
+
+}
+
+void MainWindow::on_pushButton_16_clicked()
+{
+
+    QDialog dialog(this);
+        // Use a layout allowing to have a label next to each field
+        QFormLayout form(&dialog);
+
+        // Add some text above the fields
+        form.addRow(new QLabel("The question ?"));
+
+        // Add the lineEdits with their respective labels
+        //QList<QLineEdit *> fields;
+        //for(int i = 0; i < 2; ++i) {
+            QLineEdit *lineEdit = new QLineEdit(&dialog);
+            QString label = QString("Choix 1");
+            lineEdit->setMaxLength(128);
+            form.addRow(label, lineEdit);
+            QLineEdit *lineEdit2 = new QLineEdit(&dialog);
+            QString label2 = QString("Choix 2");
+            lineEdit2->setMaxLength(128);
+            form.addRow(label2, lineEdit2);
+
+            //fields << lineEdit;
+        //}
+
+        // Add some standard buttons (Cancel/Ok) at the bottom of the dialog
+        QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
+                                   Qt::Horizontal, &dialog);
+        form.addRow(&buttonBox);
+        QObject::connect(&buttonBox, SIGNAL(accepted()), &dialog, SLOT(accept()));
+        QObject::connect(&buttonBox, SIGNAL(rejected()), &dialog, SLOT(reject()));
+
+        // Show the dialog as modal
+        if (dialog.exec() == QDialog::Accepted) {
+
+            Question newquestion;
+            if(newquestion.addQuestion(ui->comboBox->currentData(Qt::UserRole).value<Theme>().getId(),
+                                       lineEdit->text().toStdString(),
+                                       lineEdit2->text().toStdString()) && !lineEdit->text().isEmpty() && !lineEdit2->text().isEmpty()){
+                newquestion = newquestion.getlastinput();
+                 QListWidgetItem * newitem = new QListWidgetItem();
+                 newitem->setText(QString::fromStdString(newquestion.getC1()) + ", " + QString::fromStdString(newquestion.getC2()) + " ou les deux");
+                 QVariant data;
+
+                 data.setValue(newquestion);
+                 newitem->setData(1,data);
+                 //Question(   idq idt c1 c2)
+
+                 //ui->comboBox->addItem(QString::fromStdString(res->getString("nom_theme")),data);
+                 ui->listWidget_4->addItem(newitem);
+            }
+            // If the user didn't dismiss the dialog, do something with the fields
+            //foreach(QLineEdit * lineEdit, fields) {
+                //qDebug() << lineEdit->text();
+            //}
+        }
+
+}
+
+void MainWindow::on_pushButton_21_clicked()
+{
+    QDialog dialog(this);
+    Question question = ui->listWidget_4->currentItem()->data(1).value<Question>();
+        // Use a layout allowing to have a label next to each field
+    this->setMinimumWidth(400);
+        QFormLayout form(&dialog);
+
+        // Add some text above the fields
+        form.addRow(new QLabel("The question ?"));
+
+        // Add the lineEdits with their respective labels
+        //QList<QLineEdit *> fields;
+        //for(int i = 0; i < 2; ++i) {
+            QLineEdit *lineEdit = new QLineEdit(&dialog);
+            QString label = QString("Proposition");
+            lineEdit->setMaxLength(128);
+            form.addRow(label, lineEdit);
+            //QLineEdit *lineEdit2 = new QLineEdit(&dialog);
+            QComboBox *box = new QComboBox(&dialog);
+            box->addItem(QString::fromStdString(question.getC1()),1);
+            box->addItem(QString::fromStdString(question.getC2()),2);
+            box->addItem(QString::fromStdString("Les deux"),0);
+            QString label2 = QString("Reponse");
+            //lineEdit2->setMaxLength(128);
+            form.addRow(label2, box);
+
+            //fields << lineEdit;
+        //}
+
+        // Add some standard buttons (Cancel/Ok) at the bottom of the dialog
+        QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
+                                   Qt::Horizontal, &dialog);
+        form.addRow(&buttonBox);
+        QObject::connect(&buttonBox, SIGNAL(accepted()), &dialog, SLOT(accept()));
+        QObject::connect(&buttonBox, SIGNAL(rejected()), &dialog, SLOT(reject()));
+
+        // Show the dialog as modal
+        if (dialog.exec() == QDialog::Accepted) {
+            Reponse reponse;
+            if(!lineEdit->text().isEmpty() && reponse.addReponse(box->currentData().value<int>(),
+                                                                 lineEdit->text().toStdString(),
+                                                                 question.getIdQuestion())){
+
+                reponse = reponse.getlastinput();
+                 QListWidgetItem * newitem = new QListWidgetItem();
+                 newitem->setText(QString::fromStdString(reponse.getProposition()));
+                 QVariant data;
+
+                 data.setValue(reponse);
+                 newitem->setData(1,data);
+                 //Question(   idq idt c1 c2)
+
+                 //ui->comboBox->addItem(QString::fromStdString(res->getString("nom_theme")),data);
+                 ui->listWidget->addItem(newitem);
+
+            }
+            // If the user didn't dismiss the dialog, do something with the fields
+            //foreach(QLineEdit * lineEdit, fields) {
+                //qDebug() << lineEdit->text();
+            //}
+        }
 }

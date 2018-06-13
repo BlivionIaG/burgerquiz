@@ -16,6 +16,8 @@ public:
     Question();
     Question(int idQ,std::string C1,std::string C2,Theme thema):id_question(idQ),choix_1(C1),choix_2(C2),theme(thema){};
     static QVector<Question*> getQuestions(int id);
+    bool addQuestion(int id,std::string c1,std::string c2);
+    Question getlastinput();
     int getIdQuestion(){return id_question;}
     Theme getTheme(){return theme;}
     std::string getC1(){return choix_1;}
