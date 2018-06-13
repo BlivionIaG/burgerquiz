@@ -1,13 +1,19 @@
 'use strict';
-
 $(() => {
     $('#startGame').off('click').click((event) => {
         event.preventDefault();
         var partie = $('#id_partie').val();
-
         ajaxRequest('POST', 'php/request.php/startGame/', startGame, 'id=' + partie);
     });
 });
+
+function isset(variable) {
+    if (typeof (variable) === 'undefined' || typeof (variable) === null) {
+        return false;
+    }
+
+    return true;
+}
 
 function startGame(ajaxResponse) {
     showQuestion(JSON.parse(ajaxResponse));
@@ -15,10 +21,10 @@ function startGame(ajaxResponse) {
 
 function continueGame(ajaxResponse) {
     var response = JSON.parse(ajaxResponse);
-    if (response['proposition'] !== null && response['choix_un'] !== null && response['choix_deux'] !== null && response['progress'] !== null) {
-        showQuestion(response);
-    } else if (response['score'] !== null && response['time'] !== null) {
+    if (isset(response['score']) && isset(response['time'])) {
         endGame(response);
+    } else if (isset(response['proposition']) && isset(response['choix_un']) && isset(response['choix_deux']) && isset(response['progress'])) {
+        showQuestion(response);
     }
 }
 
@@ -81,10 +87,8 @@ function nextAnswer() {
 
 function answerResult(ajaxResponse) {
     var result = JSON.parse(ajaxResponse);
-
     var reponse = document.createElement('button');
     reponse.class = 'bq-reponse';
-
     switch (result['value']) {
         case '0':
             $('#bq-choix_un').remove();
@@ -110,7 +114,6 @@ function answerResult(ajaxResponse) {
     }
 
     $('#bq-reponses').append(reponse);
-
     $('#' + reponse.id).off('click').click(nextAnswer);
 }
 
@@ -134,11 +137,12 @@ function endGame($results) {
 
     var circle = document.createElement('div');
     circle.class = 'bq-circle';
+    circle.id = 'bq-the-score';
     $('#bq-mybestscore').append(circle);
 
     var scorevalue = document.createElement('span');
     scorevalue.innerHTML = $results['score'];
-    $('#bq-mybestscore .bq-circle').append(scorevalue);
+    $('#bq-the-score').append(scorevalue);
 
     var timevalue = document.createElement('span');
     timevalue.innerHTML = 'En ' + $results['time'] + 's';

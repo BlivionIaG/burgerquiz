@@ -33,7 +33,7 @@ class comprend {
     }
 
     public function getId_partie() {
-        return $this->id_question;
+        return $this->id_partie;
     }
 
     public function setId_question($_id_question) {

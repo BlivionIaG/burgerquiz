@@ -208,11 +208,13 @@ class InterfaceBDD {
             error_log('Partie name already taken !');
             return false;
         }
+        
+        $nom_partie = $partie->getNom_partie();
 
         try {
             $request = 'insert into Partie(nom_partie) values(:nom_partie)';
             $statement = $this->getBdd()->prepare($request);
-            $statement->bindParam(':nom_partie', $partie->getNom_partie(), PDO::PARAM_STR, 256);
+            $statement->bindParam(':nom_partie', $nom_partie, PDO::PARAM_STR, 256);
             $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
@@ -224,9 +226,11 @@ class InterfaceBDD {
 
     public function CheckPartie($partie) {
         try {
+            $id = $partie->getId_partie();
+            
             $request = 'select * from Partie where id_partie=:id';
             $statement = $this->getBdd()->prepare($request);
-            $statement->bindParam(':id', $partie->getId_partie(), PDO::PARAM_INT);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Partie');
         } catch (PDOException $exception) {
@@ -239,9 +243,11 @@ class InterfaceBDD {
 
     public function FindPartieId($partie) {
         try {
+            $nom_partie = $partie->getNom_partie();
+            
             $request = 'select * from Partie where nom_partie=:nom';
             $statement = $this->getBdd()->prepare($request);
-            $statement->bindParam(':nom', $partie->getNom_partie(), PDO::PARAM_STR);
+            $statement->bindParam(':nom', $nom_partie, PDO::PARAM_STR);
             $statement->execute();
             $result = $statement->fetchAll();
         } catch (PDOException $exception) {
@@ -381,10 +387,13 @@ class InterfaceBDD {
 
     public function LinkQuestionToPartie($comprend) {
         try {
+            $id_question = $comprend->getId_question();
+            $id_partie = $comprend->getId_partie();
+            
             $request = 'insert into comprend(id_question, id_partie) values(:id_question, :id_partie)';
             $statement = $this->getBdd()->prepare($request);
-            $statement->bindParam(':id_question', $comprend->getId_question(), PDO::PARAM_INT);
-            $statement->bindParam(':id_partie', $comprend->getId_partie(), PDO::PARAM_INT);
+            $statement->bindParam(':id_question', $id_question, PDO::PARAM_INT);
+            $statement->bindParam(':id_partie', $id_partie, PDO::PARAM_INT);
             $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
@@ -556,5 +565,4 @@ class InterfaceBDD {
         
         return $result;
     }
-
 }
