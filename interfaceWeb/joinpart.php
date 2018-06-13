@@ -51,12 +51,12 @@ if (isset($_SESSION)) {
                         echo '<tr>';
                         echo '<td>' . $partie['nom_partie'] . '</td>';
                         echo '<td>' . $partie['nom_theme'] . '</td>';
-                        echo '<td><input name="id_partie" value="' . $partie['id_partie'] . '" type="radio"></td>';
+                        echo '<td><input type="submit" value="❯"></td>';
+                        echo '<input type="hidden" name="id_partie" value="' . $partie['id_partie'] . '">';
                         echo '</tr>';
                     }
                     ?>
                 </table>
-                <input class="bq-button" type="submit" value="Jouer">
             </form>
             <button id="bq-fixed-retour" onclick="location.href = 'parties.php';"> Retour </button>
         </div>
@@ -66,6 +66,5 @@ if (isset($_SESSION)) {
         <script src="vendor/jquery/jquery.slim.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>   
         <script src="js/searchbar.js"></script>
-
     </body>
 </html>

@@ -469,5 +469,11 @@ footer.sticky-footer {
 }
 
 #bq-les_deux {
-    background-color: #ff6624;
+    background-color: #ff6624;   
+}
+
+#bq-searchtab td > input {
+    border: none;
+    background-color: inherit;
+    color: #355723;
 }
