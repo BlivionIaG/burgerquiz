@@ -123,7 +123,9 @@ function answerResult(ajaxResponse) {
 }
 
 function endGame($results) {
-    $('.bq-game').empty();
+    $('#bq-proposition').remove();
+    $('#bq-reponses').remove();
+    $('#bq-progress-bar').empty();
 
     var titre = document.createElement('h1');
     titre.id = 'bq-info-page';
@@ -133,12 +135,13 @@ function endGame($results) {
 
     var subtitre = document.createElement('h2');
     subtitre.class = 'bq-sub-info';
+    subtitre.id = 'bq-sub-info-finalscore';
     subtitre.innerHTML = 'Ton score :';
-    $('.bq-game').append(subtitre);
+    $('#bq-play').append(subtitre);
 
     var score = document.createElement('div');
     score.id = 'bq-mybestscore';
-    $('.bq-game').append(score);
+    $('#bq-play').append(score);
 
     var circle = document.createElement('div');
     circle.class = 'bq-circle';
@@ -152,4 +155,23 @@ function endGame($results) {
     var timevalue = document.createElement('span');
     timevalue.innerHTML = 'En ' + $results['time'] + 's';
     $('#bq-mybestscore').append(timevalue);
+
+    var bretour = document.createElement('button');
+    bretour.id = 'bq-retour';
+    bretour.innerHTML = 'Retour';
+    $('#bq-play').append(bretour);
+
+    var bmesscores = document.createElement('a');
+    bmesscores.href = 'mesScores.php';
+    bmesscores.id = 'bq-mesScoresLink';
+    bmesscores.innerHTML = 'Mes Scores';
+    $('#bq-play').append(bmesscores);
+
+    var progress_bar = document.createElement('div');
+    progress_bar.style = 'background-color: #dba636;height: 25px; width:100%';
+    $('#bq-progress-bar').append(progress_bar);
+
+    $('#bq-retour').on('click', () => {
+        window.location.href = "parties.php";
+    });
 }

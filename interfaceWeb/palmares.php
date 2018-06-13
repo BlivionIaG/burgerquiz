@@ -11,7 +11,8 @@ if (isset($_SESSION)) {
     }
 
     if (isset($_SESSION['user'])) {
-        $user = $_SESSION['user'];
+        $user = new Utilisateur();
+        $user->fromArray($_SESSION['user']);
     }
 
     $db = new InterfaceBDD();

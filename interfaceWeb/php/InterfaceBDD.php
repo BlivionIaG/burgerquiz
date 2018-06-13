@@ -21,12 +21,11 @@ require_once('Reponse.php');
 require_once('comprend.php');
 require_once('Score.php');
 
-/** 
-* @class InterfaceBDD
-*
-* @brief Classe de gestion de la base de données
-*/
-
+/**
+ * @class InterfaceBDD
+ *
+ * @brief Classe de gestion de la base de données
+ */
 class InterfaceBDD {
 
     private $bdd;
@@ -305,24 +304,68 @@ class InterfaceBDD {
     }
 
     public function AddPossede($possede) {
+        $id_partie = $possede->getId_partie();
+        $id_utilisateur = $possede->getId_utilisateur();
+        $score = $possede->getScore();
+        $temps = $possede->getTemps();
+
+        $match = $this->CheckPossede($id_partie, $id_utilisateur);
+        if (!$match) {
+            try {
+                $request = 'insert into Possede(id_partie, id_utilisateur, score, temps)
+            values(:id_partie, :id_utilisateur, :score, :temps)';
+                $statement = $this->getBdd()->prepare($request);
+                $statement->bindParam(':id_partie', $id_partie, PDO::PARAM_INT);
+                $statement->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
+                $statement->bindParam(':score', strval($score), PDO::PARAM_STR);
+                $statement->bindParam(':temps', strval($temps), PDO::PARAM_STR);
+                $result = $statement->execute();
+            } catch (PDOException $exception) {
+                error_log('Connection error: ' . $exception->getMessage());
+                return false;
+            }
+
+            return $result;
+        } else {
+            return $this->UpdatePossede($possede);
+        }
+    }
+
+    public function UpdatePossede($possede) {
         try {
             $id_partie = $possede->getId_partie();
             $id_utilisateur = $possede->getId_utilisateur();
             $score = $possede->getScore();
             $temps = $possede->getTemps();
 
-            $request = 'insert into Possede(id_partie, id_utilisateur, score, temps)
-            values(:id_partie, :id_utilisateur, :score, :temps)';
+            $request = 'update Possede set id_partie=:id_partie, id_utilisateur=:id_utilisateur, score=:score, temps=:temps where id_utilisateur=:id_utilisateur && id_partie=:id_partie';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id_partie', $id_partie, PDO::PARAM_INT);
             $statement->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
-            $statement->bindParam(':score', $score, PDO::PARAM_INT);
-            $statement->bindParam(':temps', $temps, PDO::PARAM_INT);
+            $statement->bindParam(':score', strval($score), PDO::PARAM_STR);
+            $statement->bindParam(':temps', strval($temps), PDO::PARAM_STR);
             $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
+
+        return $result;
+    }
+
+    public function CheckPossede($id_partie, $id_utilisateur) {
+        try {
+            $request = 'select * from Possede where id_utilisateur=:id_utilisateur && id_partie=:id_partie';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
+            $statement->bindParam(':id_partie', $id_partie, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Possede');
+        } catch (PDOException $exception) {
+            error_log('Connection error: ' . $exception->getMessage());
+            return false;
+        }
+
         return $result;
     }
 
@@ -494,7 +537,7 @@ class InterfaceBDD {
             $request = 'select Utilisateur.prenom, Utilisateur.nom, Partie.nom_partie, Possede.score, Possede.temps'
                     . ' from Possede,Utilisateur,Partie'
                     . ' where Possede.id_utilisateur=Utilisateur.id_utilisateur && Possede.id_partie=Partie.id_partie'
-                    . ' order by Possede.score desc'
+                    . ' order by Possede.score desc, Utilisateur.prenom, Utilisateur.nom'
                     . ' limit :nb';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':nb', $nb, PDO::PARAM_INT);

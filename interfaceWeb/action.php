@@ -71,6 +71,9 @@ if (isset($action)) {
                 $_SESSION['login'] = $mail;
                 $_SESSION['id_utilisateur'] = $db->FindUser($mail);
 
+                $user = $db->RequestUser($db->FindUser($mail));
+                $_SESSION['user'] = $user[0]->toArray();
+
                 redirect('menu.php', 'Inscription réussie !', '', 'ok');
             }
         }
@@ -88,7 +91,7 @@ if (isset($action)) {
             $_SESSION['id_utilisateur'] = $db->FindUser($mail);
 
             $user = $db->RequestUser($id);
-            $_SESSION['user'] = $user[0];
+            $_SESSION['user'] = $user[0]->toArray();
 
             redirect('menu.php', 'Connexion réussie !', '', 'ok');
         } else {
@@ -121,7 +124,8 @@ if (isset($action)) {
             redirect('monCompte.php', 'Un ou plusieurs mot de passe manquants', 'Avez vous rentré une deuxième fois le mot de passe pour le confirmer ?', 'error');
         }
 
-        $user = $_SESSION['user'];
+        $user = new Utilisateur();
+        $user->fromArray($_SESSION['user']);
 
         if (isset($mail)) {
             $user->setMail($mail);
@@ -161,7 +165,7 @@ if (isset($action)) {
 
         //choix questions
         $questions = $db->RequestNRandomQuestionsByTheme($id_theme, 3);
-        if (sizeof($questions) < 3) {
+        if (sizeof($questions) != 3) {
             error_log('Erreur : Pas assez de question pour ce thème');
             redirect('makepart.php', 'Pas assez de question pour ce thème', 'Veuillez changer de thème', 'error');
         }

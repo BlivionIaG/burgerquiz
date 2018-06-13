@@ -130,10 +130,6 @@ if ($requestRessource === 'startGame' && $requestMethod === 'POST') {
 
         if (!$db->AddPossede($possede)) {
             error_log('Erreur : Impossible d\'ajouter le score !');
-            error_log($possede->getId_partie());
-            error_log($possede->getId_utilisateur());
-            error_log($possede->getScore());
-            error_log($possede->getTemps());
         }
 
         sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
