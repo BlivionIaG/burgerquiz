@@ -541,7 +541,7 @@ class InterfaceBDD {
                     'select Partie.id_partie, Partie.nom_partie, Question.id_theme from' .
                     ' comprend, Partie, Question ' .
                     'where comprend.id_partie=Partie.id_partie &&' .
-                    ' comprend.id_question=Question.id_question) ' .
+                    ' comprend.id_question=Question.id_question group by Partie.id_partie) ' .
                     'as T,Theme where T.id_theme=Theme.id_theme';
             $statement = $this->getBdd()->prepare($request);
             $statement->execute();
