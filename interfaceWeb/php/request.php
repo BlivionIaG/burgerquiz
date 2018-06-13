@@ -10,6 +10,14 @@ function sendJsonData($message, $h) {
     echo json_encode($message);
 }
 
+function cscore($val){
+    if($val < 0){
+        return 0;
+    }
+    
+    return $val;
+}
+
 $db = new InterfaceBDD();
 
 if (!$db->getBdd()) {
@@ -99,15 +107,22 @@ if ($requestRessource === 'startGame' && $requestMethod === 'POST') {
         $totalScore = 0;
         foreach ($_SESSION['gameScore'] as $score) {
             $dt = ($score[2] - $score[1]);
-            $totalScore += $score[3] * (60 / $dt);
+
+            if ($dt === 0) {
+                $t = 1;
+            } else {
+                $t = $dt;
+            }
+
+            $totalScore += 100 * $score[3] * cscore(10 - $t);
             $totalTime += $dt;
         }
-        
+
         $output = array(
             'score' => $totalScore,
             'time' => $totalTime
         );
-        
+
         sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
     }
 } else {
