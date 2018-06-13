@@ -27,14 +27,15 @@ if (isset($_SESSION)) {
         <!-- Custom styles for this template-->
         <link href="vendor/fonts.googleapis/bubblegum-sans.css" rel="stylesheet">
         <link href="css/general.css" rel="stylesheet" type="text/css">
+
+        <link href="css/notify.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <?php require_once("includes/nav.template.php"); ?>
         <div class="container-fluid base-main-content">
             <h1 align="center" id="bq-info-page"> Rejoindre Partie </h1>   
             <input class="form-control mr-sm-2" id="bq-searchbar" type="text" placeholder="Search..." aria-label="Search">
-            <form action="action.php" method="GET" id="bq-join" >
-                <input type="hidden" name="action" value="join"> 
+            <div id="bq-join">
                 <table id="bq-searchtab" class="bq-table">
                     <tr>
                         <th> Partie </th>
@@ -48,16 +49,17 @@ if (isset($_SESSION)) {
                     $parties = $db->RequestAllPartiesWithTheme();
 
                     foreach ($parties as $partie) {
+                        echo '<form action="action.php" method="GET">';
+                        echo '<input type="hidden" name="action" value="join">';
                         echo '<tr>';
                         echo '<td>' . $partie['nom_partie'] . '</td>';
                         echo '<td>' . $partie['nom_theme'] . '</td>';
-                        echo '<td><input type="submit" value="❯"></td>';
-                        echo '<input type="hidden" name="id_partie" value="' . $partie['id_partie'] . '">';
+                        echo '<td><input type="hidden" name="partie" value="' . $partie['id_partie'] . '"><input type="submit" value="❯"></td>';
                         echo '</tr>';
+                        echo '</form>';
                     }
                     ?>
-                </table>
-            </form>
+            </div>
             <button id="bq-fixed-retour" onclick="location.href = 'parties.php';"> Retour </button>
         </div>
         <?php require_once("includes/footer.template.php"); ?>
@@ -66,5 +68,31 @@ if (isset($_SESSION)) {
         <script src="vendor/jquery/jquery.slim.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>   
         <script src="js/searchbar.js"></script>
+        <script src="js/notify.js"></script>
+
+        <?php
+        $notifyTitle = filter_input(INPUT_GET, 'notifyTitle', FILTER_SANITIZE_STRING);
+        $notifyContent = filter_input(INPUT_GET, 'notifyContent', FILTER_SANITIZE_STRING);
+        $notifyType = filter_input(INPUT_GET, 'notifyType', FILTER_SANITIZE_STRING);
+        $notifyTime = filter_input(INPUT_GET, 'notifyTime', FILTER_SANITIZE_NUMBER_INT);
+
+        if (isset($notifyContent)) {
+            $notifyContent = urldecode($notifyContent);
+        } else {
+            $notifyContent = '';
+        }
+
+        if (!isset($notifyType)) {
+            $notifyType = 'info';
+        }
+
+        if (!isset($notifyTime)) {
+            $notifyTime = 10000;
+        }
+
+        if (isset($notifyTitle)) {
+            echo '<script> new NotifyNotification("' . urldecode($notifyTitle) . '","' . $notifyContent . '","' . $notifyType . '");</script>';
+        }
+        ?>
     </body>
 </html>

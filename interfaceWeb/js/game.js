@@ -2,7 +2,8 @@
 $(() => {
     $('#startGame').off('click').click((event) => {
         event.preventDefault();
-        var partie = $('#id_partie').val();
+        var partie = $('#bq-id_partie').val();
+        console.log(partie);
         ajaxRequest('POST', 'php/request.php/startGame/', startGame, 'id=' + partie);
     });
 });
@@ -16,6 +17,7 @@ function isset(variable) {
 }
 
 function startGame(ajaxResponse) {
+    $('#startGame').remove();
     showQuestion(JSON.parse(ajaxResponse));
 }
 
@@ -42,18 +44,21 @@ function showQuestion(question) {
     var choix_un = document.createElement('button');
     choix_un.id = 'bq-choix_un';
     choix_un.innerHTML = question['choix_un'];
+    $('#bq-choix_un').prop('id', '');
     $('#bq-reponses').append(choix_un);
     $('#bq-choix_un').off('click').click(answerChoix_un);
 
     var les_deux = document.createElement('button');
     les_deux.id = 'bq-les_deux';
     les_deux.innerHTML = 'Les deux';
+    $('#bq-les_deux').prop('id', '');
     $('#bq-reponses').append(les_deux);
     $('#bq-les_deux').off('click').click(answerLes_deux);
 
     var choix_deux = document.createElement('button');
     choix_deux.id = 'bq-choix_deux';
     choix_deux.innerHTML = question['choix_deux'];
+    $('#bq-choix_deux').prop('id', '');
     $('#bq-reponses').append(choix_deux);
     $('#bq-choix_deux').off('click').click(answerChoix_deux);
 

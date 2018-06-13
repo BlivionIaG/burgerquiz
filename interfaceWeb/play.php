@@ -9,7 +9,7 @@ if (isset($_SESSION)) {
 }
 
 $id_partie = filter_input(INPUT_GET, 'partie', FILTER_SANITIZE_NUMBER_INT);
-if (!isset($id_partie) && $id_partie < 0) {
+if (!isset($id_partie) && $id_partie <= 0) {
     header('Location: parties.php');
 }
 ?>
@@ -32,11 +32,12 @@ if (!isset($id_partie) && $id_partie < 0) {
         <!-- Custom styles for this template-->
         <link href="vendor/fonts.googleapis/bubblegum-sans.css" rel="stylesheet">
         <link href="css/general.css" rel="stylesheet" type="text/css">
+        <link href="css/notify.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <?php require_once("includes/nav.template.php"); ?>
-        <input type="hidden" id="id_partie" value=<?php echo '"'.$id_partie.'"'?>>
-        
+        <input type="hidden" id="bq-id_partie" value=<?php echo '"' . $id_partie . '"' ?>>
+
         <div class="container-fluid base-main-content bq-game">
             <button id="startGame">Commencer</button>
             <div id="bq-proposition">
@@ -54,5 +55,31 @@ if (!isset($id_partie) && $id_partie < 0) {
         <script src="vendor/jquery/jquery.slim.min.js"></script>
         <script src="js/ajax.js"></script>
         <script src="js/game.js"></script>
+        <script src="js/notify.js"></script>
+
+        <?php
+        $notifyTitle = filter_input(INPUT_GET, 'notifyTitle', FILTER_SANITIZE_STRING);
+        $notifyContent = filter_input(INPUT_GET, 'notifyContent', FILTER_SANITIZE_STRING);
+        $notifyType = filter_input(INPUT_GET, 'notifyType', FILTER_SANITIZE_STRING);
+        $notifyTime = filter_input(INPUT_GET, 'notifyTime', FILTER_SANITIZE_NUMBER_INT);
+
+        if (isset($notifyContent)) {
+            $notifyContent = urldecode($notifyContent);
+        } else {
+            $notifyContent = '';
+        }
+
+        if (!isset($notifyType)) {
+            $notifyType = 'info';
+        }
+
+        if (!isset($notifyTime)) {
+            $notifyTime = 10000;
+        }
+
+        if (isset($notifyTitle)) {
+            echo '<script> new NotifyNotification("' . urldecode($notifyTitle) . '","' . $notifyContent . '","' . $notifyType . '");</script>';
+        }
+        ?>
     </body>
 </html>

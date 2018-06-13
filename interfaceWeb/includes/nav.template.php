@@ -16,4 +16,4 @@ if (!defined('ENVIRONMENT')) {
     </div>
 </nav>
 
-<div id="errors"></div>
+<div id="notify-container"></div>

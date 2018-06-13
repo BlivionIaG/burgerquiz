@@ -21,6 +21,12 @@ require_once('Reponse.php');
 require_once('comprend.php');
 require_once('Score.php');
 
+/** 
+* @class InterfaceBDD
+*
+* @brief Classe de gestion de la base de données
+*/
+
 class InterfaceBDD {
 
     private $bdd;
@@ -208,7 +214,7 @@ class InterfaceBDD {
             error_log('Partie name already taken !');
             return false;
         }
-        
+
         $nom_partie = $partie->getNom_partie();
 
         try {
@@ -227,7 +233,7 @@ class InterfaceBDD {
     public function CheckPartie($partie) {
         try {
             $id = $partie->getId_partie();
-            
+
             $request = 'select * from Partie where id_partie=:id';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
@@ -244,7 +250,7 @@ class InterfaceBDD {
     public function FindPartieId($partie) {
         try {
             $nom_partie = $partie->getNom_partie();
-            
+
             $request = 'select * from Partie where nom_partie=:nom';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':nom', $nom_partie, PDO::PARAM_STR);
@@ -303,12 +309,12 @@ class InterfaceBDD {
             $id_partie = $possede->getId_partie();
             $id_utilisateur = $possede->getId_utilisateur();
             $score = $possede->getScore();
-            $temps =  $possede->getTemps();
-            
+            $temps = $possede->getTemps();
+
             $request = 'insert into Possede(id_partie, id_utilisateur, score, temps)
             values(:id_partie, :id_utilisateur, :score, :temps)';
             $statement = $this->getBdd()->prepare($request);
-            $statement->bindParam(':id_partie',$id_partie, PDO::PARAM_INT);
+            $statement->bindParam(':id_partie', $id_partie, PDO::PARAM_INT);
             $statement->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
             $statement->bindParam(':score', $score, PDO::PARAM_INT);
             $statement->bindParam(':temps', $temps, PDO::PARAM_INT);
@@ -394,7 +400,7 @@ class InterfaceBDD {
         try {
             $id_question = $comprend->getId_question();
             $id_partie = $comprend->getId_partie();
-            
+
             $request = 'insert into comprend(id_question, id_partie) values(:id_question, :id_partie)';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id_question', $id_question, PDO::PARAM_INT);
@@ -500,7 +506,7 @@ class InterfaceBDD {
         }
         return $result;
     }
-    
+
     public function GetScores($id_utilisateur) {
         try {
             $request = 'select Possede.id_partie, Partie.nom_partie, Possede.score, Possede.temps from Possede, Partie where Possede.id_utilisateur=:id_utilisateur && Possede.id_partie=Partie.id_partie';
@@ -567,7 +573,8 @@ class InterfaceBDD {
             error_log('Request error: ' . $exception->getMessage());
             return false;
         }
-        
+
         return $result;
     }
+
 }

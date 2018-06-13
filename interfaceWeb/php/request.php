@@ -10,11 +10,11 @@ function sendJsonData($message, $h) {
     echo json_encode($message);
 }
 
-function cscore($val){
-    if($val < 0){
+function cscore($val) {
+    if ($val < 0) {
         return 0;
     }
-    
+
     return $val;
 }
 
@@ -123,12 +123,17 @@ if ($requestRessource === 'startGame' && $requestMethod === 'POST') {
             'score' => $totalScore,
             'time' => $totalTime
         );
-        
+
         $possede = new Possede();
         $possede->create($_SESSION['id_partie'], $_SESSION['id_utilisateur'], $totalScore, $totalTime);
-        
-        if(!$db->AddPossede($possede)){
+
+
+        if (!$db->AddPossede($possede)) {
             error_log('Erreur : Impossible d\'ajouter le score !');
+            error_log($possede->getId_partie());
+            error_log($possede->getId_utilisateur());
+            error_log($possede->getScore());
+            error_log($possede->getTemps());
         }
 
         sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat

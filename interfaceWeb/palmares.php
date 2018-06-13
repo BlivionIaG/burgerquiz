@@ -36,6 +36,7 @@ if (isset($_SESSION)) {
         <!-- Custom styles for this template-->
         <link href="vendor/fonts.googleapis/bubblegum-sans.css" rel="stylesheet">
         <link href="css/general.css" rel="stylesheet" type="text/css">
+        <link href="css/notify.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <?php require_once("includes/nav.template.php"); ?>
@@ -111,5 +112,32 @@ if (isset($_SESSION)) {
         </div>
 
         <?php require_once("includes/footer.template.php"); ?>
+         <script src="vendor/jquery/jquery.slim.min.js"></script>
+        <script src="js/notify.js"></script>
+
+        <?php
+        $notifyTitle = filter_input(INPUT_GET, 'notifyTitle', FILTER_SANITIZE_STRING);
+        $notifyContent = filter_input(INPUT_GET, 'notifyContent', FILTER_SANITIZE_STRING);
+        $notifyType = filter_input(INPUT_GET, 'notifyType', FILTER_SANITIZE_STRING);
+        $notifyTime = filter_input(INPUT_GET, 'notifyTime', FILTER_SANITIZE_NUMBER_INT);
+
+        if (isset($notifyContent)) {
+            $notifyContent = urldecode($notifyContent);
+        } else {
+            $notifyContent = '';
+        }
+
+        if (!isset($notifyType)) {
+            $notifyType = 'info';
+        }
+
+        if (!isset($notifyTime)) {
+            $notifyTime = 10000;
+        }
+
+        if (isset($notifyTitle)) {
+            echo '<script> new NotifyNotification("' . urldecode($notifyTitle) . '","' . $notifyContent . '","' . $notifyType . '");</script>';
+        }
+        ?>
     </body>
 </html>
