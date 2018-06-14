@@ -388,6 +388,13 @@ class InterfaceBDD {
         return $result[0]['id_partie'];
     }
 
+    /**
+     * \brief Renvoie la partie avec l'identifiant correspondant
+     * 
+     * \param int $id identifiant de la partie recherchée
+     * 
+     * \return boolean Error | Partie[] partie recherchée
+     */
     public function RequestPartie($id) {
         try {
             $request = 'select * from Partie where id_partie=:id';
@@ -402,6 +409,11 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief 
+     * 
+     * @return boolean
+     */
     public function RequestAllParties() {
         try {
             $request = 'select * from Partie';

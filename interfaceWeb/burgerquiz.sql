@@ -132,7 +132,8 @@ INSERT INTO Theme(id_theme, nom_theme, active) VALUES(1, 'Cuisine', true);
 INSERT INTO Theme(id_theme, nom_theme, active) VALUES(2, 'Informatique', true);
 INSERT INTO Theme(id_theme, nom_theme, active) VALUES(3, 'Politique', true);
 INSERT INTO Theme(id_theme, nom_theme, active) VALUES(4, 'Humour', true);
-INSERT INTO Theme(id_theme, nom_theme, active) VALUES(5, 'Inutile', false);
+INSERT INTO Theme(id_theme, nom_theme, active) VALUES(5, 'ISEN', true);
+INSERT INTO Theme(id_theme, nom_theme, active) VALUES(6, 'Inutile', false);
 # QUESTIONS
 INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(1, 'Sel', 'Poivre', 1);
 INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(2, 'Pain au Chocolat', 'Chocolatine', 1);
@@ -147,13 +148,15 @@ INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(10, 'Gi
 INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(11, 'Andoid', 'IOS', 2);
 INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(12, 'ahahahahahah !', 'jajajajajaja !', 4);
 INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(13, 'Burger', 'Sandwich', 1);
+INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(14, 'Club Foyer', 'Bureau des Sports', 5);
+INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(15, 'Le Foyer', 'Super U', 5);
 # REPONSE
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(1, 0, 'A mettre sur la viande', 1);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(2, 1, 'Se prononce correctement', 2);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(3, 0, 'Manière de cuisiner les pates', 3);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(4, 2, 'Fait le café', 4);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(5, 0, "Rends l'argent !", 5);
-INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(6, 2, 'Les meilleurs', 6);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(6, 1, 'Les meilleurs', 6);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(7, 2, 'A le plus gros bouton', 7);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(8, 1, "N'a jamais fait partie de l'UE", 8);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(9, 1, 'Les Meilleures Blagues', 9);
@@ -161,11 +164,16 @@ INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(11, 1, 'Le plus utilisé', 11);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(12, 0, "C'est drôle", 12);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(13, 1, 'Le quiz', 13);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(14, 0, 'Est compilé', 4);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(15, 2, 'Est interprété', 4);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(16, 1, 'Le meilleur Club', 14);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(17, 0, 'On peut réchauffer nos plats', 15);
 # PARTIE
 INSERT INTO Partie(id_partie, nom_partie) VALUES(1, 'Partie Miam');
 INSERT INTO Partie(id_partie, nom_partie) VALUES(2, 'Partie Geek');
 INSERT INTO Partie(id_partie, nom_partie) VALUES(3, 'Partie Vieux');
 INSERT INTO Partie(id_partie, nom_partie) VALUES(4, 'Partie pas drole');
+INSERT INTO Partie(id_partie, nom_partie) VALUES(5, 'ISEN Stuff');
 # LIEN QUESTION PARTIE
 INSERT INTO comprend(id_question, id_partie) VALUES(1, 1);
 INSERT INTO comprend(id_question, id_partie) VALUES(2, 1);
