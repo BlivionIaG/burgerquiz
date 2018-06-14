@@ -1,0 +1,786 @@
+\hypertarget{class_interface_b_d_d}{}\section{Interface\+B\+DD Class Reference}
+\label{class_interface_b_d_d}\index{Interface\+B\+DD@{Interface\+B\+DD}}
+
+
+Classe de gestion de la base de données.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_interface_b_d_d_ae2b03860390e293a5f6ba935a360ab2b}\label{class_interface_b_d_d_ae2b03860390e293a5f6ba935a360ab2b}} 
+{\bfseries Interface\+B\+DD} ()
+\item 
+\mbox{\hyperlink{class_interface_b_d_d_af3c2403a2cce83d85a2e494534115ddb}{get\+Bdd}} ()
+\begin{DoxyCompactList}\small\item\em Getter du P\+HP Data Object contenu dans \mbox{\hyperlink{class_interface_b_d_d}{Interface\+B\+DD}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a91f08708d6515a9a029053f06c057ea4}{set\+Bdd}} (\$\+\_\+bdd)
+\begin{DoxyCompactList}\small\item\em Setter du P\+HP Data Object contenu dans \mbox{\hyperlink{class_interface_b_d_d}{Interface\+B\+DD}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a9ac768272a054d6ef7e8436f1144b730}{Connect}} ()
+\begin{DoxyCompactList}\small\item\em Connecte l\textquotesingle{}objet à la base de donnée. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a00c52bf73968bee971285a372892afb6}{Add\+User}} (\$user)
+\begin{DoxyCompactList}\small\item\em Ajout d\textquotesingle{}un utilisateur à la B\+DD. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a8d979cbd1ec04e6ad7c3fed4d767e5a6}{Find\+User}} (\$mail)
+\begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}identifiant du premier utilisateur comportant le même mail. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a3069460bb26daac4b0777cb763ab198a}{Request\+User}} (\$id)
+\begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}utilisateur possèdant l\textquotesingle{}identifiant donné \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a3dea4aa280dafa70b190e859df68c1b4}{Request\+All\+User}} ()
+\begin{DoxyCompactList}\small\item\em Renvoie tous les utilisateurs enregistré dans la B\+DD. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_abf7f8811487ce2a1626969ffbfcf7701}{Update\+User}} (\$user)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}utilisateur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a1ce1781e4e653de271446486898f360e}{Remove\+User}} (\$id)
+\begin{DoxyCompactList}\small\item\em Suppression de l\textquotesingle{}utilisateur possèdant l\textquotesingle{}identifiant donné \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_aaa494b0483c328eae0da048fcec610d1}{Check\+User}} (\$mail, \$mdp)
+\begin{DoxyCompactList}\small\item\em Vérifie les identifiants de login sont valides. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a03ff86215559d5aa319c416aaa5a3f46}{Request\+Theme}} (\$id)
+\begin{DoxyCompactList}\small\item\em Récupère le thème avec l\textquotesingle{}identifiant correspondant. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_aaadfadb8a0a987f3d7a82dc3207e80f6}{Request\+All\+Themes}} ()
+\begin{DoxyCompactList}\small\item\em Récupère tous les thèmes contenus dans la B\+DD. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a0bbed9af515a32afda28ca2f057d02fc}{Add\+Partie}} (\$partie)
+\begin{DoxyCompactList}\small\item\em Ajoute la partie à la B\+DD. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a21421b30114a0f7de6e160c048c9506d}{Check\+Partie}} (\$partie)
+\begin{DoxyCompactList}\small\item\em Vérifie si une partie du même nom n\textquotesingle{}existe pas déjà dans la B\+DD. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_af667f486ba3dd4422cf48bad871f56e8}{Find\+Partie\+Id}} (\$partie)
+\begin{DoxyCompactList}\small\item\em Trouve l\textquotesingle{}identifiant de la partie avec son nom. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a08dccbb831fa8c610a5d96158a4f38cb}{Request\+Partie}} (\$id)
+\begin{DoxyCompactList}\small\item\em Renvoie la partie avec l\textquotesingle{}identifiant correspondant. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_aa51770e0fe58671f8be78be72ab88973}{Request\+All\+Parties}} ()
+\begin{DoxyCompactList}\small\item\em Récupère toutes les parties stockées dans la B\+DD. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a3981553b34d86dc1419002f9a9121fc6}{Remove\+Partie}} (\$id)
+\begin{DoxyCompactList}\small\item\em Supprime la partie correspondante à l\textquotesingle{}identifiant donné \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a4247c06c17b9c86dbc80321220969862}{Add\+Possede}} (\$possede)
+\begin{DoxyCompactList}\small\item\em Ajoute le score reliant un \mbox{\hyperlink{class_utilisateur}{Utilisateur}} à une \mbox{\hyperlink{class_partie}{Partie}} dans la B\+DD. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_adff6bf7ab712728f7898296d73bbd71b}{Update\+Possede}} (\$possede)
+\begin{DoxyCompactList}\small\item\em Mis à jour du score d\textquotesingle{}une partie d\textquotesingle{}un utilisateur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_abdd3159f3f18a5aba6f1f29907489073}{Check\+Possede}} (\$id\+\_\+partie, \$id\+\_\+utilisateur)
+\begin{DoxyCompactList}\small\item\em Vérifie si un score reliant un utilisateur et une partie donnée existent. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_ac5d8ed61cc01eba73c0060a4561702dd}{Request\+Best\+Score}} (\$id)
+\begin{DoxyCompactList}\small\item\em Renvoie le meilleur score de l\textquotesingle{}utilisateur donné \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a4d1d3a0c3fed3edec5e93a039e5cc15a}{Request\+All\+Scores}} ()
+\begin{DoxyCompactList}\small\item\em Renvoie tous les scores stockés dans la B\+DD. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_aeb87620551f2e3cd7a7aac388d857534}{Request\+Partie\+Scores}} (\$id)
+\begin{DoxyCompactList}\small\item\em Renvoie tous les scores d\textquotesingle{}une partie donnée. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a0e5add57564c5205c91a6bc6c8b1dcdb}{Request\+User\+Scores}} (\$id)
+\begin{DoxyCompactList}\small\item\em Renvoie tous les scores d\textquotesingle{}un utilisateur donné \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a71f154f1bff6e6659dddefcde250f993}{Request\+User\+Partie\+Scores}} (\$id\+\_\+utilisateur, \$id\+\_\+partie)
+\begin{DoxyCompactList}\small\item\em Vérifie si un score reliant un utilisateur et une partie donnée existent. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a230a88f1d16eb95926e03544b4a75279}{Link\+Question\+To\+Partie}} (\$\mbox{\hyperlink{classcomprend}{comprend}})
+\begin{DoxyCompactList}\small\item\em Lie une question à une partie. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a363d433b9362a9d7e70c3b88f665c6e2}{Request\+Question}} (\$id)
+\begin{DoxyCompactList}\small\item\em Renvoie la question associé à l\textquotesingle{}identifiant donné \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_aa55c97f41f0473692fa3c3be52b16d91}{Request\+N\+Random\+Questions\+By\+Theme}} (\$id\+\_\+theme, \$n\+\_\+questions)
+\begin{DoxyCompactList}\small\item\em Renvoie N question aléatoirement du même thème. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a653d317c29317946ca25680b7ce39c98}{Request\+Reponse}} (\$id)
+\begin{DoxyCompactList}\small\item\em Renvoie la réponse correspondant à l\textquotesingle{}identifiant donné \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_aeb7156b09f5a9ee1a472bdaf3ef603b3}{Request\+Reponse\+Of\+Question}} (\$id)
+\begin{DoxyCompactList}\small\item\em Renvoie les réponses de la question. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_aed61db0c78fb2022c40b11e4c7623096}{Request\+Questions\+Of\+Partie}} (\$id\+\_\+partie)
+\begin{DoxyCompactList}\small\item\em Renvoie les liens question/partie de la partie correspondante. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a3c8410b12dc8ab5319af2f9b95248658}{Get\+Top\+Scores}} (\$nb)
+\begin{DoxyCompactList}\small\item\em Renvoie les N meilleurs scores toutes parties confondues. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a0bed09747595044e2aef3e3ce363c126}{Get\+Scores}} (\$id\+\_\+utilisateur)
+\begin{DoxyCompactList}\small\item\em Récupère les scores d\textquotesingle{}un utilisateur donné sous forme d\textquotesingle{}un tableau. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_aa0363b9684feb940bb3ad88fc322bdc8}{Get\+Theme}} (\$id\+\_\+partie)
+\begin{DoxyCompactList}\small\item\em Renvoie le thème d\textquotesingle{}une partie donnée. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a9d671df2428c378fcb683f587e2a62d5}{Request\+All\+Parties\+With\+Theme}} ()
+\begin{DoxyCompactList}\small\item\em Renvoie toutes les parties avec leur thème correspondants dans un tableau. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_ab3cac1dc81aaa3b978c19e40f585139d}{Request\+Game\+Ready\+Questions}} (\$id\+\_\+partie)
+\begin{DoxyCompactList}\small\item\em Renvoie toutes les questions de la partie sous forme de tableau. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a9135bab40bcea0ecd11a167be9442445}{Request\+Question\+From\+Partie}} (\$id\+\_\+partie)
+\begin{DoxyCompactList}\small\item\em Renvoie les questions d\textquotesingle{}une partie. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interface_b_d_d_a0ef10a6954ec4add81d8a602bb70bd03}{Random\+Select\+Reponse\+From\+Question}} (\$id\+\_\+question)
+\begin{DoxyCompactList}\small\item\em Renvoie une réponse/proposition aléatoire de la question donnée. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe de gestion de la base de données. 
+
+Gère toutes les fonctionnalités en lien avec la Base de donnée (B\+DD) 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_interface_b_d_d_a0bbed9af515a32afda28ca2f057d02fc}\label{class_interface_b_d_d_a0bbed9af515a32afda28ca2f057d02fc}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Add\+Partie@{Add\+Partie}}
+\index{Add\+Partie@{Add\+Partie}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Add\+Partie()}{AddPartie()}}
+{\footnotesize\ttfamily Add\+Partie (\begin{DoxyParamCaption}\item[{}]{\$partie }\end{DoxyParamCaption})}
+
+
+
+Ajoute la partie à la B\+DD. 
+
+On vérifie d\textquotesingle{}abords qu\textquotesingle{}il n\textquotesingle{}existe pas une partie du même nom
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\hyperlink{class_partie}{Partie}} & {\em \$partie} & \mbox{\hyperlink{class_partie}{Partie}} à ajouter\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Statut réussite de la requète 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a4247c06c17b9c86dbc80321220969862}\label{class_interface_b_d_d_a4247c06c17b9c86dbc80321220969862}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Add\+Possede@{Add\+Possede}}
+\index{Add\+Possede@{Add\+Possede}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Add\+Possede()}{AddPossede()}}
+{\footnotesize\ttfamily Add\+Possede (\begin{DoxyParamCaption}\item[{}]{\$possede }\end{DoxyParamCaption})}
+
+
+
+Ajoute le score reliant un \mbox{\hyperlink{class_utilisateur}{Utilisateur}} à une \mbox{\hyperlink{class_partie}{Partie}} dans la B\+DD. 
+
+Si un score existe déjà et que celui ci est plus faible, il est mis à jour Sinon la requete est abandonnée
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\hyperlink{class_possede}{Possede}} & {\em \$possede} & score à ajouter\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Statut réussite de la requète 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a00c52bf73968bee971285a372892afb6}\label{class_interface_b_d_d_a00c52bf73968bee971285a372892afb6}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Add\+User@{Add\+User}}
+\index{Add\+User@{Add\+User}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Add\+User()}{AddUser()}}
+{\footnotesize\ttfamily Add\+User (\begin{DoxyParamCaption}\item[{}]{\$user }\end{DoxyParamCaption})}
+
+
+
+Ajout d\textquotesingle{}un utilisateur à la B\+DD. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\hyperlink{class_utilisateur}{Utilisateur}} & {\em \$user} & User à ajouter\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Ajout réussi ou non 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a21421b30114a0f7de6e160c048c9506d}\label{class_interface_b_d_d_a21421b30114a0f7de6e160c048c9506d}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Check\+Partie@{Check\+Partie}}
+\index{Check\+Partie@{Check\+Partie}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Check\+Partie()}{CheckPartie()}}
+{\footnotesize\ttfamily Check\+Partie (\begin{DoxyParamCaption}\item[{}]{\$partie }\end{DoxyParamCaption})}
+
+
+
+Vérifie si une partie du même nom n\textquotesingle{}existe pas déjà dans la B\+DD. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\hyperlink{class_partie}{Partie}} & {\em \$partie} & partie à vérifier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Existe ou non ( tout entier != 0 =$>$ true ) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_abdd3159f3f18a5aba6f1f29907489073}\label{class_interface_b_d_d_abdd3159f3f18a5aba6f1f29907489073}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Check\+Possede@{Check\+Possede}}
+\index{Check\+Possede@{Check\+Possede}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Check\+Possede()}{CheckPossede()}}
+{\footnotesize\ttfamily Check\+Possede (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+partie,  }\item[{}]{\$id\+\_\+utilisateur }\end{DoxyParamCaption})}
+
+
+
+Vérifie si un score reliant un utilisateur et une partie donnée existent. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id\+\_\+partie} & identifiant de la partie \\
+\hline
+int & {\em \$id\+\_\+utilisateur} & identifiant de l\textquotesingle{}utilisateur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_possede}{Possede}}\mbox{[}\mbox{]} score correspondant 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_aaa494b0483c328eae0da048fcec610d1}\label{class_interface_b_d_d_aaa494b0483c328eae0da048fcec610d1}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Check\+User@{Check\+User}}
+\index{Check\+User@{Check\+User}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Check\+User()}{CheckUser()}}
+{\footnotesize\ttfamily Check\+User (\begin{DoxyParamCaption}\item[{}]{\$mail,  }\item[{}]{\$mdp }\end{DoxyParamCaption})}
+
+
+
+Vérifie les identifiants de login sont valides. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$mail} & Login de l\textquotesingle{}utilisateur à vérifier \\
+\hline
+string & {\em \$mdp} & Mot de passe de l\textquotesingle{}utilisateur à vérifier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int identifiant de l\textquotesingle{}utilisateur valide sinon 0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a9ac768272a054d6ef7e8436f1144b730}\label{class_interface_b_d_d_a9ac768272a054d6ef7e8436f1144b730}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Connect@{Connect}}
+\index{Connect@{Connect}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Connect()}{Connect()}}
+{\footnotesize\ttfamily Connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Connecte l\textquotesingle{}objet à la base de donnée. 
+
+Se connecter selon les constantes définies dans php/consts.\+php
+
+\begin{DoxyReturn}{Returns}
+boolean erreur $\vert$ P\+DO réussi 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_af667f486ba3dd4422cf48bad871f56e8}\label{class_interface_b_d_d_af667f486ba3dd4422cf48bad871f56e8}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Find\+Partie\+Id@{Find\+Partie\+Id}}
+\index{Find\+Partie\+Id@{Find\+Partie\+Id}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Find\+Partie\+Id()}{FindPartieId()}}
+{\footnotesize\ttfamily Find\+Partie\+Id (\begin{DoxyParamCaption}\item[{}]{\$partie }\end{DoxyParamCaption})}
+
+
+
+Trouve l\textquotesingle{}identifiant de la partie avec son nom. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\hyperlink{class_partie}{Partie}} & {\em \$partie} & partie dont on cherche l\textquotesingle{}identifiant\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ int identifiant trouvé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a8d979cbd1ec04e6ad7c3fed4d767e5a6}\label{class_interface_b_d_d_a8d979cbd1ec04e6ad7c3fed4d767e5a6}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Find\+User@{Find\+User}}
+\index{Find\+User@{Find\+User}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Find\+User()}{FindUser()}}
+{\footnotesize\ttfamily Find\+User (\begin{DoxyParamCaption}\item[{}]{\$mail }\end{DoxyParamCaption})}
+
+
+
+Renvoie l\textquotesingle{}identifiant du premier utilisateur comportant le même mail. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$mail} & Email/login de l\textquotesingle{}utilisateur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int identifiant de l\textquotesingle{}utilisateur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_af3c2403a2cce83d85a2e494534115ddb}\label{class_interface_b_d_d_af3c2403a2cce83d85a2e494534115ddb}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!get\+Bdd@{get\+Bdd}}
+\index{get\+Bdd@{get\+Bdd}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{get\+Bdd()}{getBdd()}}
+{\footnotesize\ttfamily get\+Bdd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter du P\+HP Data Object contenu dans \mbox{\hyperlink{class_interface_b_d_d}{Interface\+B\+DD}}. 
+
+\begin{DoxyReturn}{Returns}
+P\+DO Interface accès base de donnée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a0bed09747595044e2aef3e3ce363c126}\label{class_interface_b_d_d_a0bed09747595044e2aef3e3ce363c126}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Get\+Scores@{Get\+Scores}}
+\index{Get\+Scores@{Get\+Scores}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Get\+Scores()}{GetScores()}}
+{\footnotesize\ttfamily Get\+Scores (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+utilisateur }\end{DoxyParamCaption})}
+
+
+
+Récupère les scores d\textquotesingle{}un utilisateur donné sous forme d\textquotesingle{}un tableau. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id\+\_\+utilisateur} & identifiant de l\textquotesingle{}utilisateur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ array les scores 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_aa0363b9684feb940bb3ad88fc322bdc8}\label{class_interface_b_d_d_aa0363b9684feb940bb3ad88fc322bdc8}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Get\+Theme@{Get\+Theme}}
+\index{Get\+Theme@{Get\+Theme}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Get\+Theme()}{GetTheme()}}
+{\footnotesize\ttfamily Get\+Theme (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+partie }\end{DoxyParamCaption})}
+
+
+
+Renvoie le thème d\textquotesingle{}une partie donnée. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id\+\_\+partie} & identifiant de la partie\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ array informations thème de la partie 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a3c8410b12dc8ab5319af2f9b95248658}\label{class_interface_b_d_d_a3c8410b12dc8ab5319af2f9b95248658}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Get\+Top\+Scores@{Get\+Top\+Scores}}
+\index{Get\+Top\+Scores@{Get\+Top\+Scores}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Get\+Top\+Scores()}{GetTopScores()}}
+{\footnotesize\ttfamily Get\+Top\+Scores (\begin{DoxyParamCaption}\item[{}]{\$nb }\end{DoxyParamCaption})}
+
+
+
+Renvoie les N meilleurs scores toutes parties confondues. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$nb} & Nombre de scores choisi\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_score}{Score}}\mbox{[}\mbox{]} score 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a230a88f1d16eb95926e03544b4a75279}\label{class_interface_b_d_d_a230a88f1d16eb95926e03544b4a75279}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Link\+Question\+To\+Partie@{Link\+Question\+To\+Partie}}
+\index{Link\+Question\+To\+Partie@{Link\+Question\+To\+Partie}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Link\+Question\+To\+Partie()}{LinkQuestionToPartie()}}
+{\footnotesize\ttfamily Link\+Question\+To\+Partie (\begin{DoxyParamCaption}\item[{}]{\$comprend }\end{DoxyParamCaption})}
+
+
+
+Lie une question à une partie. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+comprend & {\em \$comprend} & Lien question/partie\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Statut réussite de la requete 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a0ef10a6954ec4add81d8a602bb70bd03}\label{class_interface_b_d_d_a0ef10a6954ec4add81d8a602bb70bd03}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Random\+Select\+Reponse\+From\+Question@{Random\+Select\+Reponse\+From\+Question}}
+\index{Random\+Select\+Reponse\+From\+Question@{Random\+Select\+Reponse\+From\+Question}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Random\+Select\+Reponse\+From\+Question()}{RandomSelectReponseFromQuestion()}}
+{\footnotesize\ttfamily Random\+Select\+Reponse\+From\+Question (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+question }\end{DoxyParamCaption})}
+
+
+
+Renvoie une réponse/proposition aléatoire de la question donnée. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id\+\_\+question} & identifiant de la question\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_reponse}{Reponse}}\mbox{[}\mbox{]} réponse à la question selectionnée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a3981553b34d86dc1419002f9a9121fc6}\label{class_interface_b_d_d_a3981553b34d86dc1419002f9a9121fc6}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Remove\+Partie@{Remove\+Partie}}
+\index{Remove\+Partie@{Remove\+Partie}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Remove\+Partie()}{RemovePartie()}}
+{\footnotesize\ttfamily Remove\+Partie (\begin{DoxyParamCaption}\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Supprime la partie correspondante à l\textquotesingle{}identifiant donné 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & identifiant de la partie à supprimer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Status réussite de la requete 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a1ce1781e4e653de271446486898f360e}\label{class_interface_b_d_d_a1ce1781e4e653de271446486898f360e}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Remove\+User@{Remove\+User}}
+\index{Remove\+User@{Remove\+User}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Remove\+User()}{RemoveUser()}}
+{\footnotesize\ttfamily Remove\+User (\begin{DoxyParamCaption}\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Suppression de l\textquotesingle{}utilisateur possèdant l\textquotesingle{}identifiant donné 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & identifiant de l\textquotesingle{}utilisateur à supprimer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean statut réussite de la requète 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_aa51770e0fe58671f8be78be72ab88973}\label{class_interface_b_d_d_aa51770e0fe58671f8be78be72ab88973}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+All\+Parties@{Request\+All\+Parties}}
+\index{Request\+All\+Parties@{Request\+All\+Parties}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+All\+Parties()}{RequestAllParties()}}
+{\footnotesize\ttfamily Request\+All\+Parties (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Récupère toutes les parties stockées dans la B\+DD. 
+
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_partie}{Partie}}\mbox{[}\mbox{]} parties contenues dans la B\+DD 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a9d671df2428c378fcb683f587e2a62d5}\label{class_interface_b_d_d_a9d671df2428c378fcb683f587e2a62d5}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+All\+Parties\+With\+Theme@{Request\+All\+Parties\+With\+Theme}}
+\index{Request\+All\+Parties\+With\+Theme@{Request\+All\+Parties\+With\+Theme}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+All\+Parties\+With\+Theme()}{RequestAllPartiesWithTheme()}}
+{\footnotesize\ttfamily Request\+All\+Parties\+With\+Theme (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Renvoie toutes les parties avec leur thème correspondants dans un tableau. 
+
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ array tableau des parties avec leur thème 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a4d1d3a0c3fed3edec5e93a039e5cc15a}\label{class_interface_b_d_d_a4d1d3a0c3fed3edec5e93a039e5cc15a}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+All\+Scores@{Request\+All\+Scores}}
+\index{Request\+All\+Scores@{Request\+All\+Scores}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+All\+Scores()}{RequestAllScores()}}
+{\footnotesize\ttfamily Request\+All\+Scores (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Renvoie tous les scores stockés dans la B\+DD. 
+
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_possede}{Possede}}\mbox{[}\mbox{]} Tous les scores 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_aaadfadb8a0a987f3d7a82dc3207e80f6}\label{class_interface_b_d_d_aaadfadb8a0a987f3d7a82dc3207e80f6}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+All\+Themes@{Request\+All\+Themes}}
+\index{Request\+All\+Themes@{Request\+All\+Themes}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+All\+Themes()}{RequestAllThemes()}}
+{\footnotesize\ttfamily Request\+All\+Themes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Récupère tous les thèmes contenus dans la B\+DD. 
+
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_theme}{Theme}}\mbox{[}\mbox{]} Thèmes contenus dans la B\+DD 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a3dea4aa280dafa70b190e859df68c1b4}\label{class_interface_b_d_d_a3dea4aa280dafa70b190e859df68c1b4}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+All\+User@{Request\+All\+User}}
+\index{Request\+All\+User@{Request\+All\+User}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+All\+User()}{RequestAllUser()}}
+{\footnotesize\ttfamily Request\+All\+User (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Renvoie tous les utilisateurs enregistré dans la B\+DD. 
+
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_utilisateur}{Utilisateur}}\mbox{[}\mbox{]} utilisateurs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_ac5d8ed61cc01eba73c0060a4561702dd}\label{class_interface_b_d_d_ac5d8ed61cc01eba73c0060a4561702dd}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+Best\+Score@{Request\+Best\+Score}}
+\index{Request\+Best\+Score@{Request\+Best\+Score}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+Best\+Score()}{RequestBestScore()}}
+{\footnotesize\ttfamily Request\+Best\+Score (\begin{DoxyParamCaption}\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Renvoie le meilleur score de l\textquotesingle{}utilisateur donné 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & identifiant de l\textquotesingle{}utilisateur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_possede}{Possede}} meilleur score 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_ab3cac1dc81aaa3b978c19e40f585139d}\label{class_interface_b_d_d_ab3cac1dc81aaa3b978c19e40f585139d}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+Game\+Ready\+Questions@{Request\+Game\+Ready\+Questions}}
+\index{Request\+Game\+Ready\+Questions@{Request\+Game\+Ready\+Questions}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+Game\+Ready\+Questions()}{RequestGameReadyQuestions()}}
+{\footnotesize\ttfamily Request\+Game\+Ready\+Questions (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+partie }\end{DoxyParamCaption})}
+
+
+
+Renvoie toutes les questions de la partie sous forme de tableau. 
+
+Le tableau associatif est fait pour l\textquotesingle{}execution du jeu dans php/request.\+php
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id\+\_\+partie} & identifiant de la partie\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array tableau des questions 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_aa55c97f41f0473692fa3c3be52b16d91}\label{class_interface_b_d_d_aa55c97f41f0473692fa3c3be52b16d91}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+N\+Random\+Questions\+By\+Theme@{Request\+N\+Random\+Questions\+By\+Theme}}
+\index{Request\+N\+Random\+Questions\+By\+Theme@{Request\+N\+Random\+Questions\+By\+Theme}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+N\+Random\+Questions\+By\+Theme()}{RequestNRandomQuestionsByTheme()}}
+{\footnotesize\ttfamily Request\+N\+Random\+Questions\+By\+Theme (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+theme,  }\item[{}]{\$n\+\_\+questions }\end{DoxyParamCaption})}
+
+
+
+Renvoie N question aléatoirement du même thème. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id\+\_\+theme} & identifiant du thème \\
+\hline
+int & {\em \$n\+\_\+questions} & nombre de questions\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_question}{Question}}\mbox{[}\mbox{]} questions choisies aléatoirement 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a08dccbb831fa8c610a5d96158a4f38cb}\label{class_interface_b_d_d_a08dccbb831fa8c610a5d96158a4f38cb}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+Partie@{Request\+Partie}}
+\index{Request\+Partie@{Request\+Partie}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+Partie()}{RequestPartie()}}
+{\footnotesize\ttfamily Request\+Partie (\begin{DoxyParamCaption}\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Renvoie la partie avec l\textquotesingle{}identifiant correspondant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & identifiant de la partie recherchée\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Error $\vert$ \mbox{\hyperlink{class_partie}{Partie}}\mbox{[}\mbox{]} partie recherchée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_aeb87620551f2e3cd7a7aac388d857534}\label{class_interface_b_d_d_aeb87620551f2e3cd7a7aac388d857534}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+Partie\+Scores@{Request\+Partie\+Scores}}
+\index{Request\+Partie\+Scores@{Request\+Partie\+Scores}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+Partie\+Scores()}{RequestPartieScores()}}
+{\footnotesize\ttfamily Request\+Partie\+Scores (\begin{DoxyParamCaption}\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Renvoie tous les scores d\textquotesingle{}une partie donnée. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & identifiant de la partie\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_possede}{Possede}}\mbox{[}\mbox{]} scores des utilisateurs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a363d433b9362a9d7e70c3b88f665c6e2}\label{class_interface_b_d_d_a363d433b9362a9d7e70c3b88f665c6e2}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+Question@{Request\+Question}}
+\index{Request\+Question@{Request\+Question}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+Question()}{RequestQuestion()}}
+{\footnotesize\ttfamily Request\+Question (\begin{DoxyParamCaption}\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Renvoie la question associé à l\textquotesingle{}identifiant donné 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & identifiant de la question\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_question}{Question}}\mbox{[}\mbox{]} question correspondante 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a9135bab40bcea0ecd11a167be9442445}\label{class_interface_b_d_d_a9135bab40bcea0ecd11a167be9442445}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+Question\+From\+Partie@{Request\+Question\+From\+Partie}}
+\index{Request\+Question\+From\+Partie@{Request\+Question\+From\+Partie}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+Question\+From\+Partie()}{RequestQuestionFromPartie()}}
+{\footnotesize\ttfamily Request\+Question\+From\+Partie (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+partie }\end{DoxyParamCaption})}
+
+
+
+Renvoie les questions d\textquotesingle{}une partie. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id\+\_\+partie} & identifiant de la partie\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_question}{Question}}\mbox{[}\mbox{]} question de la partie 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_aed61db0c78fb2022c40b11e4c7623096}\label{class_interface_b_d_d_aed61db0c78fb2022c40b11e4c7623096}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+Questions\+Of\+Partie@{Request\+Questions\+Of\+Partie}}
+\index{Request\+Questions\+Of\+Partie@{Request\+Questions\+Of\+Partie}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+Questions\+Of\+Partie()}{RequestQuestionsOfPartie()}}
+{\footnotesize\ttfamily Request\+Questions\+Of\+Partie (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+partie }\end{DoxyParamCaption})}
+
+
+
+Renvoie les liens question/partie de la partie correspondante. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id\+\_\+partie} & identifiant de la partie\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ comprend\mbox{[}\mbox{]} Liens question/partie 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a653d317c29317946ca25680b7ce39c98}\label{class_interface_b_d_d_a653d317c29317946ca25680b7ce39c98}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+Reponse@{Request\+Reponse}}
+\index{Request\+Reponse@{Request\+Reponse}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+Reponse()}{RequestReponse()}}
+{\footnotesize\ttfamily Request\+Reponse (\begin{DoxyParamCaption}\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Renvoie la réponse correspondant à l\textquotesingle{}identifiant donné 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & identifiant de la reponse\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_reponse}{Reponse}}\mbox{[}\mbox{]} Réponse recherchée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_aeb7156b09f5a9ee1a472bdaf3ef603b3}\label{class_interface_b_d_d_aeb7156b09f5a9ee1a472bdaf3ef603b3}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+Reponse\+Of\+Question@{Request\+Reponse\+Of\+Question}}
+\index{Request\+Reponse\+Of\+Question@{Request\+Reponse\+Of\+Question}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+Reponse\+Of\+Question()}{RequestReponseOfQuestion()}}
+{\footnotesize\ttfamily Request\+Reponse\+Of\+Question (\begin{DoxyParamCaption}\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Renvoie les réponses de la question. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & identifiant de la question\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_reponse}{Reponse}}\mbox{[}\mbox{]} Réponses à la question 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a03ff86215559d5aa319c416aaa5a3f46}\label{class_interface_b_d_d_a03ff86215559d5aa319c416aaa5a3f46}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+Theme@{Request\+Theme}}
+\index{Request\+Theme@{Request\+Theme}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+Theme()}{RequestTheme()}}
+{\footnotesize\ttfamily Request\+Theme (\begin{DoxyParamCaption}\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Récupère le thème avec l\textquotesingle{}identifiant correspondant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\hyperlink{class_theme}{Theme}} & {\em \$id} & identifiant du thème\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_theme}{Theme}}\mbox{[}\mbox{]} thèmes correpondants 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a3069460bb26daac4b0777cb763ab198a}\label{class_interface_b_d_d_a3069460bb26daac4b0777cb763ab198a}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+User@{Request\+User}}
+\index{Request\+User@{Request\+User}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+User()}{RequestUser()}}
+{\footnotesize\ttfamily Request\+User (\begin{DoxyParamCaption}\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Renvoie l\textquotesingle{}utilisateur possèdant l\textquotesingle{}identifiant donné 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & Identifiant de l\textquotesingle{}utilisateur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_utilisateur}{Utilisateur}}\mbox{[}\mbox{]} utilisateur trouvé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a71f154f1bff6e6659dddefcde250f993}\label{class_interface_b_d_d_a71f154f1bff6e6659dddefcde250f993}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+User\+Partie\+Scores@{Request\+User\+Partie\+Scores}}
+\index{Request\+User\+Partie\+Scores@{Request\+User\+Partie\+Scores}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+User\+Partie\+Scores()}{RequestUserPartieScores()}}
+{\footnotesize\ttfamily Request\+User\+Partie\+Scores (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+utilisateur,  }\item[{}]{\$id\+\_\+partie }\end{DoxyParamCaption})}
+
+
+
+Vérifie si un score reliant un utilisateur et une partie donnée existent. 
+
+alias de Check\+Possede(\$id\+\_\+partie, \$id\+\_\+utilisateur)
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id\+\_\+partie} & identifiant de la partie \\
+\hline
+int & {\em \$id\+\_\+utilisateur} & identifiant de l\textquotesingle{}utilisateur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_possede}{Possede}}\mbox{[}\mbox{]} score correspondant 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a0e5add57564c5205c91a6bc6c8b1dcdb}\label{class_interface_b_d_d_a0e5add57564c5205c91a6bc6c8b1dcdb}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Request\+User\+Scores@{Request\+User\+Scores}}
+\index{Request\+User\+Scores@{Request\+User\+Scores}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Request\+User\+Scores()}{RequestUserScores()}}
+{\footnotesize\ttfamily Request\+User\+Scores (\begin{DoxyParamCaption}\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Renvoie tous les scores d\textquotesingle{}un utilisateur donné 
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & identifiant de l\textquotesingle{}utilisateur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Erreur $\vert$ \mbox{\hyperlink{class_possede}{Possede}}\mbox{[}\mbox{]} scores de l\textquotesingle{}utilisateur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_a91f08708d6515a9a029053f06c057ea4}\label{class_interface_b_d_d_a91f08708d6515a9a029053f06c057ea4}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!set\+Bdd@{set\+Bdd}}
+\index{set\+Bdd@{set\+Bdd}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{set\+Bdd()}{setBdd()}}
+{\footnotesize\ttfamily set\+Bdd (\begin{DoxyParamCaption}\item[{}]{\$\+\_\+bdd }\end{DoxyParamCaption})}
+
+
+
+Setter du P\+HP Data Object contenu dans \mbox{\hyperlink{class_interface_b_d_d}{Interface\+B\+DD}}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+P\+DO & {\em \$\+\_\+bdd} & Interface accès base de donnée \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_interface_b_d_d_adff6bf7ab712728f7898296d73bbd71b}\label{class_interface_b_d_d_adff6bf7ab712728f7898296d73bbd71b}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Update\+Possede@{Update\+Possede}}
+\index{Update\+Possede@{Update\+Possede}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Update\+Possede()}{UpdatePossede()}}
+{\footnotesize\ttfamily Update\+Possede (\begin{DoxyParamCaption}\item[{}]{\$possede }\end{DoxyParamCaption})}
+
+
+
+Mis à jour du score d\textquotesingle{}une partie d\textquotesingle{}un utilisateur. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\hyperlink{class_possede}{Possede}} & {\em \$possede} & score à modifier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean Statut réussite de la requete 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_interface_b_d_d_abf7f8811487ce2a1626969ffbfcf7701}\label{class_interface_b_d_d_abf7f8811487ce2a1626969ffbfcf7701}} 
+\index{Interface\+B\+DD@{Interface\+B\+DD}!Update\+User@{Update\+User}}
+\index{Update\+User@{Update\+User}!Interface\+B\+DD@{Interface\+B\+DD}}
+\subsubsection{\texorpdfstring{Update\+User()}{UpdateUser()}}
+{\footnotesize\ttfamily Update\+User (\begin{DoxyParamCaption}\item[{}]{\$user }\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}utilisateur. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\hyperlink{class_utilisateur}{Utilisateur}} & {\em \$user} & utilisateur à mettre à jour\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean statut réussite de la maj 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/\mbox{\hyperlink{_interface_b_d_d_8php}{Interface\+B\+D\+D.\+php}}\end{DoxyCompactItemize}

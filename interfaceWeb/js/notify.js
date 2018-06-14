@@ -1,5 +1,6 @@
 /* 
  * Fichier venant du projet d'AJAX chen&cloud commun avec Kévin Le Torc'h et Gwénolé Leroy Ferrec
+ * Toute ressemblance avec un autre projet est fortuite
  */
 
 class NotifyNotification
@@ -38,7 +39,7 @@ class NotifyNotification
             this.display();
         }, 50);
 
-        if ( this.showtime != -1 ) setTimeout( () => {
+        if ( this.showtime !== -1 ) setTimeout( () => {
             this.hide();
         }, this.showtime);        
     }
@@ -57,6 +58,6 @@ class NotifyNotification
 
         this.DOMElement.ontransitionend = () => {
             this.DOMElement.remove();
-        }
+        };
     }
 }

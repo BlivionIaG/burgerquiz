@@ -211,7 +211,7 @@ footer.sticky-footer {
     color: #355723;
     font-size: 24px;
     font-family: var(--bq-nice-font);
-    width: 7%;
+    min-width: 80px;
     min-height: 40px;
 }
 
@@ -227,7 +227,7 @@ footer.sticky-footer {
     color: #355723;
     font-size: 24px;
     font-family: var(--bq-nice-font);
-    width: 7vw;
+    min-width: 80px;
     left: 2vw;
     bottom: 4vh;
     min-height: 40px;
@@ -399,7 +399,7 @@ footer.sticky-footer {
 }
 
 .partie-menu > button:hover {
-     border: 2px solid #355723;
+    border: 2px solid #355723;
 }
 
 #bq-create-partie {
@@ -428,13 +428,13 @@ footer.sticky-footer {
     border-color: #355723;
     border-radius: 3px;
     text-align: center;
-    
+
     margin-top: 7vh;
     min-height: 54px;
 }
 
 #bq-create-partie .bq-button {
-   margin-left: 15vw;
+    margin-left: 15vw;
     width: 50vw;
     margin-top: 16.5vh;
     margin-bottom: 10vh;

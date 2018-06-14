@@ -123,9 +123,7 @@ function answerResult(ajaxResponse) {
 }
 
 function endGame($results) {
-    $('#bq-proposition').remove();
-    $('#bq-reponses').remove();
-    $('#bq-progress-bar').empty();
+    $('#bq-play').empty();
 
     var titre = document.createElement('h1');
     titre.id = 'bq-info-page';
@@ -166,6 +164,10 @@ function endGame($results) {
     bmesscores.id = 'bq-mesScoresLink';
     bmesscores.innerHTML = 'Mes Scores';
     $('#bq-play').append(bmesscores);
+
+    var bq_progress_bar = document.createElement('div');
+    bq_progress_bar.id = 'bq-progress-bar';
+    $('#bq-play').append(bq_progress_bar);
 
     var progress_bar = document.createElement('div');
     progress_bar.style = 'background-color: #dba636;height: 25px; width:100%';

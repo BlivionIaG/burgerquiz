@@ -1,5 +1,6 @@
 /* 
  * Fichier venant du projet d'AJAX chen&cloud commun avec Kévin Le Torc'h et Gwénolé Leroy Ferrec
+ * Toute ressemblance avec un autre projet est fortuite
  */
 
 #notify-container
@@ -26,7 +27,7 @@
 {
     opacity: 0;
     transform: translateY(50%);
-    
+
     transition: opacity 0.2s, transform 0.2s;
 }
 

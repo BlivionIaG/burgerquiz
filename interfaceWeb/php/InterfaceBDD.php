@@ -35,7 +35,6 @@ require_once('Score.php');
  * \date 13 juin 2018
  *
  * Gère toutes les fonctionnalités en lien avec la Base de donnée (BDD)
- *
  */
 
 /**
@@ -410,9 +409,9 @@ class InterfaceBDD {
     }
 
     /**
-     * \brief 
+     * \brief Récupère toutes les parties stockées dans la BDD
      * 
-     * @return boolean
+     * \return boolean Erreur | Partie[] parties contenues dans la BDD
      */
     public function RequestAllParties() {
         try {
@@ -427,6 +426,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Supprime la partie correspondante à l'identifiant donné
+     * 
+     * \param int $id identifiant de la partie à supprimer
+     * 
+     * \return boolean Status réussite de la requete
+     */
     public function RemovePartie($id) {
         try {
             $request = 'delete from Partie where id_partie=:id';
@@ -440,6 +446,16 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Ajoute le score reliant un Utilisateur à une Partie dans la BDD
+     * 
+     * Si un score existe déjà et que celui ci est plus faible, il est mis à jour
+     * Sinon la requete est abandonnée
+     * 
+     * \param Possede $possede score à ajouter
+     * 
+     * \return boolean Statut réussite de la requète
+     */
     public function AddPossede($possede) {
         $id_partie = $possede->getId_partie();
         $id_utilisateur = $possede->getId_utilisateur();
@@ -463,11 +479,20 @@ class InterfaceBDD {
             }
 
             return $result;
+        } else if ($match[0]->getScore() >= $score) {
+            return false;
         } else {
             return $this->UpdatePossede($possede);
         }
     }
 
+    /**
+     * \brief Mis à jour du score d'une partie d'un utilisateur
+     * 
+     * \param Possede $possede score à modifier
+     * 
+     * \return boolean Statut réussite de la requete
+     */
     public function UpdatePossede($possede) {
         try {
             $id_partie = $possede->getId_partie();
@@ -490,6 +515,14 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Vérifie si un score reliant un utilisateur et une partie donnée existent
+     * 
+     * \param int $id_partie identifiant de la partie
+     * \param int $id_utilisateur identifiant de l'utilisateur
+     * 
+     * \return boolean Erreur | Possede[] score correspondant
+     */
     public function CheckPossede($id_partie, $id_utilisateur) {
         try {
             $request = 'select * from Possede where id_utilisateur=:id_utilisateur && id_partie=:id_partie';
@@ -506,6 +539,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie le meilleur score de l'utilisateur donné
+     * 
+     * \param int $id identifiant de l'utilisateur
+     * 
+     * \return boolean Erreur | Possede meilleur score
+     */
     public function RequestBestScore($id) {
         try {
             $request = 'select * from Possede where id_utilisateur=:id order by score desc limit 1';
@@ -520,6 +560,11 @@ class InterfaceBDD {
         return $result[0];
     }
 
+    /**
+     * \brief Renvoie tous les scores stockés dans la BDD
+     * 
+     * \return boolean Erreur | Possede[] Tous les scores
+     */
     public function RequestAllScores() {
         try {
             $request = 'select * from Possede';
@@ -533,6 +578,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie tous les scores d'une partie donnée
+     * 
+     * \param int $id identifiant de la partie
+     * 
+     * \return boolean Erreur | Possede[] scores des utilisateurs
+     */
     public function RequestPartieScores($id) {
         try {
             $request = 'select * from Possede where id_partie=:id';
@@ -547,6 +599,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie tous les scores d'un utilisateur donné
+     * 
+     * \param int $id identifiant de l'utilisateur
+     * 
+     * \return boolean Erreur | Possede[] scores de l'utilisateur
+     */
     public function RequestUserScores($id) {
         try {
             $request = 'select * from Possede where id_utilisateur=:id';
@@ -561,21 +620,27 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Vérifie si un score reliant un utilisateur et une partie donnée existent
+     * 
+     * alias de CheckPossede($id_partie, $id_utilisateur)
+     * 
+     * \param int $id_partie identifiant de la partie
+     * \param int $id_utilisateur identifiant de l'utilisateur
+     * 
+     * \return boolean Erreur | Possede[] score correspondant
+     */
     public function RequestUserPartieScores($id_utilisateur, $id_partie) {
-        try {
-            $request = 'select * from Possede where id_utilisateur=:id_utilisateur and id_partie=:id_partie';
-            $statement = $this->getBdd()->prepare($request);
-            $statement->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
-            $statement->bindParam(':id_partie', $id_partie, PDO::PARAM_INT);
-            $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Possede');
-        } catch (PDOException $exception) {
-            error_log('Request error: ' . $exception->getMessage());
-            return false;
-        }
-        return $result;
+        return $this->CheckPossede($id_partie, $id_utilisateur);
     }
 
+    /**
+     * \brief Lie une question à une partie
+     * 
+     * \param comprend $comprend Lien question/partie
+     * 
+     * \return boolean Statut réussite de la requete
+     */
     public function LinkQuestionToPartie($comprend) {
         try {
             $id_question = $comprend->getId_question();
@@ -594,6 +659,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie la question associé à l'identifiant donné
+     * 
+     * \param int $id identifiant de la question
+     * 
+     * \return boolean Erreur | Question[] question correspondante
+     */
     public function RequestQuestion($id) {
         try {
             $request = 'select * from Question where id_question=:id';
@@ -608,6 +680,14 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie N question aléatoirement du même thème
+     * 
+     * \param int $id_theme identifiant du thème
+     * \param int $n_questions nombre de questions
+     * 
+     * \return boolean Erreur | Question[] questions choisies aléatoirement
+     */
     public function RequestNRandomQuestionsByTheme($id_theme, $n_questions) {
         try {
             $request = 'SELECT * FROM Question WHERE id_question IN (' .
@@ -627,6 +707,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie la réponse correspondant à l'identifiant donné
+     * 
+     * \param int $id identifiant de la reponse
+     * 
+     * \return boolean Erreur | Reponse[] Réponse recherchée
+     */
     public function RequestReponse($id) {
         try {
             $request = 'select * from Reponse where id_reponse=:id';
@@ -641,6 +728,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie les réponses de la question
+     * 
+     * \param int $id identifiant de la question
+     * 
+     * \return boolean Erreur | Reponse[] Réponses à la question
+     */
     public function RequestReponseOfQuestion($id) {
         try {
             $request = 'select * from Reponse where id_question=:id';
@@ -655,6 +749,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie les liens question/partie de la partie correspondante
+     * 
+     * \param int $id_partie identifiant de la partie
+     * 
+     * \return boolean Erreur | comprend[] Liens question/partie
+     */
     public function RequestQuestionsOfPartie($id_partie) {
         try {
             $request = 'select * from comprend where id_partie=:id';
@@ -669,6 +770,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie les N meilleurs scores toutes parties confondues
+     * 
+     * \param int $nb Nombre de scores choisi
+     * 
+     * \return boolean Erreur | Score[] score
+     */
     public function GetTopScores($nb) {
         try {
             $request = 'select Utilisateur.prenom, Utilisateur.nom, Partie.nom_partie, Possede.score, Possede.temps'
@@ -687,6 +795,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Récupère les scores d'un utilisateur donné sous forme d'un tableau
+     * 
+     * \param int $id_utilisateur identifiant de l'utilisateur
+     * 
+     * \return boolean Erreur | array les scores
+     */
     public function GetScores($id_utilisateur) {
         try {
             $request = 'select Possede.id_partie, Partie.nom_partie, Possede.score, Possede.temps from Possede, Partie where Possede.id_utilisateur=:id_utilisateur && Possede.id_partie=Partie.id_partie';
@@ -702,6 +817,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie le thème d'une partie donnée
+     * 
+     * \param int $id_partie identifiant de la partie
+     * 
+     * \return boolean Erreur | array informations thème de la partie
+     */
     public function GetTheme($id_partie) {
         try {
             $request = 'select Theme.id_theme, Theme.nom_theme, Theme.active from comprend,Question,Theme' .
@@ -721,6 +843,11 @@ class InterfaceBDD {
         return $result[0];
     }
 
+    /**
+     * \brief Renvoie toutes les parties avec leur thème correspondants dans un tableau
+     * 
+     * \return boolean Erreur | array tableau des parties avec leur thème  
+     */
     public function RequestAllPartiesWithTheme() {
         try {
             $request = 'select T.id_partie, T.nom_partie, Theme.nom_theme from (' .
@@ -739,21 +866,73 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie toutes les questions de la partie sous forme de tableau
+     * 
+     * Le tableau associatif est fait pour l'execution du jeu dans php/request.php
+     * 
+     * \param int $id_partie identifiant de la partie
+     * 
+     * \return array tableau des questions
+     */
     public function RequestGameReadyQuestions($id_partie) {
+        $result = [];
+        $questions = $this->RequestQuestionFromPartie($id_partie);
+        foreach ($questions as $question) {
+            $reponse = $this->RandomSelectReponseFromQuestion($question->getId_question())[0];
+
+            array_push($result, array(
+                'id_question' => $question->getId_question(),
+                'choix_un' => $question->getChoix_un(),
+                'choix_deux' => $question->getChoix_deux(),
+                'id_reponse' => $reponse->getId_reponse(),
+                'valeur_reponse' => $reponse->getValeur_reponse(),
+                'proposition' => $reponse->getProposition()
+            ));
+        }
+
+        return $result;
+    }
+
+    /**
+     * \brief Renvoie les questions d'une partie
+     * 
+     * \param int $id_partie identifiant de la partie
+     * 
+     * \return boolean Erreur | Question[] question de la partie
+     */
+    public function RequestQuestionFromPartie($id_partie) {
         try {
-            $request = 'select Reponse.proposition, C.choix_un, C.choix_deux, Reponse.valeur_reponse from (' .
-                    'select Question.* from comprend, Question ' .
-                    'where comprend.id_partie=:id_partie && comprend.id_question=Question.id_question)' .
-                    ' as C, Reponse where C.id_question=Reponse.id_question';
+            $request = 'select Question.* from comprend, Question where comprend.id_partie=:id_partie && comprend.id_question=Question.id_question';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id_partie', $id_partie, PDO::PARAM_INT);
             $statement->execute();
-            $result = $statement->fetchAll();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Question');
         } catch (PDOException $exception) {
             error_log('Request error: ' . $exception->getMessage());
             return false;
         }
+        return $result;
+    }
 
+    /**
+     * \brief Renvoie une réponse/proposition aléatoire de la question donnée
+     * 
+     * \param int $id_question identifiant de la question
+     * 
+     * \return boolean Erreur | Reponse[] réponse à la question selectionnée
+     */
+    public function RandomSelectReponseFromQuestion($id_question) {
+        try {
+            $request = 'select * from Reponse where id_question=:id order by -LOG(1-RAND()) limit 1';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $id_question, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Reponse');
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
         return $result;
     }
 
