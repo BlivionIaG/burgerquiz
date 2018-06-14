@@ -49,11 +49,12 @@ class InterfaceBDD {
 
     private $bdd; /*
 
-    /**
+      /**
      * \brief Constructeur de la classe InterfaceBDD
      * 
      * Se connecte à la base de donnée MySQL, précisée dans php/consts.php
      */
+
     public function InterfaceBDD() {
         $this->Connect();
     }
@@ -154,9 +155,11 @@ class InterfaceBDD {
     }
 
     /**
+     * \brief Renvoie l'utilisateur possèdant l'identifiant donné
      * 
-     * @param type $id
-     * @return boolean
+     * \param int $id Identifiant de l'utilisateur
+     * 
+     * \return boolean Erreur | Utilisateur[] utilisateur trouvé
      */
     public function RequestUser($id) {
         try {
@@ -172,6 +175,11 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie tous les utilisateurs enregistré dans la BDD
+     * 
+     * \return boolean Erreur | Utilisateur[] utilisateurs
+     */
     public function RequestAllUser() {
         try {
             $request = 'select * from Utilisateur';
@@ -185,6 +193,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Met à jour l'utilisateur
+     * 
+     * \param Utilisateur $user utilisateur à mettre à jour
+     * 
+     * \return boolean statut réussite de la maj
+     */
     public function UpdateUser($user) {
         try {
             $id = $user->getId_utilisateur();
@@ -209,6 +224,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Suppression de l'utilisateur possèdant l'identifiant donné
+     * 
+     * \param int $id identifiant de l'utilisateur à supprimer
+     *
+     * \return boolean statut réussite de la requète
+     */
     public function RemoveUser($id) {
         try {
             $request = 'delete from Utilisateur where id_utilisateur=:id';
@@ -222,6 +244,14 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Vérifie les identifiants de login sont valides
+     * 
+     * \param string $mail Login de l'utilisateur à vérifier
+     * \param string $mdp Mot de passe de l'utilisateur à vérifier
+     * 
+     * \return int identifiant de l'utilisateur valide sinon 0
+     */
     function CheckUser($mail, $mdp) {
         try {
             $request = 'select * from Utilisateur where mail=:mail and mdp=sha(:mdp)';
@@ -241,6 +271,13 @@ class InterfaceBDD {
         return $result[0]->getId_utilisateur();
     }
 
+    /**
+     * \brief Récupère le thème avec l'identifiant correspondant
+     * 
+     * \param Theme $id identifiant du thème
+     * 
+     * \return boolean Erreur | Theme[] thèmes correpondants
+     */
     public function RequestTheme($id) {
         try {
             $request = 'select * from Theme where id_theme=:id';
@@ -255,6 +292,11 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Récupère tous les thèmes contenus dans la BDD
+     * 
+     * \return boolean Erreur | Theme[] Thèmes contenus dans la BDD
+     */
     public function RequestAllThemes() {
         try {
             $request = 'select * from Theme';
@@ -268,6 +310,15 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Ajoute la partie à la BDD
+     * 
+     * On vérifie d'abords qu'il n'existe pas une partie du même nom
+     * 
+     * \param Partie $partie Partie à ajouter
+     * 
+     * \return boolean Statut réussite de la requète
+     */
     public function AddPartie($partie) {
         if ($this->CheckPartie($partie)) {
             error_log('Partie name already taken !');
@@ -289,13 +340,20 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Vérifie si une partie du même nom n'existe pas déjà dans la BDD
+     * 
+     * \param Partie $partie partie à vérifier
+     * 
+     * \return boolean Existe ou non ( tout entier != 0 => true )
+     */
     public function CheckPartie($partie) {
         try {
-            $id = $partie->getId_partie();
+            $nom = $partie->getNom_partie();
 
-            $request = 'select * from Partie where id_partie=:id';
+            $request = 'select * from Partie where nom_partie=:nom';
             $statement = $this->getBdd()->prepare($request);
-            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->bindParam(':nom', $nom, PDO::PARAM_STR);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Partie');
         } catch (PDOException $exception) {
@@ -306,6 +364,13 @@ class InterfaceBDD {
         return sizeof($result);
     }
 
+    /**
+     * \brief Trouve l'identifiant de la partie avec son nom
+     * 
+     * \param Partie $partie partie dont on cherche l'identifiant
+     * 
+     * \return boolean Erreur | int identifiant trouvé
+     */
     public function FindPartieId($partie) {
         try {
             $nom_partie = $partie->getNom_partie();
