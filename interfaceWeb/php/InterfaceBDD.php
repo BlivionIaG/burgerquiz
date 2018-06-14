@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * Copyright (C) 2018 Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,11 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Description of InterfaceBDD
- *
- * @author kev29lt
- */
 require_once('consts.php');
 require_once('Utilisateur.php');
 require_once('Theme.php');
@@ -33,31 +28,61 @@ require_once('comprend.php');
 require_once('Score.php');
 
 /**
- * @class   InterfaceBDD
+ * \file InterfaceBDD.php
+ * \brief Classe de gestion de la base de données
+ * \author Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
+ * \version 1.1
+ * \date 13 juin 2018
  *
- * @brief   Classe de gestion de la base de données
+ * Gère toutes les fonctionnalités en lien avec la Base de donnée (BDD)
+ *
+ */
+
+/**
+ * \class InterfaceBDD
+ * 
+ * \brief Classe de gestion de la base de données
+ * 
+ * Gère toutes les fonctionnalités en lien avec la Base de donnée (BDD)
  */
 class InterfaceBDD {
 
-    private $bdd;
+    private $bdd; /*
 
     /**
-     * @brief   Constructeur de la classe InterfaceBDD
+     * \brief Constructeur de la classe InterfaceBDD
      * 
-     * Connecte à la base de donnée MySQL, précisée dans php/consts.php
+     * Se connecte à la base de donnée MySQL, précisée dans php/consts.php
      */
     public function InterfaceBDD() {
         $this->Connect();
     }
 
+    /**
+     * \brief Getter du PHP Data Object contenu dans InterfaceBDD
+     * 
+     * \return PDO Interface accès base de donnée
+     */
     public function getBdd() {
         return $this->bdd;
     }
 
+    /**
+     * \brief Setter du PHP Data Object contenu dans InterfaceBDD
+     * 
+     * \param PDO $_bdd Interface accès base de donnée
+     */
     public function setBdd($_bdd) {
         $this->bdd = $_bdd;
     }
 
+    /**
+     * \brief Connecte l'objet à la base de donnée
+     * 
+     * Se connecter selon les constantes définies dans php/consts.php
+     * 
+     * \return boolean erreur | PDO réussi
+     */
     public function Connect() {
         try {
             $this->setBdd(new PDO('mysql:host=' . DB_SERVER . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASSWORD));
@@ -68,6 +93,13 @@ class InterfaceBDD {
         return $this->getBdd();
     }
 
+    /**
+     * \brief Ajout d'un utilisateur à la BDD
+     * 
+     * \param Utilisateur $user User à ajouter
+     * 
+     * \return boolean Ajout réussi ou non
+     */
     public function AddUser($user) {
         try {
             $mail = $user->getMail();
@@ -96,6 +128,13 @@ class InterfaceBDD {
         return $result;
     }
 
+    /**
+     * \brief Renvoie l'identifiant du premier utilisateur comportant le même mail
+     * 
+     * \param string $mail Email/login de l'utilisateur
+     * 
+     * \return int identifiant de l'utilisateur
+     */
     public function FindUser($mail) {
         try {
             $request = 'select * from Utilisateur where mail=:mail';
@@ -114,6 +153,11 @@ class InterfaceBDD {
         return $result[0]->getId_utilisateur();
     }
 
+    /**
+     * 
+     * @param type $id
+     * @return boolean
+     */
     public function RequestUser($id) {
         try {
             $request = 'select * from Utilisateur where id_utilisateur=:id';
