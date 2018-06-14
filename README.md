@@ -65,11 +65,11 @@ mysql -u root
 ```
 source interfaceWeb/burgerquiz.sql;
 ```
-** Remarque : Si une base du même nom existe, elle sera remplacée, de même dans le cas des tables
+Remarque : Si une base du même nom existe, elle sera remplacée, de même dans le cas des tables
 * Ensuite, ouvrez votre naavigateur et allez sur ![localhost/phpmyadmin](127.0.0.1/phpmyadmin)
-** Connectez vous, Cliquez sur "Burgerquiz" ( ou le nom de la base ), puis allez dans l'onglet "Privilèges".
-** Ensuite cliquez sur "Add New User", Remplissez le champ "User name", "Password" et "Re-type"
-** puis descendez en bas de la page pour cliquer sur "GO"
+Connectez vous, Cliquez sur "Burgerquiz" ( ou le nom de la base ), puis allez dans l'onglet "Privilèges".
+Ensuite cliquez sur "Add New User", Remplissez le champ "User name", "Password" et "Re-type"
+puis descendez en bas de la page pour cliquer sur "GO"
 * Pour finir, il faut modifier le fichier consts.php dans interfaceWeb/php/conts.php
 
 ### Le Site Web
