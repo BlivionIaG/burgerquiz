@@ -41,25 +41,6 @@ void connectiondb::disconnect(){
     //res = NULL;
 }
 
-void connectiondb::getData(string select){
-/*
-    try {
-        if(con->isValid()){
-            stmt = con->createStatement();
-            res = stmt->executeQuery(select);
-        }
-
-        } catch (sql::SQLException &e) {
-         qDebug() << "# ERR: SQLException in " << __FILE__;
-         qDebug() << "(" << __FUNCTION__ << ") on line " << __LINE__ << endl;
-         qDebug() << "# ERR: " << e.what();
-         qDebug() << " (MySQL error code: " << e.getErrorCode();
-         qDebug() << ", SQLState: " << QString::fromStdString(e.getSQLState()) << " )" << endl;
-         //return false;
-        }//catch string*/
-}
-
-//get connection
 sql::Connection *connectiondb::GetConnection(){
 
         //qDebug() << "test";

@@ -148,7 +148,7 @@ Question Question::getlastinput(){
 
 }
 
-bool Question::updateQuestion(int id,std::string name,std::string choix){
+bool Question::updateQuestion(int id,std::string c1,std::string c2){
 
     try {
 
@@ -161,8 +161,8 @@ bool Question::updateQuestion(int id,std::string name,std::string choix){
         stmt = con->prepareStatement("UPDATE Question SET choix_un = ?,"
                                      "choix_deux = ? WHERE "
                                      "Question.id_question = ?");
-        stmt->setString(2,name);
-        stmt->setString(1,choix);
+        stmt->setString(1,c1);
+        stmt->setString(2,c2);
         stmt->setInt(3,id);
             //qDebug() << "test5";
             stmt->executeQuery();
@@ -195,9 +195,6 @@ bool Question::deleteQuestion(int id){
         //sql::ResultSet *res;
         sql::PreparedStatement *stmt;
         sql::Connection *con = connectiondb::GetConnection();
-        //qDebug() << con->
-        //if(con->isValid() && con != NULL){
-         //qDebug() << "test4";
 
         stmt = con->prepareStatement("DELETE Reponse FROM Reponse,Question where Reponse.id_question = Question.id_question and Question.id_question = ?");
         stmt->setInt(1,id);

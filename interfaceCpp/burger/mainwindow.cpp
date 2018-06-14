@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setWindowTitle("test");
+    setWindowTitle("Burger Manager");
     setWindowIcon(QIcon(":/burger3.png"));
     ui->pushButton_15->setVisible(false);
     ui->menuBar->hide();
@@ -282,7 +282,7 @@ void MainWindow::on_listWidget_3_currentRowChanged(int currentRow)
 
 }
 
-void MainWindow::on_comboBox_currentIndexChanged(int index)
+void MainWindow::on_comboBox_currentIndexChanged()
 {
     QVector<Question*>questions = Question::getQuestions(ui->comboBox->currentData(Qt::UserRole).value<Theme>().getId());
     int i;
@@ -304,7 +304,7 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
     ui->listWidget_4->setCurrentRow(0);
 }
 
-void MainWindow::on_comboBox_2_currentIndexChanged(int index)
+void MainWindow::on_comboBox_2_currentIndexChanged()
 {
     User users;
     users.getUser(ui->comboBox_2->currentData(Qt::UserRole).value<User>().getid());

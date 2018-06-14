@@ -1,16 +1,22 @@
 #ifndef USER_H
 #define USER_H
 
+/*!
+ * \file user.h
+ * \brief gestion des utilisateurs
+ * \author Antoine O.
+ * \version 1.0
+ */
+
 #include <string>
 #include <QVector>
 #include <iostream>
 
-#include <cppconn/driver.h>
-#include <cppconn/exception.h>
-#include <cppconn/resultset.h>
-#include <cppconn/statement.h>
-#include <cppconn/prepared_statement.h>
+#include "connectiondb.h"
 
+/*! \Class User
+ * \Brief class de gestion des utilisateur
+ */
 
 class User
 {

@@ -4,7 +4,7 @@
 /*!
  * \file connectiondb.h
  * \brief gestion connection BDD
- * \author Antoine O. Kévin L.
+ * \author Antoine O.
  * \version 1.0
  */
 
@@ -12,6 +12,7 @@
 #include <cppconn/exception.h>
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
+#include <cppconn/prepared_statement.h>
 
 #include <iostream>
 using namespace std;
@@ -19,7 +20,7 @@ using namespace std;
 /*! \Class connectiondb
  * \Brief class de connection à la BDD
  *
- * La classe permet la connectin et la reconnection à la BDD
+ * La classe permet la connection et la reconnection à la BDD
  */
 
 class connectiondb
@@ -36,19 +37,22 @@ public:
      * \return true si la connection est réussi, sinon false
      */
     bool connect(string namedb,string addressdb, string user, string password);
+    /*!
+     * \brief déconnection BDD
+     * supprime la connection a la BDD actuel
+     */
     void disconnect();
-    void getData(string select);
+    /*!
+     * \brief Recupération pointeur vers la BDD
+     * vérifie si la connection est valide sinon renvoie une erreur
+     */
     static sql::Connection *GetConnection();
-
-    //sql::ResultSet *res;
-    //sql::PreparedStatement *pstmt;
 
 private:
 
-    sql::Driver *driver;
+    sql::Driver *driver; /*!< Driver pour la BDD */
     static sql::Connection *con; /*!< Pointeur vers la BDD */
     //sql::Statement *stmt;
-
 
 };
 

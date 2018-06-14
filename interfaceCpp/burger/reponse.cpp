@@ -63,7 +63,7 @@ bool Reponse::addReponse(int rep,std::string proposition,int idq){
 
     try {
 
-        sql::ResultSet *res;
+        //sql::ResultSet *res;
         sql::PreparedStatement *stmt;
 
         sql::Connection *con = connectiondb::GetConnection();
@@ -154,7 +154,7 @@ bool Reponse::updateReponse(int id,std::string name,int choix){
 
     try {
 
-        sql::ResultSet *res;
+        //sql::ResultSet *res;
         sql::PreparedStatement *stmt;
         sql::Connection *con = connectiondb::GetConnection();
         //qDebug() << con->
@@ -194,7 +194,7 @@ bool Reponse::deleteReponse(int id){
 
     try {
 
-        sql::ResultSet *res;
+        //sql::ResultSet *res;
         sql::PreparedStatement *stmt;
         sql::Connection *con = connectiondb::GetConnection();
         //qDebug() << con->
@@ -229,39 +229,3 @@ bool Reponse::deleteReponse(int id){
 }
 
 
-
-/*
- * UPDATE Reponse SET valeur_reponse = 2,
- *  proposition = 'A mettre sur la viandes' WHERE
- *  Reponse.id_reponse = 1
-*/
-
-
-/*
-
-
-
-            stmt = con->prepareStatement("DELETE Reponse FROM Reponse,
-                                          Question where Reponse.id_question = Question.id_question and
-                                          Question.id_question = ?");
-            stmt->setString(1,name);
-
-            stmt = con->prepareStatement("DELETE Question FROM Question where Question.id_question = ?");
-            stmt->setString(1,name);
-
-
-
-
-
-
-            stmt = con->prepareStatement("DELETE Reponse FROM Reponse,
-                                          Question,Theme where Reponse.id_question = Question.id_question and
-                                          Question.id_theme ?");
-            stmt->setString(1,name);
-
-            stmt = con->prepareStatement("DELETE Question FROM Question where Question.id_theme = ?");
-            stmt->setString(1,name);
-
-            stmt = con->prepareStatement("DELETE Theme FROM Theme where Theme.id_theme = ?");
-            stmt->setString(1,name);
- */
