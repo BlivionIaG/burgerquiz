@@ -70,6 +70,11 @@ class Possede {
         return $this->id_utilisateur;
     }
 
+    /**
+     * \brief Getter du score
+     * 
+     * \return int score
+     */
     public function getScore() {
         return $this->score;
     }
