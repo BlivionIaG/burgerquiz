@@ -12,7 +12,7 @@ Deux solutions sont possibles pour télécharger le projet :
 ``` 
 git clone https://github.com/BlivionIaG/burgerquiz.git
 ```
-* Vous pouvez télécharger le projet au lien suivant : ![# ICI](https://github.com/BlivionIaG/burgerquiz/archive/master.zip) puis le dézipper dans le dossier de votre choix
+* Vous pouvez télécharger le projet au lien suivant : ![ICI](https://github.com/BlivionIaG/burgerquiz/archive/master.zip) puis le dézipper dans le dossier de votre choix
 ```
 unzip master.zip
 ```
