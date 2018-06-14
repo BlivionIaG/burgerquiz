@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['partie',['Partie',['../class_partie.html#ad86962e0db5fe563daa445e8dbc1f015',1,'Partie']]]
+  ['insertthemes',['insertThemes',['../class_theme.html#a05b164eff7705be46e57accbdc160fea',1,'Theme']]]
 ];

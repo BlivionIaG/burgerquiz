@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['updatequestion',['updateQuestion',['../class_question.html#a1f8c7b90a2b2242a39a93beb77a9360e',1,'Question']]],
-  ['updatereponse',['updateReponse',['../class_reponse.html#acfcc3a8acb3ccdb9bf3528144f1d17bf',1,'Reponse']]]
+  ['score',['Score',['../class_score.html#a727e0b387ae5ca1d4224019ac4ac2684',1,'Score::Score(int partie, int theme, int sc, int time, User user1)'],['../class_score.html#a3c674938e08e580e23c76e448528fdd5',1,'Score::Score(int partie, int theme, int sc, int time, Partie partie1)']]]
 ];

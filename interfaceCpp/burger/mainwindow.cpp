@@ -659,3 +659,58 @@ void MainWindow::on_pushButton_10_clicked()
         }
     }
 }
+
+void MainWindow::on_pushButton_18_clicked()
+{
+
+
+QDialog dialog(this);
+//Question question = ui->listWidget_4->currentItem()->data(1).value<Question>();
+// Use a layout allowing to have a label next to each field
+this->setMinimumWidth(400);
+QFormLayout form(&dialog);
+
+
+QComboBox *box = new QComboBox(&dialog);
+QVector<Theme*>themes = Theme::getThemes();
+int i;
+
+if(!themes.isEmpty()){
+
+    for(i=0;i<themes.size();i++){
+        QVariant data;
+        data.setValue(Theme(themes[i]->getName(),themes[i]->getId()));
+        box->addItem(QString::fromStdString(themes[i]->getName()),data);
+        //***********************************
+    }
+}
+QString label2 = QString("choix theme");
+//lineEdit2->setMaxLength(128);
+form.addRow(label2, box);
+
+//fields << lineEdit;
+//}
+
+// Add some standard buttons (Cancel/Ok) at the bottom of the dialog
+QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
+                           Qt::Horizontal, &dialog);
+form.addRow(&buttonBox);
+QObject::connect(&buttonBox, SIGNAL(accepted()), &dialog, SLOT(accept()));
+QObject::connect(&buttonBox, SIGNAL(rejected()), &dialog, SLOT(reject()));
+
+// Show the dialog as modal
+if (dialog.exec() == QDialog::Accepted) {
+
+    Question question = ui->listWidget_4->currentItem()->data(1).value<Question>();
+            //Theme theme = ui->listtheme->currentItem()->data(1).value<Theme>();
+
+            if(question.newQuestionTheme(question.getIdQuestion(),box->currentData().value<Theme>().getId())){
+                //delete ui->listtheme->takeItem(ui->listtheme->currentRow());
+                delete ui->listWidget_4->takeItem(ui->listWidget_4->currentRow());
+                ui->label_7->setText(QString::fromStdString("Theme: " +box->currentData().value<Theme>().getName()));
+            }
+        }
+
+}
+
+

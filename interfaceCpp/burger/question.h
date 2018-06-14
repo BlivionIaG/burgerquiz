@@ -58,6 +58,14 @@ public:
      */
     bool deleteQuestion(int id);
     /*!
+     * \brief change le theme de la question
+     * \param id: id de la question
+     * \param id_theme : id du nouveau theme
+     * \return true si ca marche , false si il y a une erreur
+     */
+
+    bool newQuestionTheme(int id, int id_theme);
+    /*!
      * \brief recupération derniere question ajouter
      * \return la derniere question ajoutée et une question vide en cas d'erreur
      */

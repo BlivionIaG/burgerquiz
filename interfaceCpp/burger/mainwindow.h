@@ -146,6 +146,11 @@ private slots:
      */
     void on_pushButton_10_clicked();
 
+    /*!
+     * \brief bouton changer theme question
+     */void on_pushButton_18_clicked();
+
+
 private:
     Ui::MainWindow *ui;
 };
