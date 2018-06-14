@@ -24,16 +24,16 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "Burgerquiz Website", "index.html", [
-    [ "Data Structures", "annotated.html", [
-      [ "Data Structures", "annotated.html", "annotated_dup" ],
-      [ "Data Structure Index", "classes.html", null ],
-      [ "Data Fields", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ]
+    [ "Structures de données", "annotated.html", [
+      [ "Structures de données", "annotated.html", "annotated_dup" ],
+      [ "Index des structures de données", "classes.html", null ],
+      [ "Champs de donnée", "functions.html", [
+        [ "Tout", "functions.html", null ],
+        [ "Fonctions", "functions_func.html", null ]
       ] ]
     ] ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+    [ "Fichiers", "files.html", [
+      [ "Liste des fichiers", "files.html", "files_dup" ]
     ] ]
   ] ]
 ];
@@ -43,5 +43,5 @@ var NAVTREEINDEX =
 "_interface_b_d_d_8php.html"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';
+var SYNCOFFMSG = 'cliquez pour activer la synchronisation du panel';
