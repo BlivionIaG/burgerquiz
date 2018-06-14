@@ -29,12 +29,12 @@ sudo apt-get install qt5-default libmysqlcppconn-dev build-essential
 ```
 nano /etc/mysql/mariadb.conf.d/50-server.cnf
 ```
-Commentez la ligne ```"bind-address = 127.0.0.1"```
+** Commentez la ligne ```"bind-address = 127.0.0.1"```
 * Redémmarez MySQL :
 ```
 sudo service mysql restart
 ```
-ou 
+** ou 
 ```
 sudo systemctl restart mysql
 ```
@@ -45,7 +45,7 @@ Le site web fonctionne avec PHP7 et MySQL (Oracle ou MariaDB)
 ```
 sudo apt-get install apache2 mysql-server php7.0 libapache2-mod-php7.0 php7.0-gd php7.0-mysql php7.0-bz2 php7.0-json php7.0-curl php7.0-intl php7.0-mcrypt php-mbstring php7.0-mbstring phpmyadmin
 ```
-* (facultatif) Après d'avoir installé MySQL, pour changer le mot de passe root exécutez :
+** (facultatif) Après d'avoir installé MySQL, pour changer le mot de passe root exécutez :
 ```
 sudo mysql_secure_installation
 ```
@@ -70,7 +70,25 @@ Remarque : Si une base du même nom existe, elle sera remplacée, de même dans 
 Connectez vous, Cliquez sur "Burgerquiz" ( ou le nom de la base ), puis allez dans l'onglet "Privilèges".
 Ensuite cliquez sur "Add New User", Remplissez le champ "User name", "Password" et "Re-type"
 puis descendez en bas de la page pour cliquer sur "GO"
-* Pour finir, il faut modifier le fichier consts.php dans interfaceWeb/php/conts.php
+* Pour finir, il faut modifier le fichier consts.php dans interfaceWeb/php/consts.php
+```
+  define('DB_USER', 'NOM_UTILISATEUR');
+  define('DB_PASSWORD', 'MOT_DE_PASSE_UTILISATEUR');
+  define('DB_NAME', 'NOM_BASE_DE_DONNE');
+  define('DB_SERVER', 'ADDRESSE_SERVEUR');
+```
 
 ### Le Site Web
-Pour installer le site web, c'est simple
+Pour installer le site web, c'est simple il suffit de copier le contenu de interfaceWeb dans votre dossier sur lequel votre virtualhost pointe.
+
+### L'outil administration système
+Allez dans interfaceCpp/burger/
+Pour compiler :
+```
+qmake
+make
+```
+Vous pouvez maintenant executer:
+```
+./burger
+```
