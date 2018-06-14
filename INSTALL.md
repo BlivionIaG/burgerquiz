@@ -29,12 +29,12 @@ sudo apt-get install qt5-default libmysqlcppconn-dev build-essential
 ```
 nano /etc/mysql/mariadb.conf.d/50-server.cnf
 ```
-** Commentez la ligne ```"bind-address = 127.0.0.1"```
+* Commentez la ligne ```"bind-address = 127.0.0.1"```
 * Redémmarez MySQL :
 ```
 sudo service mysql restart
 ```
-** ou 
+ ou 
 ```
 sudo systemctl restart mysql
 ```
@@ -45,7 +45,7 @@ Le site web fonctionne avec PHP7 et MySQL (Oracle ou MariaDB)
 ```
 sudo apt-get install apache2 mysql-server php7.0 libapache2-mod-php7.0 php7.0-gd php7.0-mysql php7.0-bz2 php7.0-json php7.0-curl php7.0-intl php7.0-mcrypt php-mbstring php7.0-mbstring phpmyadmin
 ```
-** (facultatif) Après d'avoir installé MySQL, pour changer le mot de passe root exécutez :
+* (facultatif) Après d'avoir installé MySQL, pour changer le mot de passe root exécutez :
 ```
 sudo mysql_secure_installation
 ```
