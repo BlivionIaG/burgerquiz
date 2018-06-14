@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['linkquestiontopartie',['LinkQuestionToPartie',['../class_interface_b_d_d.html#a230a88f1d16eb95926e03544b4a75279',1,'InterfaceBDD']]]
+  ['interfacebdd',['InterfaceBDD',['../class_interface_b_d_d.html#ae2b03860390e293a5f6ba935a360ab2b',1,'InterfaceBDD']]]
 ];

@@ -14,5 +14,11 @@ var class_utilisateur =
     [ "setNom", "class_utilisateur.html#aafe56564a4593df7cd5630b89f635697", null ],
     [ "setPrenom", "class_utilisateur.html#a15debc4cd168eeddc89a19a4b83356ef", null ],
     [ "setToken", "class_utilisateur.html#a6cf653bccdb13ed7bfb9ec234e12b3b5", null ],
-    [ "toArray", "class_utilisateur.html#a658defb34762c8f40085aec87e16ba1a", null ]
+    [ "toArray", "class_utilisateur.html#a658defb34762c8f40085aec87e16ba1a", null ],
+    [ "$id_utilisateur", "class_utilisateur.html#a6d38990f859cb8ba7ffc10dbd36a798c", null ],
+    [ "$mail", "class_utilisateur.html#ac409786c163a1974d1e24a6767a95166", null ],
+    [ "$mdp", "class_utilisateur.html#a8a65334de2f0d486a42b02ecf82fe8fb", null ],
+    [ "$nom", "class_utilisateur.html#ac72f7055f1354a72cd1dcca5d9f1e121", null ],
+    [ "$prenom", "class_utilisateur.html#a79561b2ac030de600ace51879093d95c", null ],
+    [ "$token", "class_utilisateur.html#a00ae4fcafb1145f5e968bdf920f83e2e", null ]
 ];

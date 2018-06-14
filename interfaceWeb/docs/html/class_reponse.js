@@ -9,5 +9,9 @@ var class_reponse =
     [ "setId_reponse", "class_reponse.html#ad95b5b2facbafa58b30f9aa43aaefb03", null ],
     [ "setProposition", "class_reponse.html#a69f05487b0db2d2a7990b9eba3302c95", null ],
     [ "setValeur_reponse", "class_reponse.html#ac8186b93312e73ca020b4df1f20f654b", null ],
-    [ "toArray", "class_reponse.html#a658defb34762c8f40085aec87e16ba1a", null ]
+    [ "toArray", "class_reponse.html#a658defb34762c8f40085aec87e16ba1a", null ],
+    [ "$id_question", "class_reponse.html#a6a76bd9d9c3d52813db2a548263f2c9b", null ],
+    [ "$id_reponse", "class_reponse.html#ab2ccc077d3b1376865ca809703a00175", null ],
+    [ "$proposition", "class_reponse.html#a6edaad3a3e48ed5993e959c9f422986b", null ],
+    [ "$valeur_reponse", "class_reponse.html#a9c4e21a01cca7019d5c6ba2779ef085b", null ]
 ];

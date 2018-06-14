@@ -9,5 +9,9 @@ var class_question =
     [ "setChoix_un", "class_question.html#a91cf7747be8134f6cc146c5f1caeeaca", null ],
     [ "setId_question", "class_question.html#ac24eebef0d2ff0f8671de8c88136c189", null ],
     [ "setId_theme", "class_question.html#ace5c32652a4480e28814b02809505c3d", null ],
-    [ "toArray", "class_question.html#a658defb34762c8f40085aec87e16ba1a", null ]
+    [ "toArray", "class_question.html#a658defb34762c8f40085aec87e16ba1a", null ],
+    [ "$choix_deux", "class_question.html#af9140ef0e0562707a8761da1832ad30b", null ],
+    [ "$choix_un", "class_question.html#a6b1aebc73d158e4e414302a327854f49", null ],
+    [ "$id_question", "class_question.html#a6a76bd9d9c3d52813db2a548263f2c9b", null ],
+    [ "$id_theme", "class_question.html#a9e67ecf76f83a75b791c095dcfdf743d", null ]
 ];

@@ -8,5 +8,9 @@ var class_possede =
     [ "setId_partie", "class_possede.html#a1c24bab5533c42a8a90d81053e39f92e", null ],
     [ "setId_utilisateur", "class_possede.html#a8fb52ad68b9f922838477e56349edf2d", null ],
     [ "setScore", "class_possede.html#a989800be128d471abb7c4dbb184b8154", null ],
-    [ "setTemps", "class_possede.html#a36713bbe32fc4795bc155ee6aa370a00", null ]
+    [ "setTemps", "class_possede.html#a36713bbe32fc4795bc155ee6aa370a00", null ],
+    [ "$id_partie", "class_possede.html#abec353d024c74c172a0e092291a149c2", null ],
+    [ "$id_utilisateur", "class_possede.html#a6d38990f859cb8ba7ffc10dbd36a798c", null ],
+    [ "$score", "class_possede.html#aa021b2590868740e2d52762711ea145f", null ],
+    [ "$temps", "class_possede.html#a55220541dd7f098bb644b1635de87bbc", null ]
 ];

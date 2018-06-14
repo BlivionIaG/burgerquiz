@@ -1,26 +1,4 @@
 var searchData=
 [
-  ['randomselectreponsefromquestion',['RandomSelectReponseFromQuestion',['../class_interface_b_d_d.html#a0ef10a6954ec4add81d8a602bb70bd03',1,'InterfaceBDD']]],
-  ['removepartie',['RemovePartie',['../class_interface_b_d_d.html#a3981553b34d86dc1419002f9a9121fc6',1,'InterfaceBDD']]],
-  ['removeuser',['RemoveUser',['../class_interface_b_d_d.html#a1ce1781e4e653de271446486898f360e',1,'InterfaceBDD']]],
-  ['reponse',['Reponse',['../class_reponse.html',1,'']]],
-  ['requestallparties',['RequestAllParties',['../class_interface_b_d_d.html#aa51770e0fe58671f8be78be72ab88973',1,'InterfaceBDD']]],
-  ['requestallpartieswiththeme',['RequestAllPartiesWithTheme',['../class_interface_b_d_d.html#a9d671df2428c378fcb683f587e2a62d5',1,'InterfaceBDD']]],
-  ['requestallscores',['RequestAllScores',['../class_interface_b_d_d.html#a4d1d3a0c3fed3edec5e93a039e5cc15a',1,'InterfaceBDD']]],
-  ['requestallthemes',['RequestAllThemes',['../class_interface_b_d_d.html#aaadfadb8a0a987f3d7a82dc3207e80f6',1,'InterfaceBDD']]],
-  ['requestalluser',['RequestAllUser',['../class_interface_b_d_d.html#a3dea4aa280dafa70b190e859df68c1b4',1,'InterfaceBDD']]],
-  ['requestbestscore',['RequestBestScore',['../class_interface_b_d_d.html#ac5d8ed61cc01eba73c0060a4561702dd',1,'InterfaceBDD']]],
-  ['requestgamereadyquestions',['RequestGameReadyQuestions',['../class_interface_b_d_d.html#ab3cac1dc81aaa3b978c19e40f585139d',1,'InterfaceBDD']]],
-  ['requestnrandomquestionsbytheme',['RequestNRandomQuestionsByTheme',['../class_interface_b_d_d.html#aa55c97f41f0473692fa3c3be52b16d91',1,'InterfaceBDD']]],
-  ['requestpartie',['RequestPartie',['../class_interface_b_d_d.html#a08dccbb831fa8c610a5d96158a4f38cb',1,'InterfaceBDD']]],
-  ['requestpartiescores',['RequestPartieScores',['../class_interface_b_d_d.html#aeb87620551f2e3cd7a7aac388d857534',1,'InterfaceBDD']]],
-  ['requestquestion',['RequestQuestion',['../class_interface_b_d_d.html#a363d433b9362a9d7e70c3b88f665c6e2',1,'InterfaceBDD']]],
-  ['requestquestionfrompartie',['RequestQuestionFromPartie',['../class_interface_b_d_d.html#a9135bab40bcea0ecd11a167be9442445',1,'InterfaceBDD']]],
-  ['requestquestionsofpartie',['RequestQuestionsOfPartie',['../class_interface_b_d_d.html#aed61db0c78fb2022c40b11e4c7623096',1,'InterfaceBDD']]],
-  ['requestreponse',['RequestReponse',['../class_interface_b_d_d.html#a653d317c29317946ca25680b7ce39c98',1,'InterfaceBDD']]],
-  ['requestreponseofquestion',['RequestReponseOfQuestion',['../class_interface_b_d_d.html#aeb7156b09f5a9ee1a472bdaf3ef603b3',1,'InterfaceBDD']]],
-  ['requesttheme',['RequestTheme',['../class_interface_b_d_d.html#a03ff86215559d5aa319c416aaa5a3f46',1,'InterfaceBDD']]],
-  ['requestuser',['RequestUser',['../class_interface_b_d_d.html#a3069460bb26daac4b0777cb763ab198a',1,'InterfaceBDD']]],
-  ['requestuserpartiescores',['RequestUserPartieScores',['../class_interface_b_d_d.html#a71f154f1bff6e6659dddefcde250f993',1,'InterfaceBDD']]],
-  ['requestuserscores',['RequestUserScores',['../class_interface_b_d_d.html#a0e5add57564c5205c91a6bc6c8b1dcdb',1,'InterfaceBDD']]]
+  ['question',['Question',['../class_question.html',1,'']]]
 ];

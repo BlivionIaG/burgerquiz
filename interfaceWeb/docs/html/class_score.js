@@ -14,5 +14,12 @@ var class_score =
     [ "setNom_partie", "class_score.html#af6c36317202690a956691f87d607188c", null ],
     [ "setPrenom", "class_score.html#a15debc4cd168eeddc89a19a4b83356ef", null ],
     [ "setScore", "class_score.html#a989800be128d471abb7c4dbb184b8154", null ],
-    [ "setTemps", "class_score.html#a36713bbe32fc4795bc155ee6aa370a00", null ]
+    [ "setTemps", "class_score.html#a36713bbe32fc4795bc155ee6aa370a00", null ],
+    [ "$id_partie", "class_score.html#abec353d024c74c172a0e092291a149c2", null ],
+    [ "$id_utilisateur", "class_score.html#a6d38990f859cb8ba7ffc10dbd36a798c", null ],
+    [ "$nom", "class_score.html#ac72f7055f1354a72cd1dcca5d9f1e121", null ],
+    [ "$nom_partie", "class_score.html#a99a20aec498908a080b92cf8608bc93f", null ],
+    [ "$prenom", "class_score.html#a79561b2ac030de600ace51879093d95c", null ],
+    [ "$score", "class_score.html#aa021b2590868740e2d52762711ea145f", null ],
+    [ "$temps", "class_score.html#a55220541dd7f098bb644b1635de87bbc", null ]
 ];

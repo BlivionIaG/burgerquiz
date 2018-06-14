@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * Copyright (C) 2018 Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,17 +18,33 @@
  */
 
 /**
- * Description of Possede
- *
- * @author kev29lt
+ * \file Possede.php
+ * \brief Classe conteneur de Lien question/partie
+ * \author Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
+ * \version 1.1
+ * \date 06 juin 2018
+ */
+
+/**
+ * \class Partie
+ * 
+ * \brief Classe conteneur de Lien question/partie
  */
 class Possede {
 
-    private $id_partie;
-    private $id_utilisateur;
-    private $score;
-    private $temps;
+    private $id_partie; /**< \brief Identifiant de la partie */
+    private $id_utilisateur; /**< \brief Identifiant de l'utilisateur */
+    private $score; /**< \brief score de la partie jouée */
+    private $temps; /**< \brief temps de la partie jouée */
 
+    /**
+     * \brief Assigne les valeurs à l'objet
+     * 
+     * \param int $_id_partie identifiant de la partie
+     * \param int $_id_utilisateur identifiant de l'utilisateur
+     * \param int $_score score
+     * \param int $_temps temps
+     */
     public function create($_id_partie, $_id_utilisateur, $_score, $_temps) {
         $this->setId_partie($_id_partie);
         $this->setId_utilisateur($_id_utilisateur);
@@ -36,10 +52,20 @@ class Possede {
         $this->setTemps($_temps);
     }
 
+    /**
+     * \brief Getter de l'identifiant de la partie
+     * 
+     * \return int identifiant de la partie
+     */
     public function getId_partie() {
         return $this->id_partie;
     }
 
+    /**
+     * \brief Getter de l'identifiant utilisateur
+     * 
+     * \return int identifiant utilisateur
+     */
     public function getId_utilisateur() {
         return $this->id_utilisateur;
     }

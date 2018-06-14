@@ -39,5 +39,6 @@ var class_interface_b_d_d =
     [ "RequestUserScores", "class_interface_b_d_d.html#a0e5add57564c5205c91a6bc6c8b1dcdb", null ],
     [ "setBdd", "class_interface_b_d_d.html#a91f08708d6515a9a029053f06c057ea4", null ],
     [ "UpdatePossede", "class_interface_b_d_d.html#adff6bf7ab712728f7898296d73bbd71b", null ],
-    [ "UpdateUser", "class_interface_b_d_d.html#abf7f8811487ce2a1626969ffbfcf7701", null ]
+    [ "UpdateUser", "class_interface_b_d_d.html#abf7f8811487ce2a1626969ffbfcf7701", null ],
+    [ "$bdd", "class_interface_b_d_d.html#a94f91e878bce0991e2cd595c5dd79b3f", null ]
 ];

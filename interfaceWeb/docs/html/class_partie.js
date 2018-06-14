@@ -5,5 +5,7 @@ var class_partie =
     [ "getNom_partie", "class_partie.html#a953093d15d493a9958669ca3e9e8f239", null ],
     [ "setId_partie", "class_partie.html#a1c24bab5533c42a8a90d81053e39f92e", null ],
     [ "setNom_partie", "class_partie.html#af6c36317202690a956691f87d607188c", null ],
-    [ "toArray", "class_partie.html#a658defb34762c8f40085aec87e16ba1a", null ]
+    [ "toArray", "class_partie.html#a658defb34762c8f40085aec87e16ba1a", null ],
+    [ "$id_partie", "class_partie.html#abec353d024c74c172a0e092291a149c2", null ],
+    [ "$nom_partie", "class_partie.html#a99a20aec498908a080b92cf8608bc93f", null ]
 ];

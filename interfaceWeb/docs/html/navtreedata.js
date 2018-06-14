@@ -29,7 +29,8 @@ var NAVTREE =
       [ "Index des structures de données", "classes.html", null ],
       [ "Champs de donnée", "functions.html", [
         [ "Tout", "functions.html", null ],
-        [ "Fonctions", "functions_func.html", null ]
+        [ "Fonctions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Fichiers", "files.html", [

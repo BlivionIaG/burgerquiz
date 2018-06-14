@@ -46,14 +46,13 @@ require_once('Score.php');
  */
 class InterfaceBDD {
 
-    private $bdd; /*
+    private $bdd; /**< \brief PDO utilisé pour l'intégralité des actions effectuées sur la BDD */
 
-      /**
+    /**
      * \brief Constructeur de la classe InterfaceBDD
      * 
      * Se connecte à la base de donnée MySQL, précisée dans php/consts.php
      */
-
     public function InterfaceBDD() {
         $this->Connect();
     }

@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['checkpartie',['CheckPartie',['../class_interface_b_d_d.html#a21421b30114a0f7de6e160c048c9506d',1,'InterfaceBDD']]],
-  ['checkpossede',['CheckPossede',['../class_interface_b_d_d.html#abdd3159f3f18a5aba6f1f29907489073',1,'InterfaceBDD']]],
-  ['checkuser',['CheckUser',['../class_interface_b_d_d.html#aaa494b0483c328eae0da048fcec610d1',1,'InterfaceBDD']]],
-  ['comprend',['comprend',['../classcomprend.html',1,'']]],
-  ['connect',['Connect',['../class_interface_b_d_d.html#a9ac768272a054d6ef7e8436f1144b730',1,'InterfaceBDD']]]
+  ['action_2ephp',['action.php',['../action_8php.html',1,'']]],
+  ['addpartie',['AddPartie',['../class_interface_b_d_d.html#a0bbed9af515a32afda28ca2f057d02fc',1,'InterfaceBDD']]],
+  ['addpossede',['AddPossede',['../class_interface_b_d_d.html#a4247c06c17b9c86dbc80321220969862',1,'InterfaceBDD']]],
+  ['adduser',['AddUser',['../class_interface_b_d_d.html#a00c52bf73968bee971285a372892afb6',1,'InterfaceBDD']]]
 ];
