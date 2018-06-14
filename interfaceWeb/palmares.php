@@ -1,6 +1,5 @@
 <?php
-
-/* 
+/*
  * Copyright (C) 2018 Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -105,21 +104,24 @@ if (isset($_SESSION)) {
                     <div id="bq-mybestscore">
                         <?php
                         if (isset($user)) {
-                            $bestscore = $db->RequestBestScore($user->getId_utilisateur());
-                            $timestamp = $bestscore->getTemps();
-                            $hours = floor($timestamp / 3600);
-                            $minutes = floor(($timestamp / 60) % 60);
-                            $seconds = $timestamp % 60;
+                            $ttmp = $db->RequestBestScore($user->getId_utilisateur());
+                            if ($ttmp) {
+                                $bestscore = $ttmp[0];
+                                $timestamp = $bestscore->getTemps();
+                                $hours = floor($timestamp / 3600);
+                                $minutes = floor(($timestamp / 60) % 60);
+                                $seconds = $timestamp % 60;
 
-                            echo '<div class="bq-circle"><span>' . $bestscore->getScore() . '</span></div><span> en ';
-                            if (isset($hour) && $hour > 0) {
-                                echo $hour . 'h ';
+                                echo '<div class="bq-circle"><span>' . $bestscore->getScore() . '</span></div><span> en ';
+                                if (isset($hour) && $hour > 0) {
+                                    echo $hour . 'h ';
+                                }
+                                if (isset($minutes) && $minutes > 0) {
+                                    echo $minutes . 'm ';
+                                }
+                                echo $seconds . 's';
+                                echo '</span>';
                             }
-                            if (isset($minutes) && $minutes > 0) {
-                                echo $minutes . 'm ';
-                            }
-                            echo $seconds . 's';
-                            echo '</span>';
                         }
                         ?>
                     </div>
@@ -131,7 +133,7 @@ if (isset($_SESSION)) {
         </div>
 
         <?php require_once("includes/footer.template.php"); ?>
-         <script src="vendor/jquery/jquery.slim.min.js"></script>
+        <script src="vendor/jquery/jquery.slim.min.js"></script>
         <script src="js/notify.js"></script>
 
         <?php

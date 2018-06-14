@@ -556,7 +556,7 @@ class InterfaceBDD {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
-        return $result[0];
+        return $result;
     }
 
     /**

@@ -1,6 +1,5 @@
 <?php
-
-/* 
+/*
  * Copyright (C) 2018 Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -49,7 +48,7 @@ if (!isset($id_partie) && $id_partie <= 0) {
         <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <!-- Custom styles for this template-->
         <link href="vendor/fonts.googleapis/bubblegum-sans.css" rel="stylesheet">
-        
+
         <link href="css/general.css" rel="stylesheet" type="text/css">
         <link href="css/notify.css" rel="stylesheet" type="text/css">
     </head>
@@ -58,7 +57,9 @@ if (!isset($id_partie) && $id_partie <= 0) {
         <input type="hidden" id="bq-id_partie" value=<?php echo '"' . $id_partie . '"' ?>>
 
         <div id="bq-play" class="container-fluid base-main-content bq-game">
-            <button id="startGame">Commencer</button>
+            <div>
+                <button id="startGame" class="bq-button">Commencer</button>
+            </div>
             <div id="bq-proposition">
 
             </div>

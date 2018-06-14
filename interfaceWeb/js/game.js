@@ -94,45 +94,53 @@ function answerResult(ajaxResponse) {
     var result = JSON.parse(ajaxResponse);
     var reponse = document.createElement('button');
     reponse.class = 'bq-reponse';
-    switch (result['value']) {
-        case '0':
-            $('#bq-choix_un').remove();
-            $('#bq-choix_deux').remove();
-            reponse.id = 'bq-les_deux';
-            break;
-        case '1':
-            $('#bq-les_deux').remove();
-            $('#bq-choix_deux').remove();
-            reponse.id = 'bq-choix_un';
-            break;
-        case '2':
-            $('#bq-choix_un').remove();
-            $('#bq-les_deux').remove();
-            reponse.id = 'bq-choix_deux';
-            break;
-    }
-
     if (result['result'] === true) {
         reponse.innerHTML = 'Gagné !';
     } else {
         reponse.innerHTML = 'Perdu !';
     }
 
-    $('#bq-reponses').append(reponse);
+    switch (result['value']) {
+        case '0':
+            $('#bq-choix_un').remove();
+            $('#bq-choix_deux').remove();
+            $('#bq-les_deux').off('click').click(nextAnswer);
+            reponse.id = 'bq-sel-les_deux';
+            $(reponse).insertBefore('#bq-les_deux');
+            break;
+        case '1':
+            $('#bq-les_deux').remove();
+            $('#bq-choix_deux').remove();
+            $('#bq-choix_un').off('click').click(nextAnswer);
+            reponse.id = 'bq-sel-choix_un';
+            $(reponse).insertBefore('#bq-choix_un');
+            break;
+        case '2':
+            $('#bq-choix_un').remove();
+            $('#bq-les_deux').remove();
+            $('#bq-choix_deux').off('click').click(nextAnswer);
+            reponse.id = 'bq-sel-choix_deux';
+            $(reponse).insertBefore('#bq-choix_deux');
+            break;
+    }
+
     $('#' + reponse.id).off('click').click(nextAnswer);
 }
 
-function endGame($results) {
+function endGame(results) {
     $('#bq-play').empty();
 
     var titre = document.createElement('h1');
     titre.id = 'bq-info-page';
     titre.align = 'center';
     titre.innerHTML = 'Bien Joué !';
-    $('.bq-game').append(titre);
+    $('#bq-play').append(titre);
+
+    var br = document.createElement('br');
+    $('#bq-play').append(br);
 
     var subtitre = document.createElement('h2');
-    subtitre.class = 'bq-sub-info';
+    subtitre.className = 'bq-sub-info';
     subtitre.id = 'bq-sub-info-finalscore';
     subtitre.innerHTML = 'Ton score :';
     $('#bq-play').append(subtitre);
@@ -142,16 +150,12 @@ function endGame($results) {
     $('#bq-play').append(score);
 
     var circle = document.createElement('div');
-    circle.class = 'bq-circle';
-    circle.id = 'bq-the-score';
+    circle.className = 'bq-circle';
+    circle.innerHTML = '<span>' + results['score'] + '</span>';
     $('#bq-mybestscore').append(circle);
 
-    var scorevalue = document.createElement('span');
-    scorevalue.innerHTML = $results['score'];
-    $('#bq-the-score').append(scorevalue);
-
     var timevalue = document.createElement('span');
-    timevalue.innerHTML = 'En ' + $results['time'] + 's';
+    timevalue.innerHTML = 'En ' + results['time'] + 's';
     $('#bq-mybestscore').append(timevalue);
 
     var bretour = document.createElement('button');
