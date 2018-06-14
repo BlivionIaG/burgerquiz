@@ -54,7 +54,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="menu">
      <widget class="QPushButton" name="pushButton_4">
@@ -735,7 +735,7 @@ background-color: white;</string>
         <x>430</x>
         <y>140</y>
         <width>131</width>
-        <height>41</height>
+        <height>30</height>
        </rect>
       </property>
       <property name="maximumSize">
@@ -806,9 +806,9 @@ background-color: white;</string>
       <property name="geometry">
        <rect>
         <x>430</x>
-        <y>185</y>
+        <y>170</y>
         <width>131</width>
-        <height>41</height>
+        <height>30</height>
        </rect>
       </property>
       <property name="maximumSize">
@@ -819,6 +819,25 @@ background-color: white;</string>
       </property>
       <property name="text">
        <string>Ajouter élément</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_22">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>200</y>
+        <width>131</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100000</width>
+        <height>100000</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Supp élément</string>
       </property>
      </widget>
     </widget>

@@ -18,6 +18,7 @@ public:
     static QVector<Theme*> getThemes();
     bool insertThemes(std::string name);
     bool updateThemes(int id, std::string name);
+    bool deleteTheme(int id);
     int getId(){return id;}
     std::string getName(){return nom_theme;}
 

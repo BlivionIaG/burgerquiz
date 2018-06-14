@@ -61,7 +61,7 @@ bool Question::addQuestion(int id,std::string c1,std::string c2){
 
     try {
 
-        sql::ResultSet *res;
+        //sql::ResultSet *res;
         sql::PreparedStatement *stmt;
 
         sql::Connection *con = connectiondb::GetConnection();
@@ -85,6 +85,11 @@ bool Question::addQuestion(int id,std::string c1,std::string c2){
          qDebug() << "# ERR: " << e.what();
          qDebug() << " (MySQL error code: " << e.getErrorCode();
          qDebug() << ", SQLState: " << QString::fromStdString(e.getSQLState()) << " )" << endl;
+         if(e.getErrorCode() == 1452){
+             QMessageBox box;
+             box.setText("aucun theme selectionné");
+             box.exec();
+         }
          return false;
         }catch(string e){
                     //qDebug() << QString::fromStdString(e) << endl;
@@ -143,3 +148,84 @@ Question Question::getlastinput(){
 
 }
 
+bool Question::updateQuestion(int id,std::string name,std::string choix){
+
+    try {
+
+        //sql::ResultSet *res;
+        sql::PreparedStatement *stmt;
+        sql::Connection *con = connectiondb::GetConnection();
+        //qDebug() << con->
+        //if(con->isValid() && con != NULL){
+         //qDebug() << "test4";
+        stmt = con->prepareStatement("UPDATE Question SET choix_un = ?,"
+                                     "choix_deux = ? WHERE "
+                                     "Question.id_question = ?");
+        stmt->setString(2,name);
+        stmt->setString(1,choix);
+        stmt->setInt(3,id);
+            //qDebug() << "test5";
+            stmt->executeQuery();
+            //return stmt->getResultSet();//}else{return NULL;}
+
+            return true;
+
+
+        } catch (sql::SQLException &e) {
+         qDebug() << "# ERR: SQLException in " << __FILE__;
+         qDebug() << "(" << __FUNCTION__ << ") on line " << __LINE__ << endl;
+         qDebug() << "# ERR: " << e.what();
+         qDebug() << " (MySQL error code: " << e.getErrorCode();
+         qDebug() << ", SQLState: " << QString::fromStdString(e.getSQLState()) << " )" << endl;
+         return false;
+        }catch(string e){
+                    //qDebug() << QString::fromStdString(e) << endl;
+        QMessageBox *error = new QMessageBox;
+        error->setText(QString::fromStdString(e));
+        error->exec();
+        return false;
+               }
+
+}
+
+bool Question::deleteQuestion(int id){
+
+    try {
+
+        //sql::ResultSet *res;
+        sql::PreparedStatement *stmt;
+        sql::Connection *con = connectiondb::GetConnection();
+        //qDebug() << con->
+        //if(con->isValid() && con != NULL){
+         //qDebug() << "test4";
+
+        stmt = con->prepareStatement("DELETE Reponse FROM Reponse,Question where Reponse.id_question = Question.id_question and Question.id_question = ?");
+        stmt->setInt(1,id);
+        stmt->executeQuery();
+        delete stmt;
+
+        stmt = con->prepareStatement("DELETE Question FROM Question where Question.id_question = ?");
+        stmt->setInt(1,id);
+            //qDebug() << "test5";
+            stmt->executeQuery();
+            //return stmt->getResultSet();//}else{return NULL;}
+
+            return true;
+
+
+        } catch (sql::SQLException &e) {
+         qDebug() << "# ERR: SQLException in " << __FILE__;
+         qDebug() << "(" << __FUNCTION__ << ") on line " << __LINE__ << endl;
+         qDebug() << "# ERR: " << e.what();
+         qDebug() << " (MySQL error code: " << e.getErrorCode();
+         qDebug() << ", SQLState: " << QString::fromStdString(e.getSQLState()) << " )" << endl;
+         return false;
+        }catch(string e){
+                    //qDebug() << QString::fromStdString(e) << endl;
+        QMessageBox *error = new QMessageBox;
+        error->setText(QString::fromStdString(e));
+        error->exec();
+        return false;
+               }
+
+}

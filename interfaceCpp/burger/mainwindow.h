@@ -57,8 +57,6 @@ private slots:
 
     void on_comboBox_2_currentIndexChanged(int index);
 
-    void on_listWidget_4_currentRowChanged(int currentRow);
-
     void on_pushButton_19_clicked();
 
     void on_pushButton_11_clicked();
@@ -72,6 +70,12 @@ private slots:
     void on_pushButton_16_clicked();
 
     void on_pushButton_21_clicked();
+
+    void on_pushButton_22_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_10_clicked();
 
 private:
     Ui::MainWindow *ui;
