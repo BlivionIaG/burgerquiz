@@ -60,6 +60,7 @@ if (!isset($id_partie) && $id_partie <= 0) {
             <div>
                 <button id="startGame" class="bq-button">Commencer</button>
             </div>
+            <div id="bq-timer"></div>
             <div id="bq-proposition">
 
             </div>
