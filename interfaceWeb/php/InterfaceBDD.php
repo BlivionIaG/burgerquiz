@@ -33,14 +33,19 @@ require_once('comprend.php');
 require_once('Score.php');
 
 /**
- * @class InterfaceBDD
+ * @class   InterfaceBDD
  *
- * @brief Classe de gestion de la base de données
+ * @brief   Classe de gestion de la base de données
  */
 class InterfaceBDD {
 
     private $bdd;
 
+    /**
+     * @brief   Constructeur de la classe InterfaceBDD
+     * 
+     * Connecte à la base de donnée MySQL, précisée dans php/consts.php
+     */
     public function InterfaceBDD() {
         $this->Connect();
     }
