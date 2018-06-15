@@ -79,22 +79,47 @@ class Possede {
         return $this->score;
     }
 
+    /**
+     * \brief Getter Temps
+     * 
+     * \return int temps
+     */
     public function getTemps() {
         return $this->temps;
     }
 
+    /**
+     * \brief Setter identifiant de partie
+     * 
+     * \param int $_id_partie identifiant de la partie
+     */
     public function setId_partie($_id_partie) {
         $this->id_partie = $_id_partie;
     }
 
+    /**
+     * \brief Setter de l'identifiant utilisateur
+     * 
+     * \param int $_id_utilisateur identifiant de l'utilisateur
+     */
     public function setId_utilisateur($_id_utilisateur) {
         $this->id_utilisateur = $_id_utilisateur;
     }
 
+    /**
+     * \brief Setter du score
+     * 
+     * \param int $_score score
+     */
     public function setScore($_score) {
         $this->score = $_score;
     }
 
+    /**
+     * \brief Setter du temps
+     * 
+     * \param int $_temps temps
+     */
     public function setTemps($_temps) {
         $this->temps = $_temps;
     }

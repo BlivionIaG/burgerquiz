@@ -4,6 +4,7 @@ var searchData=
   ['removepartie',['RemovePartie',['../class_interface_b_d_d.html#a3981553b34d86dc1419002f9a9121fc6',1,'InterfaceBDD']]],
   ['removeuser',['RemoveUser',['../class_interface_b_d_d.html#a1ce1781e4e653de271446486898f360e',1,'InterfaceBDD']]],
   ['reponse',['Reponse',['../class_reponse.html',1,'']]],
+  ['reponse_2ephp',['Reponse.php',['../_reponse_8php.html',1,'']]],
   ['requestallparties',['RequestAllParties',['../class_interface_b_d_d.html#aa51770e0fe58671f8be78be72ab88973',1,'InterfaceBDD']]],
   ['requestallpartieswiththeme',['RequestAllPartiesWithTheme',['../class_interface_b_d_d.html#a9d671df2428c378fcb683f587e2a62d5',1,'InterfaceBDD']]],
   ['requestallscores',['RequestAllScores',['../class_interface_b_d_d.html#a4d1d3a0c3fed3edec5e93a039e5cc15a',1,'InterfaceBDD']]],

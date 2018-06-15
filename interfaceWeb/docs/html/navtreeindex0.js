@@ -3,6 +3,8 @@ var NAVTREEINDEX0 =
 "_interface_b_d_d_8php.html":[1,0,0,0],
 "_partie_8php.html":[1,0,0,1],
 "_possede_8php.html":[1,0,0,2],
+"_question_8php.html":[1,0,0,3],
+"_reponse_8php.html":[1,0,0,4],
 "action_8php.html":[1,0,1],
 "action_8php.html#a1fa3127fc82f96b1436d871ef02be319":[1,0,1,2],
 "action_8php.html#a6b146ac6de362f2eed0d49e11c682848":[1,0,1,0],

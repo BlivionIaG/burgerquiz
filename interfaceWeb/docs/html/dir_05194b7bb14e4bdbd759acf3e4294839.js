@@ -8,5 +8,11 @@ var dir_05194b7bb14e4bdbd759acf3e4294839 =
     ] ],
     [ "Possede.php", "_possede_8php.html", [
       [ "Possede", "class_possede.html", "class_possede" ]
+    ] ],
+    [ "Question.php", "_question_8php.html", [
+      [ "Question", "class_question.html", "class_question" ]
+    ] ],
+    [ "Reponse.php", "_reponse_8php.html", [
+      [ "Reponse", "class_reponse.html", "class_reponse" ]
     ] ]
 ];
