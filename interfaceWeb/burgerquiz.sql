@@ -144,6 +144,7 @@ INSERT INTO Utilisateur(id_utilisateur, mail, prenom, nom, mdp) VALUES(1, 'kevin
 INSERT INTO Utilisateur(id_utilisateur, mail, prenom, nom, mdp) VALUES(2, 'antoine@burger.quiz', 'Antoine', 'Argent', SHA('mdp'));
 INSERT INTO Utilisateur(id_utilisateur, mail, prenom, nom, mdp) VALUES(3, 'zuckerberg@burger.quiz', 'I am watching', 'You', SHA('123456'));
 INSERT INTO Utilisateur(id_utilisateur, mail, prenom, nom, mdp) VALUES(4, 'bill.gates@microsoft.com', 'Bill', 'Gates', SHA('microsoft'));
+INSERT INTO Utilisateur(id_utilisateur, mail, prenom, nom, mdp) VALUES(5, 'a@a.a', 'a', 'a', SHA('a'));
 # THEMES
 INSERT INTO Theme(id_theme, nom_theme, active) VALUES(1, 'Cuisine', true);
 INSERT INTO Theme(id_theme, nom_theme, active) VALUES(2, 'Informatique', true);
@@ -167,6 +168,7 @@ INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(12, 'ah
 INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(13, 'Burger', 'Sandwich', 1);
 INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(14, 'Club Foyer', 'Bureau des Sports', 5);
 INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(15, 'Le Foyer', 'Super U', 5);
+INSERT INTO Question(id_question, choix_un, choix_deux, id_theme) VALUES(16, 'Les deux', 'Les deux', 5);
 # REPONSE
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(1, 0, 'A mettre sur la viande', 1);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(2, 1, 'Se prononce correctement', 2);
@@ -185,6 +187,13 @@ INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(15, 2, 'Est interprété', 4);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(16, 1, 'Le meilleur Club', 14);
 INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(17, 0, 'On peut réchauffer nos plats', 15);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(18, 0, 'Les deux', 16);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(19, 1, 'Les deux', 16);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(20, 2, 'Les deux', 16);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(21, 1, 'Les meilleurs repas', 15);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(22, 0, 'Ils ont une carte de fidèlité', 15);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(23, 2, 'Le pire club', 14);
+INSERT INTO Reponse(id_reponse, valeur_reponse, proposition, id_question) VALUES(24, 1, "A gagné un ISEN d'or", 14);
 # PARTIE
 INSERT INTO Partie(id_partie, nom_partie) VALUES(1, 'Partie Miam');
 INSERT INTO Partie(id_partie, nom_partie) VALUES(2, 'Partie Geek');
