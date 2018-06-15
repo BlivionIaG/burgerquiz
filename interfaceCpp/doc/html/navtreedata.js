@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "burgerquiz cpp", "index.html", [
+  [ "burgerQuiz", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -18,7 +18,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+".html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

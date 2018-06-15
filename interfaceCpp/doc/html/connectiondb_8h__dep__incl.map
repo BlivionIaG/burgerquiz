@@ -1,9 +1,9 @@
-<map id="connectiondb.h" name="connectiondb.h">
-<area shape="rect" id="node2" href="$question_8h.html" title="gestion des questions " alt="" coords="5,155,88,181"/>
-<area shape="rect" id="node4" href="$reponse_8h.html" title="gestion des réponses " alt="" coords="163,229,242,256"/>
-<area shape="rect" id="node5" href="$theme_8h.html" title="gestion des themes " alt="" coords="87,80,156,107"/>
-<area shape="rect" id="node6" href="$partie_8h.html" title="gestion des parties " alt="" coords="231,155,297,181"/>
-<area shape="rect" id="node7" href="$score_8h.html" title="gestion des scores " alt="" coords="318,229,383,256"/>
-<area shape="rect" id="node8" href="$user_8h.html" title="gestion des utilisateurs " alt="" coords="321,155,380,181"/>
-<area shape="rect" id="node3" href="$mainwindow_8h_source.html" title="mainwindow.h" alt="" coords="189,304,294,331"/>
+<map id="/home/isen/burgerquiz/interfaceCpp/burger/connectiondb.h" name="/home/isen/burgerquiz/interfaceCpp/burger/connectiondb.h">
+<area shape="rect" id="node2" href="$question_8h.html" title="gestion des questions " alt="" coords="5,213,156,269"/>
+<area shape="rect" id="node4" href="$reponse_8h.html" title="gestion des réponses " alt="" coords="232,317,383,373"/>
+<area shape="rect" id="node5" href="$theme_8h.html" title="gestion des themes " alt="" coords="119,109,269,165"/>
+<area shape="rect" id="node6" href="$partie_8h.html" title="gestion des parties " alt="" coords="345,213,496,269"/>
+<area shape="rect" id="node7" href="$score_8h.html" title="gestion des scores " alt="" coords="459,317,609,373"/>
+<area shape="rect" id="node8" href="$user_8h.html" title="gestion des utilisateurs " alt="" coords="520,213,671,269"/>
+<area shape="rect" id="node3" href="$mainwindow_8h_source.html" title="/home/isen/burgerquiz\l/interfaceCpp/burger\l/mainwindow.h" alt="" coords="288,421,439,477"/>
 </map>
