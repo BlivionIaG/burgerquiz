@@ -17,6 +17,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * \file menu.php
+ * \brief Menu du site
+ * \author Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
+ * \version 1.1
+ * \date 08 juin 2018
+ */
 define('ENVIRONMENT', 't');
 session_start();
 

@@ -159,7 +159,7 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memdesc:a3981553b34d86dc1419002f9a9121fc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime la partie correspondante à l'identifiant donné  <a href="#a3981553b34d86dc1419002f9a9121fc6">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a3981553b34d86dc1419002f9a9121fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4247c06c17b9c86dbc80321220969862"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interface_b_d_d.html#a4247c06c17b9c86dbc80321220969862">AddPossede</a> ($possede)</td></tr>
-<tr class="memdesc:a4247c06c17b9c86dbc80321220969862"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute le score reliant un <a class="el" href="class_utilisateur.html">Utilisateur</a> à une <a class="el" href="class_partie.html" title="Classe conteneur de Partie. ">Partie</a> dans la BDD.  <a href="#a4247c06c17b9c86dbc80321220969862">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a4247c06c17b9c86dbc80321220969862"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute le score reliant un <a class="el" href="class_utilisateur.html" title="Classe conteneur d&#39;utilisateur. ">Utilisateur</a> à une <a class="el" href="class_partie.html" title="Classe conteneur de Partie. ">Partie</a> dans la BDD.  <a href="#a4247c06c17b9c86dbc80321220969862">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a4247c06c17b9c86dbc80321220969862"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adff6bf7ab712728f7898296d73bbd71b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interface_b_d_d.html#adff6bf7ab712728f7898296d73bbd71b">UpdatePossede</a> ($possede)</td></tr>
 <tr class="memdesc:adff6bf7ab712728f7898296d73bbd71b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mis à jour du score d'une partie d'un utilisateur.  <a href="#adff6bf7ab712728f7898296d73bbd71b">Plus de détails...</a><br /></td></tr>
@@ -277,7 +277,7 @@ Attributs privés</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Ajoute le score reliant un <a class="el" href="class_utilisateur.html">Utilisateur</a> à une <a class="el" href="class_partie.html" title="Classe conteneur de Partie. ">Partie</a> dans la BDD. </p>
+<p>Ajoute le score reliant un <a class="el" href="class_utilisateur.html" title="Classe conteneur d&#39;utilisateur. ">Utilisateur</a> à une <a class="el" href="class_partie.html" title="Classe conteneur de Partie. ">Partie</a> dans la BDD. </p>
 <p>Si un score existe déjà et que celui ci est plus faible, il est mis à jour Sinon la requete est abandonnée</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
@@ -308,7 +308,7 @@ Attributs privés</h2></td></tr>
 <p>Ajout d'un utilisateur à la BDD. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramtype"><a class="el" href="class_utilisateur.html">Utilisateur</a></td><td class="paramname">$user</td><td>User à ajouter</td></tr>
+    <tr><td class="paramtype"><a class="el" href="class_utilisateur.html" title="Classe conteneur d&#39;utilisateur. ">Utilisateur</a></td><td class="paramname">$user</td><td>User à ajouter</td></tr>
   </table>
   </dd>
 </dl>
@@ -435,7 +435,7 @@ Attributs privés</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Connecte l'objet à la base de donnée. </p>
-<p>Se connecter selon les constantes définies dans php/consts.php</p>
+<p>Se connecter selon les constantes définies dans <a class="el" href="consts_8php.html" title="Constantes du projet. ">php/consts.php</a></p>
 <dl class="section return"><dt>Renvoie</dt><dd>boolean erreur | PDO réussi </dd></dl>
 
 </div>
@@ -591,7 +591,7 @@ Attributs privés</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>boolean Erreur | <a class="el" href="class_score.html">Score</a>[] score </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>boolean Erreur | <a class="el" href="class_score.html" title="Classe conteneur de Score. ">Score</a>[] score </dd></dl>
 
 </div>
 </div>
@@ -611,7 +611,7 @@ Attributs privés</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructeur de la classe <a class="el" href="class_interface_b_d_d.html" title="Classe de gestion de la base de données. ">InterfaceBDD</a>. </p>
-<p>Se connecte à la base de donnée MySQL, précisée dans php/consts.php </p>
+<p>Se connecte à la base de donnée MySQL, précisée dans <a class="el" href="consts_8php.html" title="Constantes du projet. ">php/consts.php</a> </p>
 
 </div>
 </div>
@@ -799,7 +799,7 @@ Attributs privés</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Récupère tous les thèmes contenus dans la BDD. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>boolean Erreur | <a class="el" href="class_theme.html">Theme</a>[] Thèmes contenus dans la BDD </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>boolean Erreur | <a class="el" href="class_theme.html" title="Classe conteneur de Theme. ">Theme</a>[] Thèmes contenus dans la BDD </dd></dl>
 
 </div>
 </div>
@@ -819,7 +819,7 @@ Attributs privés</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Renvoie tous les utilisateurs enregistré dans la BDD. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>boolean Erreur | <a class="el" href="class_utilisateur.html">Utilisateur</a>[] utilisateurs </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>boolean Erreur | <a class="el" href="class_utilisateur.html" title="Classe conteneur d&#39;utilisateur. ">Utilisateur</a>[] utilisateurs </dd></dl>
 
 </div>
 </div>
@@ -867,7 +867,7 @@ Attributs privés</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Renvoie toutes les questions de la partie sous forme de tableau. </p>
-<p>Le tableau associatif est fait pour l'execution du jeu dans php/request.php</p>
+<p>Le tableau associatif est fait pour l'execution du jeu dans <a class="el" href="request_8php.html" title="Gère les requetes AJAX. ">php/request.php</a></p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramtype">int</td><td class="paramname">$id_partie</td><td>identifiant de la partie</td></tr>
@@ -1124,11 +1124,11 @@ Attributs privés</h2></td></tr>
 <p>Récupère le thème avec l'identifiant correspondant. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramtype"><a class="el" href="class_theme.html">Theme</a></td><td class="paramname">$id</td><td>identifiant du thème</td></tr>
+    <tr><td class="paramtype"><a class="el" href="class_theme.html" title="Classe conteneur de Theme. ">Theme</a></td><td class="paramname">$id</td><td>identifiant du thème</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>boolean Erreur | <a class="el" href="class_theme.html">Theme</a>[] thèmes correpondants </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>boolean Erreur | <a class="el" href="class_theme.html" title="Classe conteneur de Theme. ">Theme</a>[] thèmes correpondants </dd></dl>
 
 </div>
 </div>
@@ -1155,7 +1155,7 @@ Attributs privés</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>boolean Erreur | <a class="el" href="class_utilisateur.html">Utilisateur</a>[] utilisateur trouvé </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>boolean Erreur | <a class="el" href="class_utilisateur.html" title="Classe conteneur d&#39;utilisateur. ">Utilisateur</a>[] utilisateur trouvé </dd></dl>
 
 </div>
 </div>
@@ -1297,7 +1297,7 @@ Attributs privés</h2></td></tr>
 <p>Met à jour l'utilisateur. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramtype"><a class="el" href="class_utilisateur.html">Utilisateur</a></td><td class="paramname">$user</td><td>utilisateur à mettre à jour</td></tr>
+    <tr><td class="paramtype"><a class="el" href="class_utilisateur.html" title="Classe conteneur d&#39;utilisateur. ">Utilisateur</a></td><td class="paramname">$user</td><td>utilisateur à mettre à jour</td></tr>
   </table>
   </dd>
 </dl>

@@ -1,5 +1,26 @@
 var searchData=
 [
-  ['interfacebdd',['InterfaceBDD',['../class_interface_b_d_d.html',1,'InterfaceBDD'],['../class_interface_b_d_d.html#ae2b03860390e293a5f6ba935a360ab2b',1,'InterfaceBDD\InterfaceBDD()']]],
-  ['interfacebdd_2ephp',['InterfaceBDD.php',['../_interface_b_d_d_8php.html',1,'']]]
+  ['getactive',['getActive',['../class_theme.html#af9a93395c78e42f0b728d62326e42feb',1,'Theme']]],
+  ['getbdd',['getBdd',['../class_interface_b_d_d.html#af3c2403a2cce83d85a2e494534115ddb',1,'InterfaceBDD']]],
+  ['getchoix_5fdeux',['getChoix_deux',['../class_question.html#a22c9113b05a57fb63dd4384773645164',1,'Question']]],
+  ['getchoix_5fun',['getChoix_un',['../class_question.html#a056ee70acc67ac31b40cc34e7fc49160',1,'Question']]],
+  ['getid_5fpartie',['getId_partie',['../classcomprend.html#a3212f8c90b6adb064d0b70929dfeec4a',1,'comprend\getId_partie()'],['../class_partie.html#a3212f8c90b6adb064d0b70929dfeec4a',1,'Partie\getId_partie()'],['../class_possede.html#a3212f8c90b6adb064d0b70929dfeec4a',1,'Possede\getId_partie()'],['../class_score.html#a3212f8c90b6adb064d0b70929dfeec4a',1,'Score\getId_partie()']]],
+  ['getid_5fquestion',['getId_question',['../classcomprend.html#a1fbf0c8124cfe5071f083c38d0494acb',1,'comprend\getId_question()'],['../class_question.html#a1fbf0c8124cfe5071f083c38d0494acb',1,'Question\getId_question()'],['../class_reponse.html#a1fbf0c8124cfe5071f083c38d0494acb',1,'Reponse\getId_question()']]],
+  ['getid_5freponse',['getId_reponse',['../class_reponse.html#a6c71f5f00ab3bb53e36ee5ca14ca1c0a',1,'Reponse']]],
+  ['getid_5ftheme',['getId_theme',['../class_question.html#aa6130b6e2174952ddab6a82945b4cc94',1,'Question\getId_theme()'],['../class_theme.html#aa6130b6e2174952ddab6a82945b4cc94',1,'Theme\getId_theme()']]],
+  ['getid_5futilisateur',['getId_utilisateur',['../class_possede.html#ad991e108a803a4ffb390c232cc32bcdc',1,'Possede\getId_utilisateur()'],['../class_score.html#ad991e108a803a4ffb390c232cc32bcdc',1,'Score\getId_utilisateur()'],['../class_utilisateur.html#ad991e108a803a4ffb390c232cc32bcdc',1,'Utilisateur\getId_utilisateur()']]],
+  ['getmail',['getMail',['../class_utilisateur.html#ae4923d9ec6cf4408080fc1c37e20e0ba',1,'Utilisateur']]],
+  ['getmdp',['getMdp',['../class_utilisateur.html#a9cb89ad7e39143daa21704f565df0ff5',1,'Utilisateur']]],
+  ['getnom',['getNom',['../class_score.html#a184f2299ee4553fa0782ea87c9aed362',1,'Score\getNom()'],['../class_utilisateur.html#a184f2299ee4553fa0782ea87c9aed362',1,'Utilisateur\getNom()']]],
+  ['getnom_5fpartie',['getNom_partie',['../class_partie.html#a953093d15d493a9958669ca3e9e8f239',1,'Partie\getNom_partie()'],['../class_score.html#a953093d15d493a9958669ca3e9e8f239',1,'Score\getNom_partie()']]],
+  ['getnom_5ftheme',['getNom_theme',['../class_theme.html#a09627ef776e74fcd5ee9f695aaeae2e5',1,'Theme']]],
+  ['getprenom',['getPrenom',['../class_score.html#a2a243ff78ccebcd417fd644325f44701',1,'Score\getPrenom()'],['../class_utilisateur.html#a2a243ff78ccebcd417fd644325f44701',1,'Utilisateur\getPrenom()']]],
+  ['getproposition',['getProposition',['../class_reponse.html#aa37187d64f069bb4138a898dc861dcc9',1,'Reponse']]],
+  ['getscore',['getScore',['../class_possede.html#a19a6caf1c345ef59d5f8d7b9063c4c45',1,'Possede\getScore()'],['../class_score.html#a19a6caf1c345ef59d5f8d7b9063c4c45',1,'Score\getScore()']]],
+  ['getscores',['GetScores',['../class_interface_b_d_d.html#a0bed09747595044e2aef3e3ce363c126',1,'InterfaceBDD']]],
+  ['gettemps',['getTemps',['../class_possede.html#ac4ecd9b75ee6930df752471c57ed58aa',1,'Possede\getTemps()'],['../class_score.html#ac4ecd9b75ee6930df752471c57ed58aa',1,'Score\getTemps()']]],
+  ['gettheme',['GetTheme',['../class_interface_b_d_d.html#aa0363b9684feb940bb3ad88fc322bdc8',1,'InterfaceBDD']]],
+  ['gettoken',['getToken',['../class_utilisateur.html#a211a2979c22afcd7d9056a2bb55aa449',1,'Utilisateur']]],
+  ['gettopscores',['GetTopScores',['../class_interface_b_d_d.html#a3c8410b12dc8ab5319af2f9b95248658',1,'InterfaceBDD']]],
+  ['getvaleur_5freponse',['getValeur_reponse',['../class_reponse.html#aa18ba1d4aaf97a6ff8bd5d1eca4bd732',1,'Reponse']]]
 ];

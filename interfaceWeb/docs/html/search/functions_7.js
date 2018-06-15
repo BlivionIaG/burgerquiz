@@ -1,13 +1,24 @@
 var searchData=
 [
+  ['sendjsondata',['sendJsonData',['../request_8php.html#afcef1294902ca07027096e59292f89c1',1,'request.php']]],
+  ['setactive',['setActive',['../class_theme.html#a3ec090416b4d5b58381c856e81c9839a',1,'Theme']]],
   ['setbdd',['setBdd',['../class_interface_b_d_d.html#a91f08708d6515a9a029053f06c057ea4',1,'InterfaceBDD']]],
   ['setchoix_5fdeux',['setChoix_deux',['../class_question.html#ab89c17ce6bf425920134cefee8bbb18d',1,'Question']]],
   ['setchoix_5fun',['setChoix_un',['../class_question.html#a91cf7747be8134f6cc146c5f1caeeaca',1,'Question']]],
-  ['setid_5fpartie',['setId_partie',['../class_partie.html#a1c24bab5533c42a8a90d81053e39f92e',1,'Partie\setId_partie()'],['../class_possede.html#a1c24bab5533c42a8a90d81053e39f92e',1,'Possede\setId_partie()']]],
-  ['setid_5fquestion',['setId_question',['../class_question.html#ac24eebef0d2ff0f8671de8c88136c189',1,'Question']]],
-  ['setid_5ftheme',['setId_theme',['../class_question.html#ace5c32652a4480e28814b02809505c3d',1,'Question']]],
-  ['setid_5futilisateur',['setId_utilisateur',['../class_possede.html#a8fb52ad68b9f922838477e56349edf2d',1,'Possede']]],
-  ['setnom_5fpartie',['setNom_partie',['../class_partie.html#af6c36317202690a956691f87d607188c',1,'Partie']]],
-  ['setscore',['setScore',['../class_possede.html#a989800be128d471abb7c4dbb184b8154',1,'Possede']]],
-  ['settemps',['setTemps',['../class_possede.html#a36713bbe32fc4795bc155ee6aa370a00',1,'Possede']]]
+  ['setid_5fpartie',['setId_partie',['../classcomprend.html#a1c24bab5533c42a8a90d81053e39f92e',1,'comprend\setId_partie()'],['../class_partie.html#a1c24bab5533c42a8a90d81053e39f92e',1,'Partie\setId_partie()'],['../class_possede.html#a1c24bab5533c42a8a90d81053e39f92e',1,'Possede\setId_partie()'],['../class_score.html#a1c24bab5533c42a8a90d81053e39f92e',1,'Score\setId_partie()']]],
+  ['setid_5fquestion',['setId_question',['../classcomprend.html#ac24eebef0d2ff0f8671de8c88136c189',1,'comprend\setId_question()'],['../class_question.html#ac24eebef0d2ff0f8671de8c88136c189',1,'Question\setId_question()'],['../class_reponse.html#ac24eebef0d2ff0f8671de8c88136c189',1,'Reponse\setId_question()']]],
+  ['setid_5freponse',['setId_reponse',['../class_reponse.html#ad95b5b2facbafa58b30f9aa43aaefb03',1,'Reponse']]],
+  ['setid_5ftheme',['setId_theme',['../class_question.html#ace5c32652a4480e28814b02809505c3d',1,'Question\setId_theme()'],['../class_theme.html#ace5c32652a4480e28814b02809505c3d',1,'Theme\setId_theme()']]],
+  ['setid_5futilisateur',['setId_utilisateur',['../class_possede.html#a8fb52ad68b9f922838477e56349edf2d',1,'Possede\setId_utilisateur()'],['../class_score.html#a8fb52ad68b9f922838477e56349edf2d',1,'Score\setId_utilisateur()'],['../class_utilisateur.html#a8fb52ad68b9f922838477e56349edf2d',1,'Utilisateur\setId_utilisateur()']]],
+  ['setmail',['setMail',['../class_utilisateur.html#a3a05c2f27633b11b447cdaff240f9551',1,'Utilisateur']]],
+  ['setmdp',['setMdp',['../class_utilisateur.html#aca74d0922d4c9e5175c89a07d66e1648',1,'Utilisateur']]],
+  ['setnom',['setNom',['../class_score.html#aafe56564a4593df7cd5630b89f635697',1,'Score\setNom()'],['../class_utilisateur.html#aafe56564a4593df7cd5630b89f635697',1,'Utilisateur\setNom()']]],
+  ['setnom_5fpartie',['setNom_partie',['../class_partie.html#af6c36317202690a956691f87d607188c',1,'Partie\setNom_partie()'],['../class_score.html#af6c36317202690a956691f87d607188c',1,'Score\setNom_partie()']]],
+  ['setnom_5ftheme',['setNom_theme',['../class_theme.html#a366cbf00ba07b8d1b1f335904d3c50e7',1,'Theme']]],
+  ['setprenom',['setPrenom',['../class_score.html#a15debc4cd168eeddc89a19a4b83356ef',1,'Score\setPrenom()'],['../class_utilisateur.html#a15debc4cd168eeddc89a19a4b83356ef',1,'Utilisateur\setPrenom()']]],
+  ['setproposition',['setProposition',['../class_reponse.html#a69f05487b0db2d2a7990b9eba3302c95',1,'Reponse']]],
+  ['setscore',['setScore',['../class_possede.html#a989800be128d471abb7c4dbb184b8154',1,'Possede\setScore()'],['../class_score.html#a989800be128d471abb7c4dbb184b8154',1,'Score\setScore()']]],
+  ['settemps',['setTemps',['../class_possede.html#a36713bbe32fc4795bc155ee6aa370a00',1,'Possede\setTemps()'],['../class_score.html#a36713bbe32fc4795bc155ee6aa370a00',1,'Score\setTemps()']]],
+  ['settoken',['setToken',['../class_utilisateur.html#a6cf653bccdb13ed7bfb9ec234e12b3b5',1,'Utilisateur']]],
+  ['setvaleur_5freponse',['setValeur_reponse',['../class_reponse.html#ac8186b93312e73ca020b4df1f20f654b',1,'Reponse']]]
 ];

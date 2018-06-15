@@ -34,14 +34,20 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Fichiers", "files.html", [
-      [ "Liste des fichiers", "files.html", "files_dup" ]
+      [ "Liste des fichiers", "files.html", "files_dup" ],
+      [ "Variables globale", "globals.html", [
+        [ "Tout", "globals.html", null ],
+        [ "Fonctions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"_interface_b_d_d_8php.html"
+"_interface_b_d_d_8php.html",
+"palmares_8php.html#a8757a57d09df5349f8b93b2083e29a1e"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

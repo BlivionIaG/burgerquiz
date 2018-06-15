@@ -17,6 +17,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+/**
+ * \file monCompte.php
+ * \brief Menu infos utilisateur
+ * \author Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
+ * \version 1.1
+ * \date 07 juin 2018
+ */
 define('ENVIRONMENT', 't');
 
 require_once('php/InterfaceBDD.php');

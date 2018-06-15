@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['linkquestiontopartie',['LinkQuestionToPartie',['../class_interface_b_d_d.html#a230a88f1d16eb95926e03544b4a75279',1,'InterfaceBDD']]]
+  ['index_2ephp',['index.php',['../index_8php.html',1,'']]],
+  ['interfacebdd',['InterfaceBDD',['../class_interface_b_d_d.html',1,'InterfaceBDD'],['../class_interface_b_d_d.html#ae2b03860390e293a5f6ba935a360ab2b',1,'InterfaceBDD\InterfaceBDD()']]],
+  ['interfacebdd_2ephp',['InterfaceBDD.php',['../_interface_b_d_d_8php.html',1,'']]]
 ];

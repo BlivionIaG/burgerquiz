@@ -16,6 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * \file play.php
+ * \brief Jeu du site
+ * \author Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
+ * \version 1.2
+ * \date 13 juin 2018
+ */
 define('ENVIRONMENT', 't');
 session_start();
 

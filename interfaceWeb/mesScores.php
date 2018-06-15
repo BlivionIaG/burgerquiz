@@ -17,6 +17,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * \file mesScores.php
+ * \brief Menu des scores de l'utilisateur
+ * \author Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
+ * \version 1.1
+ * \date 11 juin 2018
+ */
 define('ENVIRONMENT', 't');
 
 require_once('php/InterfaceBDD.php');
@@ -67,7 +74,7 @@ if (isset($_SESSION)) {
                     <th> Score </th>
                     <th> Temps </th>
                 </tr>
-                <?php
+                <?php /* Liste des scores de l'utilisateur */
                 if (isset($user)) {
                     $db = new InterfaceBDD();
                     $messcores = $db->GetScores($user->getId_utilisateur());

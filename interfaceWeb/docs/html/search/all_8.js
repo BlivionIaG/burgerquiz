@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['question',['Question',['../class_question.html',1,'']]],
-  ['question_2ephp',['Question.php',['../_question_8php.html',1,'']]]
+  ['linkquestiontopartie',['LinkQuestionToPartie',['../class_interface_b_d_d.html#a230a88f1d16eb95926e03544b4a75279',1,'InterfaceBDD']]]
 ];

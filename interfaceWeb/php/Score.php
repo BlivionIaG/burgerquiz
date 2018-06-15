@@ -34,11 +34,11 @@ class Score {
 
     private $id_partie; /**< \brief identifiant de la partie */
     private $id_utilisateur; /**< \brief identifiant de l'utilisateur */
-    private $prenom; /**< prenom de l'utilisateur */
-    private $nom; /**< nom de l'utilisateur */
-    private $nom_partie; /**< nom de la partie */
-    private $score; /**< valeur score */
-    private $temps; /**< temps de partie */
+    private $prenom; /**< \brief prenom de l'utilisateur */
+    private $nom; /**< \brief nom de l'utilisateur */
+    private $nom_partie; /**< \brief nom de la partie */
+    private $score; /**< \brief valeur score */
+    private $temps; /**< \brief temps de partie */
 
     /**
      * \brief Assigne les valeurs à l'objet
@@ -133,26 +133,56 @@ class Score {
         $this->id_partie = $_id_partie;
     }
 
+    /**
+     * \brief Setter identifiant utilisateur
+     * 
+     * \param int $_id_utilisateur identifiant utilisateur
+     */
     public function setId_utilisateur($_id_utilisateur) {
         $this->id_utilisateur = $_id_utilisateur;
     }
-
+    
+    /**
+     * \brief Setter prenom
+     * 
+     * \param string $_prenom prenom utilisateur
+     */
     public function setPrenom($_prenom) {
         $this->prenom = $_prenom;
     }
 
+    /**
+     * \brief Setter nom utilisateur
+     * 
+     * \param string $_nom nom utilisateur
+     */
     public function setNom($_nom) {
         $this->nom = $_nom;
     }
 
+    /**
+     * \brief Setter nom partie
+     * 
+     * \param string $_nom_partie nom partie
+     */
     public function setNom_partie($_nom_partie) {
         $this->nom_partie = $_nom_partie;
     }
 
+    /**
+     * \brief Setter score de la partie
+     * 
+     * \param int $_score score de la partie
+     */
     public function setScore($_score) {
         $this->score = $_score;
     }
 
+    /**
+     * \brief Setter temps de la partie
+     * 
+     * \param int $_temps temps de la partie
+     */
     public function setTemps($_temps) {
         $this->temps = $_temps;
     }

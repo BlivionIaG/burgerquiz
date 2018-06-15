@@ -17,6 +17,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * \file joinpart.php
+ * \brief Page pour rejoindre une partie existante
+ * \author Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
+ * \version 1.1
+ * \date 08 juin 2018
+ */
 define('ENVIRONMENT', 't');
 session_start();
 
@@ -60,7 +67,7 @@ if (isset($_SESSION)) {
                         <th> Thème </th>
                         <th> Jouer <th>
                     </tr>
-                    <?php
+                    <?php /* Affichage des partie avec leur thème correspondant */
                     require_once('php/InterfaceBDD.php');
                     $db = new InterfaceBDD();
 

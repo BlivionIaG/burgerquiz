@@ -1,6 +1,7 @@
 var searchData=
 [
   ['randomselectreponsefromquestion',['RandomSelectReponseFromQuestion',['../class_interface_b_d_d.html#a0ef10a6954ec4add81d8a602bb70bd03',1,'InterfaceBDD']]],
+  ['redirect',['redirect',['../action_8php.html#a6b146ac6de362f2eed0d49e11c682848',1,'action.php']]],
   ['removepartie',['RemovePartie',['../class_interface_b_d_d.html#a3981553b34d86dc1419002f9a9121fc6',1,'InterfaceBDD']]],
   ['removeuser',['RemoveUser',['../class_interface_b_d_d.html#a1ce1781e4e653de271446486898f360e',1,'InterfaceBDD']]],
   ['requestallparties',['RequestAllParties',['../class_interface_b_d_d.html#aa51770e0fe58671f8be78be72ab88973',1,'InterfaceBDD']]],

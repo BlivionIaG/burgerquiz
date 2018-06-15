@@ -16,6 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * \file palmares.php
+ * \brief Palmares des utilisateurs
+ * \author Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
+ * \version 1.1
+ * \date 12 juin 2018
+ */
 define('ENVIRONMENT', 't');
 define('TOP_SCORE_NB', 5);
 
@@ -64,7 +71,7 @@ if (isset($_SESSION)) {
             <div class="row">
                 <div class="col-sm-6 h-100">
                     <h2 class="bq-sub-info"> TOP 5 Scores : </h2>
-                    <?php
+                    <?php /* TOP5 Meilleurs Scores */
                     $scores = $db->GetTopScores(TOP_SCORE_NB);
 
                     $maxscore = $scores[0]->getScore();
@@ -102,7 +109,7 @@ if (isset($_SESSION)) {
                 <div class="col-sm-6 h-100">                    
                     <h2 class="bq-sub-info"> Mon meilleur Score : </h2>
                     <div id="bq-mybestscore">
-                        <?php
+                        <?php /* Récupération meilleur score utilisateur */
                         if (isset($user)) {
                             $ttmp = $db->RequestBestScore($user->getId_utilisateur());
                             if ($ttmp) {

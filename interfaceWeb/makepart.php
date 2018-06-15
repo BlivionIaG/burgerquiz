@@ -17,6 +17,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * \file makepart.php
+ * \brief Page pour créer et rejoindre une partie
+ * \author Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
+ * \version 1.1
+ * \date 11 juin 2018
+ */
+
 define('ENVIRONMENT', 't');
 session_start();
 
@@ -57,7 +65,7 @@ if (isset($_SESSION)) {
 
                 <select name="id_theme" class="dropdown" required>
                     <option value="" disabled selected hidden> Thèmes </option>
-                    <?php
+                    <?php /* Liste des thèmes */
                     require_once('php/InterfaceBDD.php');
                     $db = new InterfaceBDD();
 

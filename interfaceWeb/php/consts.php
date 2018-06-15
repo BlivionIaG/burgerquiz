@@ -18,15 +18,17 @@
  */
 
 /**
- * @Author: Le Torc'h Kévin
- * @Company: Chen & Co
- * @Email: kev29lt@gmail.com
+ * \file consts.php
+ * \brief Constantes du projet
+ * \author Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
+ * \compagny Chen & Co
+ * \version 1.1
+ * \date 06 juin 2018
  */
-  // Database constants.
 
-  define('DB_USER', 'Burgerquiz');
-  define('DB_PASSWORD', 'bq2018');
-  define('DB_NAME', 'Burgerquiz');
-  define('DB_SERVER', 'localhost');
+  define('DB_USER', 'Burgerquiz'); /**< \brief Nom utilisateur de la BDD */
+  define('DB_PASSWORD', 'bq2018'); /**< \brief Mot de passe utilisateur de la BDD */
+  define('DB_NAME', 'Burgerquiz'); /**< \brief Nom de la table de la BDD */
+  define('DB_SERVER', 'localhost'); /**< \brief Addresse serveur de la BDD */
 ?>
 

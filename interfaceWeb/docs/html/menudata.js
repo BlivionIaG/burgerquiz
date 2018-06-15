@@ -50,6 +50,11 @@ var menudata={children:[
 {text:"s",url:"functions_func.html#index_s"},
 {text:"t",url:"functions_func.html#index_t"},
 {text:"u",url:"functions_func.html#index_u"}]},
-{text:"Variables",url:"functions_vars.html"}]}]},
+{text:"Variables",url:"functions_vars.html",children:[
+{text:"$",url:"functions_vars.html#index_0x24"}]}]}]},
 {text:"Fichiers",url:"files.html",children:[
-{text:"Liste des fichiers",url:"files.html"}]}]}
+{text:"Liste des fichiers",url:"files.html"},
+{text:"Variables globale",url:"globals.html",children:[
+{text:"Tout",url:"globals.html"},
+{text:"Fonctions",url:"globals_func.html"},
+{text:"Variables",url:"globals_vars.html"}]}]}]}

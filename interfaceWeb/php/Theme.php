@@ -18,41 +18,86 @@
  */
 
 /**
- * Description of Theme
- *
- * @author kev29lt
+ * \file Theme.php
+ * \brief Classe conteneur de Theme
+ * \author Kévin Le Torc'h <Kévin at kev29lt@gmail.com>
+ * \version 1.1
+ * \date 07 juin 2018
+ */
+
+/**
+ * \class Theme
+ * 
+ * \brief Classe conteneur de Theme
  */
 class Theme {
-    private $id_theme;
-    private $nom_theme;
-    private $active;
+    private $id_theme; /**< \brief identifiant du theme */
+    private $nom_theme; /**< \brief nom du thème */
+    private $active; /**< \brief indicateur thème désactivé ou non */
     
+    /**
+     * \brief Assigne les valeurs à l'objet
+     * 
+     * \param int $_id_theme identifiant du thème
+     * \param string $_nom_theme nom du thème
+     * \param boolean $_active indicateur thème actif
+     */
     public function create($_id_theme, $_nom_theme, $_active){
         $this->setId_theme($_id_theme);
         $this->setNom_theme($_nom_theme);
         $this->setActive($_active);
     }
     
+    /**
+     * \brief Getter de l'identifiant du thème
+     * 
+     * \return int identifiant du thème
+     */
     public function getId_theme(){
         return $this->id_theme;
     }
     
+    /**
+     * \brief Getter nom du thème
+     * 
+     * \return string nom du thème
+     */
     public function getNom_theme(){
         return $this->nom_theme;
     }
     
+    /**
+     * \brief Getter indicateur activité du thème
+     * 
+     * \return boolean indicateur
+     */
     public function getActive(){
         return $this->active;
     }
     
+    /**
+     * \brief Setter de l'identifiant du thème
+     * 
+     * \param int $_id_theme identifiant du thème
+     */
     public function setId_theme($_id_theme){
         $this->id_theme = $_id_theme;
     }
     
+    /**
+     * \brief Setter nom thème
+     * 
+     * \param string $_nom_theme nom thème
+     */
     public function setNom_theme($_nom_theme){
         $this->nom_theme = $_nom_theme;
     }
     
+    /**
+     * \brief Setter indicateur activité du thème
+     * 
+     * \param boolean $_active indicateur
+     */
     public function setActive($_active){
         $this->active = $_active;
     }

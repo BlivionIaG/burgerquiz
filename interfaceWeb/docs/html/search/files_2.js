@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['partie_2ephp',['Partie.php',['../_partie_8php.html',1,'']]],
-  ['possede_2ephp',['Possede.php',['../_possede_8php.html',1,'']]]
+  ['index_2ephp',['index.php',['../index_8php.html',1,'']]],
+  ['interfacebdd_2ephp',['InterfaceBDD.php',['../_interface_b_d_d_8php.html',1,'']]]
 ];
