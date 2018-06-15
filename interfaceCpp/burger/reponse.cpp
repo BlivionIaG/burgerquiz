@@ -34,7 +34,8 @@ QVector<Reponse*> Reponse::getReponses(int id){
                                                      res->getString("choix_un"),
                                                      res->getString("choix_deux"),
                                                      Theme(res->getString("nom_theme"),
-                                                           res->getInt("id_theme")))));
+                                                           res->getInt("id_theme"),
+                                                           res->getBoolean("active")))));
                    }
             return reponse;
 
@@ -124,7 +125,8 @@ Reponse Reponse::getlastinput(){
                                               res->getString("choix_un"),
                                               res->getString("choix_deux"),
                                               Theme(res->getString("nom_theme"),
-                                                    res->getInt("id_theme"))));
+                                                    res->getInt("id_theme"),
+                                                    res->getBoolean("active"))));
 
             return reponse;
             //return stmt->getResultSet();//}else{return NULL;}

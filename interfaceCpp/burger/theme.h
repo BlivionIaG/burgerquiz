@@ -25,9 +25,10 @@ public:
      * \brief constructeur de Theme
      * \param name : nom_theme
      * \param id_theme : id_theme
+     * \param enable : theme active ?
      * \return int id_user
      */
-    Theme(std::string name,int id_theme):nom_theme(name),id(id_theme){}
+    Theme(std::string name,int id_theme,bool enable):nom_theme(name),id(id_theme),active(enable){}
     /*!
      * \brief recupere liste theme
      * \return tableau de theme
@@ -43,9 +44,10 @@ public:
      * \brief modifier un theme
      * \param id : id du theme
      * \param name : nouveau nom du theme
+     * \param etat : theme actif ou pas
      * \return true si reussi, false si erreur
      */
-    bool updateThemes(int id, std::string name);
+    bool updateThemes(int id, std::string name, bool etat);
     /*!
      * \brief supprimer un theme
      * \param id : id du theme
@@ -62,10 +64,12 @@ public:
      * \return string nom theme
      */
     std::string getName(){return nom_theme;}
+    bool getActive(){return active;}
 
 private:
     std::string nom_theme;/*!< nom theme */
     int id; /*!< id theme */
+    bool active;
 
 };
 

@@ -31,7 +31,7 @@ QVector<Question*> Question::getQuestions(int id){
                 questions.push_back(new Question(res->getInt("id_question"),
                                               res->getString("choix_un"),
                                               res->getString("choix_deux"),
-                                                 Theme(res->getString("nom_theme"),res->getInt("id_theme"))));
+                                                 Theme(res->getString("nom_theme"),res->getInt("id_theme"),res->getBoolean("active"))));
                    }
             return questions;
             //return stmt->getResultSet();//}else{return NULL;}
@@ -123,7 +123,7 @@ Question Question::getlastinput(){
                 questions =  Question(res->getInt("id_question"),
                                               res->getString("choix_un"),
                                               res->getString("choix_deux"),
-                                                 Theme(res->getString("nom_theme"),res->getInt("id_theme")));
+                                                 Theme(res->getString("nom_theme"),res->getInt("id_theme"),res->getBoolean("active")));
 
             return questions;
             //return stmt->getResultSet();//}else{return NULL;}

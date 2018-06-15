@@ -25,7 +25,8 @@ QVector<Theme *> Theme::getThemes(){
         //return stmt->getResultSet();//}else{return NULL;}
         while (res->next()) {
             themes.push_back(new Theme(res->getString("nom_theme"),
-                                       res->getInt("id_theme")));
+                                       res->getInt("id_theme"),
+                                       res->getBoolean("active")));
         }
         return themes;
 
@@ -88,7 +89,7 @@ bool Theme::insertThemes(std::string name){
 
 }
 
-bool Theme::updateThemes(int id,std::string name){
+bool Theme::updateThemes(int id,std::string name,bool etat){
 
     try {
 
@@ -98,9 +99,10 @@ bool Theme::updateThemes(int id,std::string name){
         //qDebug() << con->
         //if(con->isValid() && con != NULL){
         //qDebug() << "test4";
-        stmt = con->prepareStatement("UPDATE Theme SET nom_theme = ? WHERE Theme.id_theme = ?");
+        stmt = con->prepareStatement("UPDATE Theme SET nom_theme = ? , active = ? WHERE Theme.id_theme = ?");
         stmt->setString(1,name);
-        stmt->setInt(2,id);
+        stmt->setInt(3,id);
+        stmt->setBoolean(2,etat);
         //qDebug() << "test5";
         stmt->executeQuery();
         //return stmt->getResultSet();//}else{return NULL;}

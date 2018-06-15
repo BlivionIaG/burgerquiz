@@ -77,8 +77,10 @@ void MainWindow::on_pushButton_clicked()
             newitem->setText(QString::fromStdString(themes[i]->getName()));
             QVariant data;
 
-            data.setValue(Theme(themes[i]->getName(),themes[i]->getId()));
+            data.setValue(Theme(themes[i]->getName(),themes[i]->getId(),themes[i]->getActive()));
             newitem->setData(1,data);
+            if(!themes[i]->getActive())
+                newitem->setBackground(Qt::lightGray);
             ui->listtheme->addItem(newitem);
         }
 
@@ -99,7 +101,7 @@ void MainWindow::on_pushButton_2_clicked()
 
         for(i=0;i<themes.size();i++){
             QVariant data;
-            data.setValue(Theme(themes[i]->getName(),themes[i]->getId()));
+            data.setValue(Theme(themes[i]->getName(),themes[i]->getId(),themes[i]->getActive()));
             ui->comboBox->addItem(QString::fromStdString(themes[i]->getName()),data);
             //***********************************
         }
@@ -211,6 +213,11 @@ void MainWindow::on_pushButton_6_clicked()
 
         QLineEdit *lineEdit = new QLineEdit(&dialog);
         form.addRow("Nouveau nom", lineEdit);
+        lineEdit->setText(QString::fromStdString(ui->listtheme->currentItem()->data(1).value<Theme>().getName()));
+        QRadioButton *radio = new QRadioButton("theme activé",this);
+        if(ui->listtheme->currentItem()->data(1).value<Theme>().getActive())
+        radio->setChecked(true);
+        form.addWidget(radio);
 
         QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
                                    Qt::Horizontal, &dialog);
@@ -223,11 +230,11 @@ void MainWindow::on_pushButton_6_clicked()
             Theme newtheme;
             if(!lineEdit->text().isEmpty()){
 
-                if(newtheme.updateThemes(ui->listtheme->currentItem()->data(1).value<Theme>().getId(),lineEdit->text().toStdString())){
+                if(newtheme.updateThemes(ui->listtheme->currentItem()->data(1).value<Theme>().getId(),lineEdit->text().toStdString(),radio->isChecked())){
 
                     QMessageBox msgBox;
 
-                    msgBox.setText("Nom modifier");
+                    msgBox.setText("Theme modifier");
                     ui->lineEdit->clear();
 
                     msgBox.exec();
@@ -244,8 +251,10 @@ void MainWindow::on_pushButton_6_clicked()
                             newitem->setText(QString::fromStdString(themes[i]->getName()));
                             QVariant data;
 
-                            data.setValue(Theme(themes[i]->getName(),themes[i]->getId()));
+                            data.setValue(Theme(themes[i]->getName(),themes[i]->getId(),themes[i]->getActive()));
                             newitem->setData(1,data);
+                            if(!themes[i]->getActive())
+                            newitem->setBackground(Qt::gray);
                             ui->listtheme->addItem(newitem);
                         }
                     }}
@@ -461,7 +470,7 @@ void MainWindow::on_pushButton_20_clicked()
 
         for(i=0;i<themes.size();i++){
             QVariant data;
-            data.setValue(Theme(themes[i]->getName(),themes[i]->getId()));
+            data.setValue(Theme(themes[i]->getName(),themes[i]->getId(),themes[i]->getActive()));
             ui->comboBox->addItem(QString::fromStdString(themes[i]->getName()),data);
             //***********************************
         }
@@ -526,7 +535,7 @@ void MainWindow::on_pushButton_5_clicked()
                     newitem->setText(QString::fromStdString(themes[i]->getName()));
                     QVariant data;
 
-                    data.setValue(Theme(themes[i]->getName(),themes[i]->getId()));
+                    data.setValue(Theme(themes[i]->getName(),themes[i]->getId(),themes[i]->getActive()));
                     newitem->setData(1,data);
                     ui->listtheme->addItem(newitem);
                 }
@@ -727,7 +736,7 @@ if(!themes.isEmpty()){
 
     for(i=0;i<themes.size();i++){
         QVariant data;
-        data.setValue(Theme(themes[i]->getName(),themes[i]->getId()));
+        data.setValue(Theme(themes[i]->getName(),themes[i]->getId(),themes[i]->getActive()));
         box->addItem(QString::fromStdString(themes[i]->getName()),data);
         //***********************************
     }
