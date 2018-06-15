@@ -651,3 +651,12 @@ button#bq-sel-les_deux + button#bq-les_deux  {
 audio {
     display: none;
 }
+
+.bq-mentions-div h3{
+    font-size: 2em;
+    color: #2a3e1e;
+}
+
+.bq-mentions-div p {
+    margin-left: 5%;
+}

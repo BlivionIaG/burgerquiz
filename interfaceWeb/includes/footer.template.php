@@ -25,7 +25,7 @@ if (!defined('ENVIRONMENT')) {
 <footer class="sticky-footer">
     <div class="container">
         <div id="footer">
-            <span style="float:left;"> <a id="bq-mention" href="mention.php"> Mentions Légales </a> </span>
+            <span style="float:left;"> <a id="bq-mention" href="mention.html"> Mentions Légales </a> </span>
             <span style="float:right;">  COPYRIGHT © 2018 </span>
         </div>
     </div>
