@@ -88,12 +88,12 @@ public:
      */
     User getUser(){return user;}
 private:
-    int id_partie;
-    int id_user;
-    int score;
-    int temps;
-    User user;
-    Partie partie;
+    int id_partie;/*!< id partie */
+    int id_user;/*!< id user */
+    int score;/*!< score joueur */
+    int temps;/*!< temps de la partie */
+    User user; /*!< utilisateur lié au score*/
+    Partie partie;/*!< partie lié au score */
 
 
 };

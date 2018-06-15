@@ -64,8 +64,8 @@ public:
     std::string getName(){return nom_theme;}
 
 private:
-    std::string nom_theme;
-    int id;
+    std::string nom_theme;/*!< nom theme */
+    int id; /*!< id theme */
 
 };
 

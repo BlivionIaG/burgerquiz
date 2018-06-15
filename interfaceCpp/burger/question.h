@@ -92,10 +92,10 @@ public:
     std::string getC2(){return choix_2;}
     //QVector<Question> questions;
 private:
-    int id_question;
-    std::string choix_1;
-    std::string choix_2;
-    Theme theme;
+    int id_question;/*!< id question */
+    std::string choix_1;/*!< nom libellé un */
+    std::string choix_2;/*!< nom libellé deux */
+    Theme theme;/*!< theme lié a la question */
 };
 
 #endif // QUESTION_H

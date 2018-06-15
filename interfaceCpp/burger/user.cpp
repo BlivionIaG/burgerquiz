@@ -95,3 +95,30 @@ try {
     //return false;
            }
 }
+
+/*
+ *
+ * update/new/delete partie
+ *
+ * INSERT INTO `Partie` (`id_partie`, `nom_partie`) VALUES (NULL, 'dsffs')
+ * INSERT INTO `comprend` (`id_question`, `id_partie`) VALUES ('3', '2')
+ * select last partie id
+ * detele partie -> delete score first
+ * new -> choix 3 question->3combobox
+ *
+ * UPDATE `Partie` SET `nom_partie` = 'Partie Miamsdqsd' WHERE `Partie`.`id_partie` = ?
+ * changer nom -> changer comprend
+ *
+ * changer les question -> supprimer les liaison existante et en crée de nouvelle ;)
+ *
+ * DELETE FROM `Possede` WHERE `Possede`.`id_partie` = ?
+ * DELETE FROM `Partie` WHERE `Partie`.`id_partie` = ?
+ *
+ * update/delete user
+ * delete user->delete score first
+ * UPDATE `Utilisateur` SET `nom` = 'sArgent' WHERE `Utilisateur`.`id_utilisateur` = 2
+ *
+ * DELETE FROM `Possede` WHERE `Possede`.`id_utilisateur` = ?
+ *DELETE FROM `Utilisateur` WHERE `Utilisateur`.`id_utilisateur` = ?
+ *
+ */

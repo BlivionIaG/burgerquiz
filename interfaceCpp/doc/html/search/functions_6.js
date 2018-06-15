@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['question',['Question',['../class_question.html#a3d84ae0d319a644caef1f298cabee36e',1,'Question']]]
+  ['partie',['Partie',['../class_partie.html#ad86962e0db5fe563daa445e8dbc1f015',1,'Partie']]]
 ];

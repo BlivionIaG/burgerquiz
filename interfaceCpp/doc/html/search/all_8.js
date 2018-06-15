@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['reponse',['Reponse',['../class_reponse.html',1,'Reponse'],['../class_reponse.html#aa3022a30b397c0a6aacd4a4103f4fab0',1,'Reponse::Reponse()']]],
-  ['reponse_2eh',['reponse.h',['../reponse_8h.html',1,'']]]
+  ['question',['Question',['../class_question.html',1,'Question'],['../class_question.html#a3d84ae0d319a644caef1f298cabee36e',1,'Question::Question()']]],
+  ['question_2eh',['question.h',['../question_8h.html',1,'']]]
 ];

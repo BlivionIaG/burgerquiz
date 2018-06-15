@@ -88,10 +88,10 @@ public:
      */
     Question getQuestion(){return question;}
 private:
-    int id;
-    int valeur ;
-    std::string proposition;
-    Question question;
+    int id;/*!< id reponse */
+    int valeur ;/*!< valeur reponse */
+    std::string proposition;/*!< string proposition */
+    Question question; /*!< question associer a la reponse */
 };
 
 #endif // REPONSE_H

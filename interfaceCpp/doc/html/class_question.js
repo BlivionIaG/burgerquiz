@@ -9,5 +9,6 @@ var class_question =
     [ "getIdQuestion", "class_question.html#afeffea1a16f2da6bc8d17414596a5d4e", null ],
     [ "getlastinput", "class_question.html#a80271cb76628a48d2e17a3af4cfdef84", null ],
     [ "getTheme", "class_question.html#acc02bfd467806ebb278607fa1e63705d", null ],
+    [ "newQuestionTheme", "class_question.html#adf11a6e9ba44be9f7a509ff03b72c422", null ],
     [ "updateQuestion", "class_question.html#a1f8c7b90a2b2242a39a93beb77a9360e", null ]
 ];
