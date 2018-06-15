@@ -55,7 +55,7 @@ function cscore($val) {
     return $val;
 }
 
-$db = new InterfaceBDD(); //Connexion à la BDD
+$db = new InterfaceBDD(); /**< \brief Connexion à la BDD */
 
 if (!$db->getBdd()) { //Si non connecté
     header('HTTP/1.1 503 Service Unavailable');
@@ -63,10 +63,10 @@ if (!$db->getBdd()) { //Si non connecté
 }
 
 /* Début récupération informations pour gérer la requete AJAX */
-$requestMethod = filter_input(INPUT_SERVER, 'REQUEST_METHOD');
-$tmp = substr(filter_input(INPUT_SERVER, 'PATH_INFO'), 1);
-$request = explode('/', $tmp);
-$requestRessource = array_shift($request);
+$requestMethod = filter_input(INPUT_SERVER, 'REQUEST_METHOD'); /**< \brief Récupération de la méthode HTTP */
+$tmp = substr(filter_input(INPUT_SERVER, 'PATH_INFO'), 1); /**< \brief Récupération du PATH_INFO */
+$request = explode('/', $tmp); /**< \brief Séparation des éléments de la requète */
+$requestRessource = array_shift($request); /**< \brief Récupération de la ressource demandée */
 
 if ($requestRessource === 'startGame' && $requestMethod === 'POST') { //Début du jeu
     $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
@@ -172,9 +172,9 @@ if ($requestRessource === 'startGame' && $requestMethod === 'POST') { //Début d
 
         sendJsonData($output, 'HTTP/1.1 200 OK'); // On envoie le résultat
     }
-} else {
+} else {/**< Demande invalide */
     header('HTTP/1.1 400 Bad Request');//Aie
 }
 
-exit;
+exit; /**< On part */
 ?>

@@ -37,6 +37,9 @@ mysql -u root -p
 mysql -u root
 ```
 * Puis chargez le script SQL contenu dans le dossier interfaceWeb/
+> Remplacez "Burgerquiz" dans "DROP TABLE Burgerquiz;", "USE Burgerquiz"  
+et "CREATE TABLE 
+Burgerquiz;" par le nom de votre table ( ou supprimez ces lignes )
 ```
 source interfaceWeb/burgerquiz.sql;
 ```
