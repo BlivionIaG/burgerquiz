@@ -96,6 +96,94 @@ try {
            }
 }
 
+bool User::updateUser(int id,std::string mail,std::string nom,std::string prenom){
+
+    try {
+
+        //sql::ResultSet *res;
+        sql::PreparedStatement *stmt;
+        sql::Connection *con = connectiondb::GetConnection();
+        //qDebug() << con->
+        //if(con->isValid() && con != NULL){
+         //qDebug() << "test4";
+            stmt = con->prepareStatement("UPDATE Utilisateur SET mail = ?,"
+                                         " nom = ?,"
+                                         " prenom = ? WHERE"
+                                         " Utilisateur.id_utilisateur = ?");
+
+            stmt->setString(1,mail);
+            stmt->setString(2,nom);
+            stmt->setString(3,prenom);
+            stmt->setInt(4,id);
+            //qDebug() << "test5";
+            stmt->executeQuery();
+            //return stmt->getResultSet();//}else{return NULL;}
+
+            return true;
+
+
+        } catch (sql::SQLException &e) {
+         qDebug() << "# ERR: SQLException in " << __FILE__;
+         qDebug() << "(" << __FUNCTION__ << ") on line " << __LINE__ << endl;
+         qDebug() << "# ERR: " << e.what();
+         qDebug() << " (MySQL error code: " << e.getErrorCode();
+         qDebug() << ", SQLState: " << QString::fromStdString(e.getSQLState()) << " )" << endl;
+         return false;
+        }catch(string e){
+                    //qDebug() << QString::fromStdString(e) << endl;
+        QMessageBox *error = new QMessageBox;
+        error->setText(QString::fromStdString(e));
+        error->exec();
+        return false;
+               }
+
+}
+
+bool User::deleteUser(int id){
+
+    try {
+
+        //sql::ResultSet *res;
+        sql::PreparedStatement *stmt;
+        sql::Connection *con = connectiondb::GetConnection();
+        //qDebug() << con->
+        //if(con->isValid() && con != NULL){
+         //qDebug() << "test4";
+
+            stmt = con->prepareStatement("DELETE Possede FROM Possede where Possede.id_utilisateur = ?");
+
+
+            stmt->setInt(1,id);
+            //qDebug() << "test5";
+            stmt->executeQuery();
+
+            stmt = con->prepareStatement("DELETE Utilisateur FROM Utilisateur where Utilisateur.id_utilisateur = ?");
+
+            stmt->setInt(1,id);
+            //qDebug() << "test5";
+            stmt->executeQuery();
+            //return stmt->getResultSet();//}else{return NULL;}
+
+            return true;
+
+
+        } catch (sql::SQLException &e) {
+         qDebug() << "# ERR: SQLException in " << __FILE__;
+         qDebug() << "(" << __FUNCTION__ << ") on line " << __LINE__ << endl;
+         qDebug() << "# ERR: " << e.what();
+         qDebug() << " (MySQL error code: " << e.getErrorCode();
+         qDebug() << ", SQLState: " << QString::fromStdString(e.getSQLState()) << " )" << endl;
+         return false;
+        }catch(string e){
+                    //qDebug() << QString::fromStdString(e) << endl;
+        QMessageBox *error = new QMessageBox;
+        error->setText(QString::fromStdString(e));
+        error->exec();
+        return false;
+               }
+
+}
+
 /*
  *
  * update/new/delete partie

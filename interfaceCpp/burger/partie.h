@@ -46,6 +46,7 @@ public:
      * \return nom_partie
      */
     std::string getName(){return nom_Partie;}
+    bool deletePartie(int id);
 
 private:
     std::string nom_Partie;/*!< nom de la partie */

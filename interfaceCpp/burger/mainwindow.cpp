@@ -154,7 +154,7 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_8_clicked()
 {
-    if(ui->listWidget_4->count() !=0){
+    if(ui->listWidget_4->currentRow() >= 0){
         Question question = ui->listWidget_4->currentItem()->data(1).value<Question>();
         QVector<Reponse*> reponses = Reponse::getReponses(question.getIdQuestion());
         int i;
@@ -454,9 +454,26 @@ void MainWindow::on_pushButton_11_clicked()
 
 void MainWindow::on_pushButton_20_clicked()
 {
+    QVector<Theme*>themes = Theme::getThemes();
+    int i;
+     ui->comboBox->clear();
+    if(!themes.isEmpty()){
+
+        for(i=0;i<themes.size();i++){
+            QVariant data;
+            data.setValue(Theme(themes[i]->getName(),themes[i]->getId()));
+            ui->comboBox->addItem(QString::fromStdString(themes[i]->getName()),data);
+            //***********************************
+        }
+
+
+
+    }
+    //ui->comboBox->setCurrentIndex(0);
     ui->stackedWidget->setCurrentIndex(3);
-    ui->label_8->clear();
-    ui->pushButton_15->show();
+    ui->pushButton_15->setVisible(true);
+
+
 }
 
 void MainWindow::on_listWidget_currentRowChanged(int currentRow)
@@ -627,36 +644,67 @@ void MainWindow::on_pushButton_21_clicked()
 
 void MainWindow::on_pushButton_22_clicked()
 {
+
     //listwidget
     if(ui->listWidget->currentRow() >= 0){
-        Reponse reponse = ui->listWidget->currentItem()->data(1).value<Reponse>();
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Confirmation", "Etes vous sur de vouloir supprimer l'element ?",
+                                      QMessageBox::Yes|QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            Reponse reponse = ui->listWidget->currentItem()->data(1).value<Reponse>();
 
-        if(reponse.deleteReponse(reponse.getId())){
+            if(reponse.deleteReponse(reponse.getId())){
 
-            delete ui->listWidget->takeItem(ui->listWidget->currentRow());
+                delete ui->listWidget->takeItem(ui->listWidget->currentRow());
+            }
+          //qDebug() << "Yes was clicked";
+          //QApplication::quit();
+        } else {
+          //qDebug() << "Yes was *not* clicked";
         }
+
     }
 }
 
 void MainWindow::on_pushButton_9_clicked()
 {
     if(ui->listWidget_4->currentRow() >= 0){
-        Question question = ui->listWidget_4->currentItem()->data(1).value<Question>();
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Confirmation", "Etes vous sur de vouloir supprimer l'element ?",
+                                      QMessageBox::Yes|QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            Question question = ui->listWidget_4->currentItem()->data(1).value<Question>();
 
-        if(question.deleteQuestion(question.getIdQuestion())){
-            delete ui->listWidget_4->takeItem(ui->listWidget_4->currentRow());
+            if(question.deleteQuestion(question.getIdQuestion())){
+                delete ui->listWidget_4->takeItem(ui->listWidget_4->currentRow());
+
+            }
+
+        } else {
+          //qDebug() << "Yes was *not* clicked";
         }
+
     }
 }
 
 void MainWindow::on_pushButton_10_clicked()
 {
     if(ui->listtheme->currentRow() >= 0){
-        Theme theme = ui->listtheme->currentItem()->data(1).value<Theme>();
 
-        if(theme.deleteTheme(theme.getId())){
-            delete ui->listtheme->takeItem(ui->listtheme->currentRow());
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Confirmation", "Etes vous sur de vouloir supprimer l'element ?",
+                                      QMessageBox::Yes|QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            Theme theme = ui->listtheme->currentItem()->data(1).value<Theme>();
+
+            if(theme.deleteTheme(theme.getId())){
+                delete ui->listtheme->takeItem(ui->listtheme->currentRow());
+            }
+
+        } else {
+          //qDebug() << "Yes was *not* clicked";
         }
+
     }
 }
 
@@ -706,7 +754,7 @@ if (dialog.exec() == QDialog::Accepted) {
 
             if(question.newQuestionTheme(question.getIdQuestion(),box->currentData().value<Theme>().getId())){
                 //delete ui->listtheme->takeItem(ui->listtheme->currentRow());
-                delete ui->listWidget_4->takeItem(ui->listWidget_4->currentRow());
+                //delete ui->listWidget_4->takeItem(ui->listWidget_4->currentRow());
                 ui->label_7->setText(QString::fromStdString("Theme: " +box->currentData().value<Theme>().getName()));
             }
         }
@@ -714,3 +762,109 @@ if (dialog.exec() == QDialog::Accepted) {
 }
 
 
+
+void MainWindow::on_pushButton_13_clicked()
+{
+    //Question question = ui->listWidget_4->currentItem()->data(1).value<Question>();
+
+    User user = ui->comboBox_2->currentData().value<User>();
+
+    QDialog dialog(this);
+    // Use a layout allowing to have a label next to each field
+    QFormLayout form(&dialog);
+
+    // Add some text above the fields
+    form.addRow(new QLabel("Changement"));
+
+    // Add the lineEdits with their respective labels
+    QList<QLineEdit *> fields;
+
+        QLineEdit *lineEdit = new QLineEdit(&dialog);
+        QString label = QString("mail :");
+        lineEdit->setText(QString::fromStdString(user.getmail()));
+        form.addRow(label, lineEdit);
+        fields << lineEdit;
+
+        QLineEdit *lineEdit2 = new QLineEdit(&dialog);
+        QString label1 = QString("nom :");
+        lineEdit2->setText(QString::fromStdString(user.getNom()));
+        form.addRow(label1, lineEdit2);
+        fields << lineEdit2;
+
+        QLineEdit *lineEdit3 = new QLineEdit(&dialog);
+        QString label2 = QString("prenom :");
+        lineEdit3->setText(QString::fromStdString(user.getPrenom()));
+        form.addRow(label2, lineEdit3);
+        fields << lineEdit3;
+
+    // Add some standard buttons (Cancel/Ok) at the bottom of the dialog
+    QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
+                               Qt::Horizontal, &dialog);
+    form.addRow(&buttonBox);
+    QObject::connect(&buttonBox, SIGNAL(accepted()), &dialog, SLOT(accept()));
+    QObject::connect(&buttonBox, SIGNAL(rejected()), &dialog, SLOT(reject()));
+
+    //qDebug() << user.getid() ;
+
+    // Show the dialog as modal
+    if (dialog.exec() == QDialog::Accepted) {
+        // If the user didn't dismiss the dialog, do something with the fields
+        if(!fields[0]->text().isEmpty() && !fields[1]->text().isEmpty() && !fields[2]->text().isEmpty()
+                && user.updateUser(user.getid(),fields[0]->text().toStdString(),
+                                   fields[1]->text().toStdString(),
+                                   fields[2]->text().toStdString())){
+
+            QVariant data;
+            data.setValue(User(fields[1]->text().toStdString(),fields[2]->text().toStdString(),user.getid(),fields[0]->text().toStdString()));//nom prenom id mail
+
+            //delete ui->listWidget->takeItem(ui->listWidget->currentRow());
+            ui->comboBox_2->insertItem(ui->comboBox_2->currentIndex(),fields[0]->text(),data);
+            ui->comboBox_2->removeItem(ui->comboBox_2->currentIndex());
+            ui->comboBox_2->setCurrentIndex(ui->comboBox_2->currentIndex()-1);
+
+            ui->lineEdit_17->setText(fields[0]->text());
+            ui->lineEdit_16->setText(fields[1]->text());
+            ui->lineEdit_15->setText(fields[2]->text());
+        }
+    }
+}
+
+void MainWindow::on_pushButton_12_clicked()
+{
+    if(ui->comboBox_2->currentIndex() >= 0){
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Confirmation", "Etes vous sur de vouloir supprimer l'element ?",
+                                      QMessageBox::Yes|QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            User user = ui->comboBox_2->currentData().value<User>();
+            if(user.deleteUser(user.getid())){
+                ui->comboBox_2->removeItem(ui->comboBox_2->currentIndex());
+            }
+
+        } else {
+          //qDebug() << "Yes was *not* clicked";
+        }
+
+    }
+}
+
+void MainWindow::on_pushButton_17_clicked()
+{
+    //list3
+    if(ui->listWidget_3->currentRow() >= 0){
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Confirmation", "Etes vous sur de vouloir supprimer l'element ?",
+                                      QMessageBox::Yes|QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            Partie partie = ui->listWidget_3->currentItem()->data(1).value<Partie>();
+            if(partie.deletePartie(partie.getId())){
+                delete ui->listWidget_3->takeItem(ui->listWidget_3->currentRow());
+
+            }
+
+        } else {
+          //qDebug() << "Yes was *not* clicked";
+        }
+
+    }
+}

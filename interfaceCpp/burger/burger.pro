@@ -23,7 +23,6 @@ SOURCES += main.cpp\
     reponse.cpp
 
 HEADERS  += mainwindow.h \
-    ../Bureau/c++/II/tp 6/ElementBDD.h \
     connectiondb.h \
     theme.h \
     question.h \

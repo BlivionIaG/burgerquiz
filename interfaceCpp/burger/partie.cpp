@@ -49,6 +49,60 @@ QVector<Partie *> Partie::getParties(){
 
 }
 
+bool Partie::deletePartie(int id){
+
+    try {
+
+        //sql::ResultSet *res;
+        sql::PreparedStatement *stmt;
+        sql::Connection *con = connectiondb::GetConnection();
+        //qDebug() << con->
+        //if(con->isValid() && con != NULL){
+         //qDebug() << "test4";
+
+            stmt = con->prepareStatement("DELETE Possede FROM Possede where Possede.id_partie = ?");
+
+
+            stmt->setInt(1,id);
+            //qDebug() << "test5";
+            stmt->executeQuery();
+
+            stmt = con->prepareStatement("DELETE comprend FROM comprend where comprend.id_partie = ?");
+
+
+            stmt->setInt(1,id);
+            //qDebug() << "test5";
+            stmt->executeQuery();
+
+            stmt = con->prepareStatement("DELETE Partie FROM Partie where Partie.id_partie = ?");
+
+            stmt->setInt(1,id);
+            //qDebug() << "test5";
+            stmt->executeQuery();
+            //return stmt->getResultSet();//}else{return NULL;}
+
+            return true;
+
+
+        } catch (sql::SQLException &e) {
+         qDebug() << "# ERR: SQLException in " << __FILE__;
+         qDebug() << "(" << __FUNCTION__ << ") on line " << __LINE__ << endl;
+         qDebug() << "# ERR: " << e.what();
+         qDebug() << " (MySQL error code: " << e.getErrorCode();
+         qDebug() << ", SQLState: " << QString::fromStdString(e.getSQLState()) << " )" << endl;
+         return false;
+        }catch(string e){
+                    //qDebug() << QString::fromStdString(e) << endl;
+        QMessageBox *error = new QMessageBox;
+        error->setText(QString::fromStdString(e));
+        error->exec();
+        return false;
+               }
+
+}
+
+
+
 //sql::ResultSet *res;
 //sql::PreparedStatement *pstmt;
 //sql::Statement *stmt;

@@ -199,6 +199,9 @@ bool Question::deleteQuestion(int id){
         stmt = con->prepareStatement("DELETE Reponse FROM Reponse,Question where Reponse.id_question = Question.id_question and Question.id_question = ?");
         stmt->setInt(1,id);
         stmt->executeQuery();
+        stmt = con->prepareStatement("DELETE comprend FROM comprend where comprend.id_question = ?");
+        stmt->setInt(1,id);
+        stmt->executeQuery();
         delete stmt;
 
         stmt = con->prepareStatement("DELETE Question FROM Question where Question.id_question = ?");

@@ -81,6 +81,8 @@ public:
      * \return id_user
      */
     int getid(){return id_user;}
+    bool updateUser(int id,std::string mail,std::string nom,std::string prenom);
+    bool deleteUser(int id);
 
 
 private:
