@@ -60,7 +60,6 @@ if (!isset($id_partie) && $id_partie <= 0) {
             <div>
                 <button id="startGame" class="bq-button">Commencer</button>
             </div>
-            <div id="bq-timer"></div>
             <div id="bq-proposition">
 
             </div>
@@ -71,6 +70,9 @@ if (!isset($id_partie) && $id_partie <= 0) {
 
             </div>
         </div>
+        
+            <div id="bq-timer" class="bq-circle"></div>
+        
         <?php require_once("includes/footer.template.php"); ?>       
 
         <script src="vendor/jquery/jquery.slim.min.js"></script>

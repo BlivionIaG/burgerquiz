@@ -16,7 +16,11 @@
  */
 
 'use strict';
+
+var timer;
+
 $(() => {
+    $('#bq-timer').hide();
     $('#startGame').off('click').click((event) => {
         event.preventDefault();
         var partie = $('#bq-id_partie').val();
@@ -82,6 +86,24 @@ function showQuestion(question) {
     var progress_bar = document.createElement('div');
     progress_bar.style = 'background-color: #dba636;height: 25px; width:' + question['progress'] + '%';
     $('#bq-progress-bar').append(progress_bar);
+
+
+    clearInterval(timer);
+    $('#bq-timer').show();
+    var target = new Date().getTime() + 10000;
+    timer = setInterval(() => {
+        var now = new Date().getTime();
+        console.log(target);
+        console.log(now);
+        var distance = target - now;
+
+        document.getElementById("bq-timer").innerHTML = '<span>' + Math.floor((distance % (1000 * 60)) / 1000) + '<span>';
+
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById("bq-timer").innerHTML = "<span> 0 </span>";
+        }
+    }, 100);
 }
 
 function answerLes_deux(event) {
@@ -141,11 +163,14 @@ function answerResult(ajaxResponse) {
             break;
     }
 
+    $('#bq-timer').hide();
+
     $('#' + reponse.id).off('click').click(nextAnswer);
 }
 
 function endGame(results) {
     $('#bq-play').empty();
+    $('#bq-timer').hide();
 
     var titre = document.createElement('h1');
     titre.id = 'bq-info-page';
