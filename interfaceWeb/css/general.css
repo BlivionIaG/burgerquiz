@@ -350,6 +350,16 @@ footer.sticky-footer {
     margin-left: 45%;
 }
 
+#bq-mention{
+    color: #aedd94;
+    text-decoration: none;
+    padding: 3px;
+}
+
+#bq-mention:hover{
+    border: 2px solid #aedd94;
+}
+
 #bq-mesScoresLink:hover {
     border: 2px solid #aedd94;
 }
