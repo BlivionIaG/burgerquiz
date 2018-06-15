@@ -637,3 +637,7 @@ button#bq-sel-les_deux + button#bq-les_deux  {
     bottom: 10vh;
     height: 100px;
 }
+
+audio {
+    display: none;
+}

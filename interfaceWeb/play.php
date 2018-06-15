@@ -70,9 +70,14 @@ if (!isset($id_partie) && $id_partie <= 0) {
 
             </div>
         </div>
-        
-            <div id="bq-timer" class="bq-circle"></div>
-        
+
+        <audio id="bq-win-sound" src="mp3/win.mp3"></audio>
+        <audio id="bq-good-sound" src="mp3/good.mp3"></audio>   
+        <audio id="bq-bad-sound" src="mp3/bad.mp3"></audio>
+        <audio id="bq-alarm-sound" src="mp3/alarm.mp3"></audio>
+
+        <div id="bq-timer" class="bq-circle"></div>
+
         <?php require_once("includes/footer.template.php"); ?>       
 
         <script src="vendor/jquery/jquery.slim.min.js"></script>

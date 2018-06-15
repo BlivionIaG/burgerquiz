@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file   action.php
- * @brief   Page responsable de la gestion des actions utilisateur
+/** \file   action.php
+ * \brief   Page responsable de la gestion des actions utilisateur
  *
  *  La page gère l'enregistrement de nouveaux utilisateurs, la connexion, 
  * la déconnexion, la mis à jour d'un utilisateur, la création de partie

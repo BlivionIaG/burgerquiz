@@ -55,6 +55,10 @@ function showQuestion(question) {
     $('#bq-proposition').empty();
     $('#bq-reponses').empty();
     $('#bq-progress-bar').empty();
+    $('#bq-alarm-sound')[0].pause();
+    $('#bq-good-sound')[0].pause();
+    $('#bq-bad-sound')[0].pause();
+    $('#bq-win-sound')[0].pause();
 
     var proposition = document.createElement('h1');
     proposition.id = 'bq-info-page';
@@ -101,6 +105,7 @@ function showQuestion(question) {
 
         if (distance < 0) {
             clearInterval(timer);
+            $('#bq-alarm-sound')[0].play();
             document.getElementById("bq-timer").innerHTML = "<span> 0 </span>";
         }
     }, 100);
@@ -135,8 +140,10 @@ function answerResult(ajaxResponse) {
     reponse.class = 'bq-reponse';
     if (result['result'] === true) {
         reponse.innerHTML = 'Gagné !';
+        $('#bq-good-sound')[0].play();
     } else {
         reponse.innerHTML = 'Perdu !';
+        $('#bq-bad-sound')[0].play();
     }
 
     switch (result['value']) {
@@ -169,8 +176,16 @@ function answerResult(ajaxResponse) {
 }
 
 function endGame(results) {
+
+    clearInterval(timer);
     $('#bq-play').empty();
     $('#bq-timer').hide();
+
+    $('#bq-alarm-sound')[0].pause();
+    $('#bq-good-sound')[0].pause();
+    $('#bq-bad-sound')[0].pause();
+    $('#bq-win-sound')[0].play();
+
 
     var titre = document.createElement('h1');
     titre.id = 'bq-info-page';
